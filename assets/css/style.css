@@ -3933,7 +3933,7 @@ html {
     overflow: hidden;
     font-family: var(--font-tech);
     font-size: 0.62rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.18);
     pointer-events: none;
     z-index: 0;
     border-radius: inherit;
@@ -3948,14 +3948,14 @@ html {
     white-space: pre;
     line-height: 1.8;
     letter-spacing: 0.05em;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
+    text-shadow: none;
     animation: dataScroll linear infinite;
-    opacity: 0.5;
+    opacity: 0.28;
 }
 
 @keyframes dataScroll {
     0% { transform: translateY(-100%); opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
+    15% { opacity: 0.3; }
+    85% { opacity: 0.3; }
     100% { transform: translateY(100%); opacity: 0; }
 }

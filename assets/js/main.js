@@ -159,6 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const metrics = ["SYS_LOAD:", "REQ/S:", "CPU:", "MEM:", "NET_IO:", "PING:"];
 
         panels.forEach((panel) => {
+            // Only add a stream to ~40% of panels for a sparse, minimal look
+            if (Math.random() > 0.4) return;
+
             if (window.getComputedStyle(panel).position === 'static') {
                 panel.style.position = 'relative';
             }
@@ -166,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const streamContainer = document.createElement('div');
             streamContainer.className = 'data-stream';
 
-            // Exactly 1 column per panel — centered, no overlap
             const col = document.createElement('div');
             col.className = 'data-stream-col';
 
@@ -175,27 +177,25 @@ document.addEventListener('DOMContentLoaded', () => {
             col.style.transform = 'translateX(-50%)';
             col.style.textAlign = 'left';
 
-            // Each panel gets a unique, slow random speed
-            const animDuration = Math.random() * 8 + 14; // 14s to 22s
+            // Very slow scroll — 20s to 30s
+            const animDuration = Math.random() * 10 + 20;
             col.style.animationDuration = `${animDuration}s`;
-            col.style.animationDelay = `-${Math.random() * 22}s`; // Random start phase
+            col.style.animationDelay = `-${Math.random() * 30}s`;
 
-            // Small number of lines (8-12) so they don't crowd the panel
-            const numLines = Math.floor(Math.random() * 5) + 8;
+            // Only 4–6 lines of content — very sparse
+            const numLines = Math.floor(Math.random() * 3) + 4;
             let textContent = "";
             for (let j = 0; j < numLines; j++) {
                 const roll = Math.random();
-                if (roll > 0.75) {
-                    // System metric line
+                if (roll > 0.7) {
                     const metric = metrics[Math.floor(Math.random() * metrics.length)];
                     const val = Math.floor(Math.random() * 9999);
                     textContent += `${metric} ${val}\n`;
-                } else if (roll > 0.4) {
-                    // Hex value line
+                } else if (roll > 0.45) {
                     textContent += `${generateHex()}\n`;
                 } else {
-                    // Blank spacer line for organic breathing room
-                    textContent += `\n`;
+                    // Double blank lines for heavy breathing room
+                    textContent += `\n\n`;
                 }
             }
             col.textContent = textContent;
