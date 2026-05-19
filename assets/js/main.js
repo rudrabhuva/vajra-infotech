@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     // Setup automatic synchronization of mask phase to eliminate any mismatch across all pages and transition overlays
     const observeAllIndicators = () => {
         const indicators = document.querySelectorAll('.mercury-indicator');
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetUrl.includes('index.html')) {
             document.body.style.setProperty('background-color', '#050505', 'important');
             document.documentElement.style.setProperty('background-color', '#050505', 'important');
-        } else if (targetUrl.includes('product.html') || targetUrl.includes('about.html')) {
+        } else if (targetUrl.includes('pages/product.html') || targetUrl.includes('pages/about.html')) {
             document.body.style.setProperty('background-color', '#161616', 'important');
             document.documentElement.style.setProperty('background-color', '#161616', 'important');
         } else {
@@ -574,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.isTransitioning = true;
             
             // 1. Synchronize the mercury indicator
-            const serviceTransLink = document.querySelector('#transitionNav a[href="service.html"]');
+            const serviceTransLink = document.querySelector('#transitionNav a[href="pages/service.html"]');
             if (serviceTransLink && transitionIndicator) {
                 const rect = serviceTransLink.getBoundingClientRect();
                 const navRect = document.getElementById('transitionNav').getBoundingClientRect();
@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 5. Navigate to service.html after slide completes (600ms)
             setTimeout(() => {
-                window.location.href = 'service.html';
+                window.location.href = 'pages/service.html';
             }, 600);
         });
     }
@@ -620,7 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionOverlayProduct,
                 'style',
                 () => {
-                    const productTransLink = document.querySelector('#transitionNavProduct a[href="product.html"]');
+                    const productTransLink = document.querySelector('#transitionNavProduct a[href="pages/product.html"]');
                     const transitionIndicatorProduct = document.getElementById('transitionIndicatorProduct');
                     if (productTransLink && transitionIndicatorProduct) {
                         const rect = productTransLink.getBoundingClientRect();
@@ -644,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionOverlayProcess,
                 'style',
                 () => {
-                    const processTransLink = document.querySelector('#transitionNavProcess a[href="process.html"]');
+                    const processTransLink = document.querySelector('#transitionNavProcess a[href="pages/process.html"]');
                     const transitionIndicatorProcess = document.getElementById('transitionIndicatorProcess');
                     if (processTransLink && transitionIndicatorProcess) {
                         const rect = processTransLink.getBoundingClientRect();
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionOverlayAbout,
                 'style',
                 () => {
-                    const aboutTransLink = document.querySelector('#transitionNavAbout a[href="about.html"]');
+                    const aboutTransLink = document.querySelector('#transitionNavAbout a[href="pages/about.html"]');
                     const transitionIndicatorAbout = document.getElementById('transitionIndicatorAbout');
                     if (aboutTransLink && transitionIndicatorAbout) {
                         const rect = aboutTransLink.getBoundingClientRect();
@@ -692,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 transitionOverlayContact,
                 'style',
                 () => {
-                    const contactTransLink = document.querySelector('#transitionNavContact a[href="contact.html"]');
+                    const contactTransLink = document.querySelector('#transitionNavContact a[href="pages/contact.html"]');
                     const transitionIndicatorContact = document.getElementById('transitionIndicatorContact');
                     if (contactTransLink && transitionIndicatorContact) {
                         const rect = contactTransLink.getBoundingClientRect();
@@ -836,3 +836,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Vajra Infotech Landing Script Initialized");
 });
+

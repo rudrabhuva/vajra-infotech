@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <script>
         (function() {
             const fromIndex = sessionStorage.getItem('fromPageIndex');
             const fromTheme = sessionStorage.getItem('fromPageTheme');
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentPath = window.location.pathname.split('/').pop() || '../index.html';
+            const pages = ['../index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
             const currentIndex = pages.indexOf(currentPath);
             
             // Determine current page theme
@@ -27,19 +27,17 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vajra Infotech | About</title>
-    <meta name="description" content="Vajra Infotech About - Learn about our mission and vision.">
+    <title>Vajra Infotech | Process</title>
+    <meta name="description" content="Vajra Infotech Process - How we build resilient software.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
-    <!-- Three.js for WebGL 3D Particles -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body class="product-page">
+<body class="service-page">
 
     <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
     <div id="page-reveal-overlay"></div>
@@ -108,13 +106,10 @@
         </div>
     </div>
 
-    <!-- WebGL interactive 3D Particle Canvas -->
-    <canvas id="webgl-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.65;"></canvas>
-
     <div id="overlay">
-        <!-- Small header for about page -->
+        <!-- Small header for process page -->
         <header class="service-header" style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
-            <a href="index.html" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 15px;">
+            <a href="../index.html" style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
                 <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
                     <!-- 3D Shadow side facets (transparent overlay) -->
                     <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
@@ -127,68 +122,223 @@
                     <path d="M62 47 L54 47 L50 57 L58 57 Z" fill="currentColor"/>
                     <path d="M55 62 L47 62 L43 71 L51 71 Z" fill="currentColor"/>
                 </svg>
-                <div style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px; color: white;">VAJRA<br>INFOTECH</div>
+                <div style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;">VAJRA<br>INFOTECH</div>
             </a>
-            <div class="page-title" style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: white; text-transform: uppercase;">ABOUT</div>
+            <div style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: black; text-transform: uppercase;">PROCESS</div>
         </header>
 
-        <div class="service-content" style="display: flex; flex-direction: column; overflow-y: auto; padding: 50px 0;">
-            <div class="visionary-container" style="margin: auto auto;">
-                <!-- High-Tech Animated Vector Connection Layer -->
-                <svg id="connection-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible;"></svg>
+        <div class="service-content">
+            <h1 class="main-title">The Build Process</h1>
+            <p style="font-family: var(--font-brand); font-size: 0.95rem; font-weight: 800; color: rgba(0, 0, 0, 0.4); text-transform: uppercase; letter-spacing: 2px; margin-top: -10px; margin-bottom: 25px; animation: fadeUp 1s ease 0.5s forwards; opacity: 0;">The "Vajra" Way</p>
+            <p>We employ a rigorous, agile methodology to ensure seamless delivery and unparalleled technical excellence in every project we undertake.</p>
+            
+            <div class="timeline-container">
+                <!-- Vertical progress lines -->
+                <div class="progress-line-bg"></div>
+                <div class="progress-line-fill" id="progressLineFill"></div>
 
-                <p class="visionary-tagline">THE VISIONARY</p>
-                <h1 class="visionary-quote">Crafted by Screeny.<br>Engineered by Vajra.</h1>
-                <div class="visionary-divider"></div>
-                <p class="visionary-text">Vajra InfoTech was born at the intersection of cinematic creativity and technical engineering. We are a solo-led powerhouse specializing in products that aren't just functional—they are stunning.</p>
-                <div class="visionary-divider" style="width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 25px auto; opacity: 0; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;"></div>
-                <p class="visionary-philosophy">"Code is art. Logic is law."</p>
-
-                <!-- Cybernetic Principal Core Signature Block -->
-                <div class="signature-block">
-                    <span class="sig-meta">[DESIGN & RECON]</span>
-                    <h2 class="sig-title">Vajra InfoTech</h2>
-                    <span class="sig-subtitle">Principal Architect & Engineer</span>
-                    <span class="sig-status-dot" style="margin-top: 5px;"></span>
+                <!-- Step 1 -->
+                <div class="timeline-step">
+                    <div class="step-badge">1</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 1</div>
+                        <h3 class="step-title">The Logic</h3>
+                        <p class="step-desc">"We map the architecture before writing a single line of code."</p>
+                    </div>
                 </div>
 
-                <!-- 3 Core Pillars of Attraction (The "Vajra Advantage") -->
-                <div class="attraction-pillars">
-                    <div class="attraction-pillar">
-                        <span class="pillar-num">[01 DIRECT LINE]</span>
-                        <h3>Principal Dev Core</h3>
-                        <p>Work directly with the architect. No middle layers, no corporate delays, just elite engineering velocity.</p>
+                <!-- Step 2 -->
+                <div class="timeline-step">
+                    <div class="step-badge">2</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 2</div>
+                        <h3 class="step-title">The Alignment</h3>
+                        <p class="step-desc">"Weekly strategy syncs to ensure business goals and product execution stay perfectly aligned."</p>
                     </div>
-                    <div class="attraction-pillar">
-                        <span class="pillar-num">[02 FLUIDITY]</span>
-                        <h3>Cinematic Physics</h3>
-                        <p>Applications that feel alive, featuring dynamic vector animations, custom spring cursors, and responsive controls.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-step">
+                    <div class="step-badge">3</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 3</div>
+                        <h3 class="step-title">The Sprint</h3>
+                        <p class="step-desc">"Rapid prototyping with bi-weekly builds you can test."</p>
                     </div>
-                    <div class="attraction-pillar">
-                        <span class="pillar-num">[03 EFFICIENCY]</span>
-                        <h3>Maximized ROI</h3>
-                        <p>Eliminate agency overhead. 100% of your capital is funneled directly into high-fidelity, production-ready code.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-step">
+                    <div class="step-badge">4</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 4</div>
+                        <h3 class="step-title">The Refinement</h3>
+                        <p class="step-desc">"Pixel-perfect UI polishing focused on speed, clarity, and user experience."</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-step">
+                    <div class="step-badge">5</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 5</div>
+                        <h3 class="step-title">The Integration</h3>
+                        <p class="step-desc">"Connecting APIs, databases, and third-party systems into one seamless ecosystem."</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="timeline-step">
+                    <div class="step-badge">6</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 6</div>
+                        <h3 class="step-title">The Hardening</h3>
+                        <p class="step-desc">"Stress-testing your software for security and performance."</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="timeline-step">
+                    <div class="step-badge">7</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 7</div>
+                        <h3 class="step-title">The Optimization</h3>
+                        <p class="step-desc">"Continuous performance tuning for lightning-fast load times and scalability."</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="timeline-step">
+                    <div class="step-badge">8</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 8</div>
+                        <h3 class="step-title">The Launch Control</h3>
+                        <p class="step-desc">"Final deployment checks, monitoring setup, and zero-downtime release execution."</p>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="timeline-step">
+                    <div class="step-badge">9</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 9</div>
+                        <h3 class="step-title">The Handoff</h3>
+                        <p class="step-desc">"Full source code ownership and seamless deployment."</p>
+                    </div>
+                </div>
+
+                <!-- Step 10 -->
+                <div class="timeline-step">
+                    <div class="step-badge">10</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 10</div>
+                        <h3 class="step-title">The Evolution</h3>
+                        <p class="step-desc">"Post-launch support, analytics, and feature expansion as your business grows."</p>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Desktop Floating HUD Step-Navigator -->
+        <div class="hud-step-navigator">
+            <div class="hud-nav-item active" data-step="0">
+                <span class="hud-label">01 LOGIC</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="1">
+                <span class="hud-label">02 ALIGN</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="2">
+                <span class="hud-label">03 SPRINT</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="3">
+                <span class="hud-label">04 REFINE</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="4">
+                <span class="hud-label">05 INTEGR</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="5">
+                <span class="hud-label">06 HARDEN</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="6">
+                <span class="hud-label">07 OPTIM</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="7">
+                <span class="hud-label">08 LAUNCH</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="8">
+                <span class="hud-label">09 HANDOFF</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="9">
+                <span class="hud-label">10 EVOLVE</span>
+                <span class="hud-dot"></span>
+            </div>
+        </div>
+
         <nav class="main-nav visible" id="mainNav">
-            <a href="index.html" data-index="0">Home</a>
+            <a href="../index.html" data-index="0">Home</a>
             <a href="service.html" data-index="1">Services</a>
             <a href="product.html" data-index="2">Products</a>
-            <a href="process.html" data-index="3">Process</a>
-            <a href="about.html" class="nav-active" data-index="4">About</a>
+            <a href="process.html" class="nav-active" data-index="3">Process</a>
+            <a href="about.html" data-index="4">About</a>
             <a href="contact.html" data-index="5">Contact</a>
             
             <!-- The Liquid Mercury Indicator -->
             <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
         </nav>
         
-        <!-- Subtle base line for the indicator to travel on -->
         <div class="indicator-track" style="opacity: 1;"></div>
     </div>
 
+    <!-- Page Transition Overlays -->
     <!-- Reverse Page Transition Overlay (Home) -->
     <div id="page-transition-overlay-reverse">
         <div class="transition-bg-wrapper">
@@ -215,7 +365,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavReverse">
-                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="../index.html" class="nav-active" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -226,7 +376,7 @@
         </div>
     </div>
     
-    <!-- Service Page Transition Overlay -->
+    <!-- Service Page Transition Overlay (Left to Right) -->
     <div id="page-transition-overlay-service">
         <div class="transition-bg-wrapper">
             <div class="neu-bg-container">
@@ -247,7 +397,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavService">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" class="nav-active" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -257,8 +407,8 @@
             </nav>
         </div>
     </div>
-    
-    <!-- Product Page Transition Overlay -->
+
+    <!-- Product Page Transition Overlay (Left to Right) -->
     <div id="page-transition-overlay-product-reverse">
         <div class="transition-bg-wrapper">
             <div class="neu-bg-container">
@@ -279,7 +429,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavProductReverse">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" class="nav-active" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -289,9 +439,9 @@
             </nav>
         </div>
     </div>
-
-    <!-- Process Page Transition Overlay -->
-    <div id="page-transition-overlay-process-reverse">
+    
+    <!-- About Page Transition Overlay (Right to Left) -->
+    <div id="page-transition-overlay-about">
         <div class="transition-bg-wrapper">
             <div class="neu-bg-container">
                 <div class="ambient-glow-orb glow-blue"></div>
@@ -310,14 +460,14 @@
         </div>
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
-            <nav class="main-nav visible" id="transitionNavProcessReverse">
-                <a href="index.html" data-index="0">Home</a>
+            <nav class="main-nav visible" id="transitionNavAbout">
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
-                <a href="process.html" class="nav-active" data-index="3">Process</a>
-                <a href="about.html" data-index="4">About</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" class="nav-active" data-index="4">About</a>
                 <a href="contact.html" data-index="5">Contact</a>
-                <div class="mercury-indicator" id="transitionIndicatorProcessReverse" style="opacity: 1;"></div>
+                <div class="mercury-indicator" id="transitionIndicatorAbout" style="opacity: 1;"></div>
             </nav>
         </div>
     </div>
@@ -343,7 +493,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavContact">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -389,7 +539,7 @@
                 });
 
                 // Transition to Home (Black sweep left-to-right)
-                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                const homeLinks = document.querySelectorAll('a[href="../index.html"]');
                 homeLinks.forEach(link => {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -399,7 +549,7 @@
 
                         const overlay = document.getElementById('page-transition-overlay-reverse');
                         
-                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="index.html"]');
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="../index.html"]');
                         const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
                         if (homeTransLink && transitionIndicatorReverse) {
                             const rect = homeTransLink.getBoundingClientRect();
@@ -410,191 +560,113 @@
 
                         if (overlay) {
                             overlay.style.width = '100vw';
-                            setTimeout(() => { window.location.href = 'index.html'; }, 1100);
+                            setTimeout(() => { window.location.href = '../index.html'; }, 1100);
                         } else {
-                            window.location.href = 'index.html';
+                            window.location.href = '../index.html';
                         }
                     });
                 });
 
 
+            }
 
-                // Dynamic Connection Vectors for Vajra pillars to Harsh Desai Principal Core
-                const updateConnections = () => {
-                    const svg = document.getElementById('connection-svg');
-                    const sig = document.querySelector('.signature-block');
-                    const pillars = document.querySelectorAll('.attraction-pillar');
-                    const container = document.querySelector('.visionary-container');
+            // Scroll Timeline Interactive Progress Fill & Step Highlight
+            const contentEl = document.querySelector('.service-content');
+            const progressFill = document.getElementById('progressLineFill');
+            const steps = document.querySelectorAll('.timeline-step');
+            const hudItems = document.querySelectorAll('.hud-nav-item');
+
+            if (contentEl && progressFill) {
+                const updateTimeline = () => {
+                    const scrollTop = contentEl.scrollTop;
+                    const scrollHeight = contentEl.scrollHeight - contentEl.clientHeight;
                     
-                    if (svg && sig && pillars.length === 3 && container) {
-                        // Clear existing contents
-                        svg.innerHTML = '';
-                        
-                        const containerRect = container.getBoundingClientRect();
-                        const sigRect = sig.getBoundingClientRect();
-                        
-                        // Calculate target point (bottom center of signature block)
-                        const targetX = (sigRect.left + sigRect.right) / 2 - containerRect.left;
-                        const targetY = sigRect.bottom - containerRect.top;
-                        
-                        pillars.forEach((pillar, index) => {
-                            const pillarRect = pillar.getBoundingClientRect();
-                            // Source point (top center of pillar card)
-                            const sourceX = (pillarRect.left + pillarRect.right) / 2 - containerRect.left;
-                            const sourceY = pillarRect.top - containerRect.top;
-                            
-                            // Create SVG path
-                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                            
-                            // Draw curved connection line
-                            const midY = (targetY + sourceY) / 2;
-                            const d = `M ${targetX} ${targetY} C ${targetX} ${midY}, ${sourceX} ${midY}, ${sourceX} ${sourceY}`;
-                            path.setAttribute('d', d);
-                            path.setAttribute('id', `path-pillar-${index}`);
-                            
-                            // Create tiny circle node on the pillar top
-                            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                            circle.setAttribute('cx', sourceX);
-                            circle.setAttribute('cy', sourceY);
-                            circle.setAttribute('r', 3);
-                            circle.setAttribute('id', `circle-pillar-${index}`);
-                            
-                            svg.appendChild(path);
-                            svg.appendChild(circle);
-                            
-                            // Bind hover classes dynamically
-                            pillar.addEventListener('mouseenter', () => {
-                                path.classList.add('active');
-                                circle.classList.add('active');
-                            });
-                            pillar.addEventListener('mouseleave', () => {
-                                path.classList.remove('active');
-                                circle.classList.remove('active');
-                            });
-                        });
+                    let pct = 0;
+                    if (scrollHeight > 0) {
+                        pct = (scrollTop / scrollHeight) * 100;
                     }
+                    
+                    progressFill.style.height = `${pct}%`;
+                    
+                    let currentActiveIndex = 0;
+                    
+                    steps.forEach((step, idx) => {
+                        const stepRect = step.getBoundingClientRect();
+                        const containerRect = contentEl.getBoundingClientRect();
+                        
+                        const relativeTop = stepRect.top - containerRect.top + contentEl.scrollTop;
+                        const triggerPoint = contentEl.scrollTop + (contentEl.clientHeight * 0.7);
+                        
+                        if (triggerPoint >= relativeTop) {
+                            step.classList.add('active');
+                            currentActiveIndex = idx;
+                        } else {
+                            step.classList.remove('active');
+                        }
+                    });
+                    
+                    // Synchronize with Floating HUD Items
+                    hudItems.forEach((item, idx) => {
+                        if (idx === currentActiveIndex) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                };
+
+                contentEl.addEventListener('scroll', updateTimeline);
+                
+                // Add click navigation to floating HUD items
+                hudItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const stepIndex = parseInt(item.getAttribute('data-step'), 10);
+                        const targetStep = steps[stepIndex];
+                        if (targetStep) {
+                            const stepRect = targetStep.getBoundingClientRect();
+                            const containerRect = contentEl.getBoundingClientRect();
+                            const targetScrollTop = stepRect.top - containerRect.top + contentEl.scrollTop - 40;
+                            
+                            contentEl.scrollTo({
+                                top: targetScrollTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Dynamic SVG border scaling for pixel-perfect non-scaling corners
+                const updateCardBorders = () => {
+                    const cards = document.querySelectorAll('.step-card');
+                    cards.forEach(card => {
+                        const borderSvg = card.querySelector('.card-circuit-border');
+                        const rect = borderSvg ? borderSvg.querySelector('rect') : null;
+                        if (borderSvg && rect) {
+                            const w = card.clientWidth;
+                            const h = card.clientHeight;
+                            borderSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+                            rect.setAttribute('width', w - 4);
+                            rect.setAttribute('height', h - 4);
+                            rect.setAttribute('x', 2);
+                            rect.setAttribute('y', 2);
+                            rect.setAttribute('rx', 14);
+                            rect.setAttribute('ry', 14);
+                        }
+                    });
                 };
                 
-                // Initialize on load and bind to events
-                window.addEventListener('resize', updateConnections);
-                // Also trigger slightly later to ensure absolute rendering coordinates are fully finalized
-                setTimeout(updateConnections, 400);
+                window.addEventListener('resize', updateCardBorders);
+                updateCardBorders();
+                setTimeout(updateCardBorders, 300);
 
-                // --- Three.js WebGL Particle Core setup ---
-                const canvas = document.getElementById('webgl-canvas');
-                if (canvas && typeof THREE !== 'undefined') {
-                    const scene = new THREE.Scene();
-                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-                    // Create 3D particles in a sphere form
-                    const particleCount = 1200;
-                    const geometry = new THREE.BufferGeometry();
-                    const positions = new Float32Array(particleCount * 3);
-                    const originalPositions = new Float32Array(particleCount * 3);
-
-                    for (let i = 0; i < particleCount * 3; i += 3) {
-                        const u = Math.random();
-                        const v = Math.random();
-                        const theta = u * 2.0 * Math.PI;
-                        const phi = Math.acos(2.0 * v - 1.0);
-                        const r = 2.4 + Math.random() * 0.8;
-
-                        positions[i] = r * Math.sin(phi) * Math.cos(theta);
-                        positions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
-                        positions[i + 2] = r * Math.cos(phi);
-
-                        originalPositions[i] = positions[i];
-                        originalPositions[i + 1] = positions[i + 1];
-                        originalPositions[i + 2] = positions[i + 2];
-                    }
-
-                    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-                    const material = new THREE.PointsMaterial({
-                        color: 0x888888, // Sleek, minimalist metallic grey
-                        size: 0.038,
-                        transparent: true,
-                        opacity: 0.55,
-                        blending: THREE.AdditiveBlending
-                    });
-
-                    const particleSystem = new THREE.Points(geometry, material);
-                    scene.add(particleSystem);
-                    camera.position.z = 5.8;
-
-                    let targetMouseX = 0;
-                    let targetMouseY = 0;
-                    let mouseX = 0;
-                    let mouseY = 0;
-
-                    window.addEventListener('mousemove', (e) => {
-                        targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-                        targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-                    });
-
-                    window.addEventListener('resize', () => {
-                        camera.aspect = window.innerWidth / window.innerHeight;
-                        camera.updateProjectionMatrix();
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-                    });
-
-                    const clock = new THREE.Clock();
-                    function animateWebGL() {
-                        requestAnimationFrame(animateWebGL);
-
-                        const elapsedTime = clock.getElapsedTime();
-
-                        mouseX += (targetMouseX - mouseX) * 0.06;
-                        mouseY += (targetMouseY - mouseY) * 0.06;
-
-                        particleSystem.rotation.y = elapsedTime * 0.06;
-                        particleSystem.rotation.x = elapsedTime * 0.03;
-
-                        const posAttr = geometry.attributes.position;
-                        for (let i = 0; i < particleCount; i++) {
-                            const ix = i * 3;
-                            const iy = i * 3 + 1;
-                            const iz = i * 3 + 2;
-
-                            const x = originalPositions[ix];
-                            const y = originalPositions[iy];
-                            const z = originalPositions[iz];
-
-                            const cosY = Math.cos(particleSystem.rotation.y);
-                            const sinY = Math.sin(particleSystem.rotation.y);
-                            const rotX = x * cosY - z * sinY;
-
-                            // Premium Magnetic Swirl Vortex physics
-                            const dx = rotX - mouseX * 3.5;
-                            const dy = y - mouseY * 3.5;
-                            const dist = Math.sqrt(dx * dx + dy * dy);
-
-                            if (dist < 2.0) {
-                                const force = (2.0 - dist) * 0.18;
-                                const angle = Math.atan2(dy, dx) + 0.15;
-                                const targetX = mouseX * 3.5 + Math.cos(angle) * dist;
-                                const targetY = mouseY * 3.5 + Math.sin(angle) * dist;
-                                posAttr.array[ix] += (targetX - posAttr.array[ix]) * 0.08;
-                                posAttr.array[iy] += (targetY - posAttr.array[iy]) * 0.08;
-                            } else {
-                                posAttr.array[ix] += (originalPositions[ix] - posAttr.array[ix]) * 0.05;
-                                posAttr.array[iy] += (originalPositions[iy] - posAttr.array[iy]) * 0.05;
-                            }
-                        }
-                        posAttr.needsUpdate = true;
-
-                        renderer.render(scene, camera);
-                    }
-                    animateWebGL();
-                }
+                // Trigger initial placement on load
+                setTimeout(updateTimeline, 100);
             }
 
         });
     </script>
-    <script src="page-transition.js"></script>
-    <script src="cursor.js"></script>
+    <script src="../assets/js/page-transition.js"></script>
+    <script src="../assets/js/cursor.js"></script>
 </body>
 </html>
+

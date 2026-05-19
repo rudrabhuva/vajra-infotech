@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,8 +6,8 @@
         (function() {
             const fromIndex = sessionStorage.getItem('fromPageIndex');
             const fromTheme = sessionStorage.getItem('fromPageTheme');
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentPath = window.location.pathname.split('/').pop() || '../index.html';
+            const pages = ['../index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
             const currentIndex = pages.indexOf(currentPath);
             
             // Determine current page theme
@@ -38,7 +38,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body class="service-page">
@@ -114,7 +114,7 @@
         <!-- Small header for service page -->
         <header class="service-header"
             style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
-            <a href="index.html"
+            <a href="../index.html"
                 style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
                 <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
                     <!-- 3D Shadow side facets (transparent overlay) -->
@@ -232,7 +232,7 @@
         </div>
 
         <nav class="main-nav visible" id="mainNav">
-            <a href="index.html" data-index="0">Home</a>
+            <a href="../index.html" data-index="0">Home</a>
             <a href="service.html" class="nav-active" data-index="1">Services</a>
             <a href="product.html" class="product-link" data-index="2">Products</a>
             <a href="process.html" data-index="3">Process</a>
@@ -273,7 +273,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavReverse">
-                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="../index.html" class="nav-active" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -305,7 +305,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavProduct">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" class="nav-active" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -337,7 +337,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavProcess">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" class="nav-active" data-index="3">Process</a>
@@ -369,7 +369,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavAbout">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -401,7 +401,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavContact">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -449,13 +449,13 @@
                 });
 
                 // Add click listener for Home button slide-out
-                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                const homeLinks = document.querySelectorAll('a[href="../index.html"]');
                 homeLinks.forEach(link => {
                     link.addEventListener('click', function (e) {
                         e.preventDefault();
 
                         // 1. Synchronize the reverse transition indicator
-                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="index.html"]');
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="../index.html"]');
                         const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
                         if (homeTransLink && transitionIndicatorReverse) {
                             const rect = homeTransLink.getBoundingClientRect();
@@ -484,7 +484,7 @@
 
                         // 5. Navigate back to index.html after slide completes (600ms)
                         setTimeout(() => {
-                            window.location.href = 'index.html';
+                            window.location.href = '../index.html';
                         }, 600);
                     });
                 });
@@ -820,8 +820,8 @@
             }
         });
     </script>
-    <script src="page-transition.js"></script>
-    <script src="cursor.js"></script>
+    <script src="../assets/js/page-transition.js"></script>
+    <script src="../assets/js/cursor.js"></script>
 </body>
 
 </html>

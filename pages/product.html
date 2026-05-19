@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,8 +6,8 @@
         (function() {
             const fromIndex = sessionStorage.getItem('fromPageIndex');
             const fromTheme = sessionStorage.getItem('fromPageTheme');
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentPath = window.location.pathname.split('/').pop() || '../index.html';
+            const pages = ['../index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
             const currentIndex = pages.indexOf(currentPath);
             
             // Determine current page theme
@@ -28,8 +28,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vajra Infotech | Contact</title>
-    <meta name="description" content="Vajra Infotech Contact - Get in touch with us.">
+    <title>Vajra Infotech | Products</title>
+    <meta name="description" content="Vajra Infotech Products - Resilient software solutions.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,10 +38,9 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-
-<body class="service-page">
+<body class="product-page">
 
     <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
     <div id="page-reveal-overlay"></div>
@@ -111,11 +110,11 @@
     </div>
 
     <div id="overlay">
-        <!-- Small header for contact page -->
+        <!-- Small header for product page -->
         <header class="service-header"
             style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
-            <a href="index.html"
-                style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
+            <a href="../index.html"
+                style="text-decoration: none; color: white; display: flex; align-items: center; gap: 15px;">
                 <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
                     <!-- 3D Shadow side facets (transparent overlay) -->
                     <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
@@ -132,115 +131,68 @@
                     style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;">
                     VAJRA<br>INFOTECH</div>
             </a>
-            <div
-                style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: black; text-transform: uppercase;">
-                CONTACT</div>
+            <div class="page-title"
+                style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: white; text-transform: uppercase;">
+                PRODUCT</div>
         </header>
 
-        <div class="service-content"
-            style="overflow-y: auto; padding-bottom: 40px; display: flex; flex-direction: column;">
-            <div style="margin: auto 0; width: 100%;">
-                <h1 class="main-title" style="margin-top: 0;">The Gateway</h1>
-                <p
-                    style="margin-bottom: 30px; font-family: var(--font-tech); font-size: 1rem; color: #555; max-width: 700px; line-height: 1.6;">
-                    Let's build something stunning. Initiate your venture below to align your goals directly with our
-                    principal engineering core.</p>
+        <div class="service-content">
+            <h1 class="main-title">Our Products</h1>
+            <p>Explore our suite of enterprise-grade software products designed to bring unparalleled resilience and
+                performance to your business.</p>
 
-                <div class="contact-split-container">
-                    <!-- Left Side: Form Console -->
-                    <div class="contact-form-side">
-                        <form id="gatewayForm" style="display: flex; flex-direction: column; gap: 22px;">
-
-                            <!-- Field 1: Client Name -->
-                            <div class="gateway-field">
-                                <label class="gateway-label">[01 CLIENT NAME]</label>
-                                <input type="text" class="gateway-input" placeholder="Your name or company" required
-                                    name="name">
-                            </div>
-
-                            <!-- Field 2: The Idea -->
-                            <div class="gateway-field">
-                                <label class="gateway-label">[02 THE VENTURE]</label>
-                                <div class="gateway-pills" id="ideaPills">
-                                    <button type="button" class="gateway-pill active" data-value="SaaS">SaaS
-                                        Platform</button>
-                                    <button type="button" class="gateway-pill" data-value="Web">Web Application</button>
-                                    <button type="button" class="gateway-pill" data-value="App">Mobile App</button>
-                                </div>
-                                <input type="hidden" id="ideaInput" name="idea" value="SaaS">
-                            </div>
-
-                            <!-- Field 3: Budget Range -->
-                            <div class="gateway-field">
-                                <label class="gateway-label">[03 INVESTMENT RANGE]</label>
-                                <div class="gateway-pills" id="budgetPills">
-                                    <button type="button" class="gateway-pill active" data-value="5k-10k">$5k -
-                                        $10k</button>
-                                    <button type="button" class="gateway-pill" data-value="10k-25k">$10k - $25k</button>
-                                    <button type="button" class="gateway-pill" data-value="25k-plus">$25k+</button>
-                                </div>
-                                <input type="hidden" id="budgetInput" name="budget" value="5k-10k">
-                            </div>
-
-                            <!-- Submit Button -->
-                            <button type="submit" class="gateway-submit-btn">TRANSMIT GATEWAY SEQUENCE</button>
-                        </form>
+            <div class="product-flowchart">
+                <!-- Node 1: Vajra Shield (Left, High) -->
+                <div class="flowchart-node node-left" data-product="shield">
+                    <div class="product-image-wrapper">
+                        <img src="../assets/images/first.png" onerror="var f=['product/first.jpg','product/first.jpeg','product/valorant.png']; if(typeof this.step==='undefined'){this.step=0;} if(this.step!=f.length){this.src=f[this.step++];}" alt="Vajra Shield Mockup">
+                        <div class="product-overlay-mask">
+                            <h3 class="product-title">Vajra Shield</h3>
+                            <span class="product-tag">Active Security Firewall</span>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Right Side: Info Panel -->
-                    <div class="contact-info-side">
-                        <!-- Location -->
-                        <div class="gateway-info-block">
-                            <span class="gateway-label">[ARCHIVE LOCATION]</span>
-                            <div class="gateway-info-value"
-                                style="font-family: var(--font-brand); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.5px;">
-                                Surat, Gujarat.</div>
+                <!-- SVG Arrow 1 Container (slopes down) -->
+                <div class="flowchart-arrow-container arrow-1-container">
+                    <svg class="flow-arrow arrow-1" viewBox="0 0 100 80" preserveAspectRatio="none">
+                        <defs>
+                            <marker id="arrowhead-white" markerWidth="6" markerHeight="6" refX="5" refY="3"
+                                orient="auto">
+                                <polygon points="0 0, 6 3, 0 6" fill="#ffffff" />
+                            </marker>
+                        </defs>
+                        <path d="M 5,5 C 35,25 65,55 95,75" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" />
+                        <path class="pulse-path" d="M 5,5 C 35,25 65,55 95,75" fill="none" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrowhead-white)" />
+                    </svg>
+                </div>
+
+                <!-- Node 2: DataFlow Pro (Center, Low) -->
+                <div class="flowchart-node node-center" data-product="flow">
+                    <div class="product-image-wrapper">
+                        <img src="../assets/images/second.png" onerror="var f=['product/second.jpg','product/second.jpeg','product/netflix.png']; if(typeof this.step==='undefined'){this.step=0;} if(this.step!=f.length){this.src=f[this.step++];}" alt="DataFlow Pro Mockup">
+                        <div class="product-overlay-mask">
+                            <h3 class="product-title">DataFlow Pro</h3>
+                            <span class="product-tag">High-Speed IO Sync</span>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Email -->
-                        <div class="gateway-info-block">
-                            <span class="gateway-label">[E-MAIL]</span>
-                            <div class="gateway-info-value" style="font-size: 1.2rem;">
-                                <a href="mailto:hello@vajrainfotech.com"
-                                    style="color: black; text-decoration: none; border-bottom: 2px solid rgba(0,0,0,0.15); transition: all 0.3s;"
-                                    onmouseover="this.style.borderColor='black'"
-                                    onmouseout="this.style.borderColor='rgba(0,0,0,0.15)'">hello@vajrainfotech.com</a>
-                            </div>
-                        </div>
+                <!-- SVG Arrow 2 Container (slopes up) -->
+                <div class="flowchart-arrow-container arrow-2-container">
+                    <svg class="flow-arrow arrow-2" viewBox="0 0 100 80" preserveAspectRatio="none">
+                        <path d="M 5,75 C 35,55 65,25 95,5" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" />
+                        <path class="pulse-path" d="M 5,75 C 35,55 65,25 95,5" fill="none" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrowhead-white)" />
+                    </svg>
+                </div>
 
-                        <!-- Socials & Links -->
-                        <div class="gateway-info-block" style="border-bottom: none; padding-bottom: 0;">
-                            <span class="gateway-label">[SECURE SOCIALS]</span>
-                            <div class="gateway-social-row">
-                                <a href="https://github.com/rudrabhuva" target="_blank" class="gateway-social-btn"
-                                    title="GitHub">
-                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
-                                        <path
-                                            d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
-                                    </svg>
-                                </a>
-                                <a href="https://linkedin.com" target="_blank" class="gateway-social-btn"
-                                    title="LinkedIn">
-                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
-                                        <path
-                                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-                                    </svg>
-                                </a>
-                                <a href="https://instagram.com" target="_blank" class="gateway-social-btn"
-                                    title="Instagram">
-                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
-                                        <path
-                                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m11.4 1.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
-                                    </svg>
-                                </a>
-                                <a href="https://twitter.com" target="_blank" class="gateway-social-btn"
-                                    title="Twitter / X">
-                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
-                                        <path
-                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                                    </svg>
-                                </a>
-                            </div>
+                <!-- Node 3: CloudSync OS (Right, High) -->
+                <div class="flowchart-node node-right" data-product="cloud">
+                    <div class="product-image-wrapper">
+                        <img src="../assets/images/third.png" onerror="var f=['product/third.jpg','product/third.jpeg','product/budget.png']; if(typeof this.step==='undefined'){this.step=0;} if(this.step!=f.length){this.src=f[this.step++];}" alt="CloudSync OS Mockup">
+                        <div class="product-overlay-mask">
+                            <h3 class="product-title">CloudSync OS</h3>
+                            <span class="product-tag">Cluster Orchestrator</span>
                         </div>
                     </div>
                 </div>
@@ -248,12 +200,12 @@
         </div>
 
         <nav class="main-nav visible" id="mainNav">
-            <a href="index.html" data-index="0">Home</a>
-            <a href="service.html" data-index="1">Services</a>
-            <a href="product.html" data-index="2">Products</a>
+            <a href="../index.html" data-index="0">Home</a>
+            <a href="service.html" class="service-link" data-index="1">Services</a>
+            <a href="product.html" class="nav-active" data-index="2">Products</a>
             <a href="process.html" data-index="3">Process</a>
             <a href="about.html" data-index="4">About</a>
-            <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+            <a href="contact.html" data-index="5">Contact</a>
 
             <!-- The Liquid Mercury Indicator -->
             <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
@@ -289,7 +241,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavReverse">
-                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="../index.html" class="nav-active" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -321,7 +273,7 @@
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
             <nav class="main-nav visible" id="transitionNavService">
-                <a href="index.html" data-index="0">Home</a>
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" class="nav-active" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
@@ -332,40 +284,8 @@
         </div>
     </div>
 
-    <!-- Product Page Transition Overlay -->
-    <div id="page-transition-overlay-product-reverse">
-        <div class="transition-bg-wrapper">
-            <div class="neu-bg-container">
-                <div class="ambient-glow-orb glow-blue"></div>
-                <div class="ambient-glow-orb glow-cyan"></div>
-                <div class="ambient-glow-orb glow-violet"></div>
-                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
-                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
-                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
-                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
-                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
-                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
-                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
-                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
-                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
-            </div>
-        </div>
-        <div class="transition-line"></div>
-        <div class="transition-content-fixed">
-            <nav class="main-nav visible" id="transitionNavProductReverse">
-                <a href="index.html" data-index="0">Home</a>
-                <a href="service.html" data-index="1">Services</a>
-                <a href="product.html" class="nav-active" data-index="2">Products</a>
-                <a href="process.html" data-index="3">Process</a>
-                <a href="about.html" data-index="4">About</a>
-                <a href="contact.html" data-index="5">Contact</a>
-                <div class="mercury-indicator" id="transitionIndicatorProductReverse" style="opacity: 1;"></div>
-            </nav>
-        </div>
-    </div>
-
     <!-- Process Page Transition Overlay -->
-    <div id="page-transition-overlay-process-reverse">
+    <div id="page-transition-overlay-process">
         <div class="transition-bg-wrapper">
             <div class="neu-bg-container">
                 <div class="ambient-glow-orb glow-blue"></div>
@@ -384,20 +304,20 @@
         </div>
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
-            <nav class="main-nav visible" id="transitionNavProcessReverse">
-                <a href="index.html" data-index="0">Home</a>
+            <nav class="main-nav visible" id="transitionNavProcess">
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" class="nav-active" data-index="3">Process</a>
                 <a href="about.html" data-index="4">About</a>
                 <a href="contact.html" data-index="5">Contact</a>
-                <div class="mercury-indicator" id="transitionIndicatorProcessReverse" style="opacity: 1;"></div>
+                <div class="mercury-indicator" id="transitionIndicatorProcess" style="opacity: 1;"></div>
             </nav>
         </div>
     </div>
 
     <!-- About Page Transition Overlay -->
-    <div id="page-transition-overlay-about-reverse">
+    <div id="page-transition-overlay-about">
         <div class="transition-bg-wrapper">
             <div class="neu-bg-container">
                 <div class="ambient-glow-orb glow-blue"></div>
@@ -416,20 +336,51 @@
         </div>
         <div class="transition-line"></div>
         <div class="transition-content-fixed">
-            <nav class="main-nav visible" id="transitionNavAboutReverse">
-                <a href="index.html" data-index="0">Home</a>
+            <nav class="main-nav visible" id="transitionNavAbout">
+                <a href="../index.html" data-index="0">Home</a>
                 <a href="service.html" data-index="1">Services</a>
                 <a href="product.html" data-index="2">Products</a>
                 <a href="process.html" data-index="3">Process</a>
                 <a href="about.html" class="nav-active" data-index="4">About</a>
                 <a href="contact.html" data-index="5">Contact</a>
-                <div class="mercury-indicator" id="transitionIndicatorAboutReverse" style="opacity: 1;"></div>
+                <div class="mercury-indicator" id="transitionIndicatorAbout" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contact Page Transition Overlay -->
+    <div id="page-transition-overlay-contact">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavContact">
+                <a href="../index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorContact" style="opacity: 1;"></div>
             </nav>
         </div>
     </div>
 
     <script>
-        // Set initial indicator position
         document.addEventListener('DOMContentLoaded', () => {
             const indicator = document.getElementById('mercuryIndicator');
             const activeLink = document.querySelector('.nav-active');
@@ -454,7 +405,6 @@
                     indicator.classList.remove('no-transition');
                 }, 50);
 
-                // Add hover listeners to all links
                 const navLinks = document.querySelectorAll('.main-nav a');
                 navLinks.forEach(link => {
                     link.addEventListener('mouseenter', () => moveIndicator(link));
@@ -464,65 +414,146 @@
                     });
                 });
 
-                // Interactive Pill Toggles for Gateway Form
-                const setupPillGroup = (pillsContainerId, hiddenInputId, onSelectCallback) => {
-                    const container = document.getElementById(pillsContainerId);
-                    const hiddenInput = document.getElementById(hiddenInputId);
-                    if (container && hiddenInput) {
-                        const pills = container.querySelectorAll('.gateway-pill');
-                        pills.forEach(pill => {
-                            pill.addEventListener('click', () => {
-                                pills.forEach(p => p.classList.remove('active'));
-                                pill.classList.add('active');
-                                const val = pill.getAttribute('data-value');
-                                hiddenInput.value = val;
-                                if (onSelectCallback) onSelectCallback(val);
-                            });
-                        });
+
+
+                // --- 2. 3D Parallax Hover Tilting controller ---
+                const cards = document.querySelectorAll('.flowchart-node');
+                cards.forEach(card => {
+                    const wrapper = card.querySelector('.product-image-wrapper');
+                    if (!wrapper) return;
+
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const normX = (x / rect.width) - 0.5;
+                        const normY = (y / rect.height) - 0.5;
+
+                        const rotateY = normX * 25;
+                        const rotateX = -normY * 25;
+
+                        let centerOffset = 0;
+                        if (card.classList.contains('node-center')) {
+                            centerOffset = 50;
+                        }
+
+                        wrapper.style.transform = `translateY(${centerOffset}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+
+                        const shineX = normX * 60;
+                        const shineY = normY * 60;
+                        wrapper.style.setProperty('--shine-x', `${shineX}%`);
+                        wrapper.style.setProperty('--shine-y', `${shineY}%`);
+                    });
+
+                    card.addEventListener('mouseleave', () => {
+                        let centerOffset = 0;
+                        if (card.classList.contains('node-center')) {
+                            centerOffset = 50;
+                        }
+                        wrapper.style.transform = `translateY(${centerOffset}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        wrapper.style.setProperty('--shine-x', '0%');
+                        wrapper.style.setProperty('--shine-y', '0%');
+                    });
+                });
+
+                // --- 3. Premium Slide-up Product Spec Drawer Controller ---
+                const productsData = {
+                    shield: {
+                        title: "Vajra Shield",
+                        desc: "An intelligent, next-generation threat protection shield. Engineered with military-grade AES-256 algorithms and a zero-latency real-time filtering pipeline. Blocks DDoS, SQL injection, and zero-day exploits automatically before they touch your cloud environment.",
+                        deploy: "Instant (CLI / Helm / Docker)",
+                        security: "AES-256 / SHA-3 / TLS 1.3",
+                        load: "Ultra-low (< 12MB RAM)"
+                    },
+                    flow: {
+                        title: "DataFlow Pro",
+                        desc: "High-speed continuous transaction ingestion pipeline. Features a highly optimized in-memory buffering cluster that manages up to 100,000 active IO operations per second. Synchronizes cloud shards seamlessly with complete acid-compliant safety.",
+                        deploy: "Docker Compose / K8s Operator",
+                        security: "TLS Cryptography / RSA-4096",
+                        load: "Adaptive (< 38MB Base)"
+                    },
+                    cloud: {
+                        title: "CloudSync OS",
+                        desc: "Automated distributed state cluster and cloud synchronizer. Provides decentralized cluster coordination, automated health checks, and active backup failovers on the fly. Guarantees 99.999% resilience across multi-region infrastructure networks.",
+                        deploy: "Bare-Metal / Virtual Machines",
+                        security: "Curve25519 Elliptic / Mutual TLS",
+                        load: "Ultra-light (< 8MB Cluster Node)"
                     }
                 };
 
-                const formCard = document.querySelector('.contact-form-side');
-                setupPillGroup('ideaPills', 'ideaInput', (value) => {
-                    if (formCard) {
-                        // Clear active accents
-                        formCard.classList.remove('accent-saas', 'accent-web', 'accent-app');
-                        // Add target accent
-                        if (value === 'SaaS') formCard.classList.add('accent-saas');
-                        else if (value === 'Web') formCard.classList.add('accent-web');
-                        else if (value === 'App') formCard.classList.add('accent-app');
-                    }
+                const drawer = document.getElementById('productDrawer');
+                const backdrop = document.getElementById('drawerBackdrop');
+                const closeBtn = document.getElementById('drawerClose');
+
+                cards.forEach(card => {
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', () => {
+                        const key = card.getAttribute('data-product');
+                        const data = productsData[key];
+                        if (!data) return;
+
+                        document.getElementById('drawerTitle').textContent = data.title;
+                        document.getElementById('drawerDesc').textContent = data.desc;
+                        document.getElementById('specDeploy').textContent = data.deploy;
+                        document.getElementById('specSecurity').textContent = data.security;
+                        document.getElementById('specLoad').textContent = data.load;
+
+                        drawer.classList.add('active');
+                        backdrop.classList.add('active');
+                    });
                 });
 
-                // Set initial active state for form card
-                if (formCard) formCard.classList.add('accent-saas');
+                const closeDrawer = () => {
+                    drawer.classList.remove('active');
+                    backdrop.classList.remove('active');
+                };
 
-                setupPillGroup('budgetPills', 'budgetInput');
-
-                // Form Submission Console Alert
-                const form = document.getElementById('gatewayForm');
-                if (form) {
-                    form.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        const submitBtn = form.querySelector('.gateway-submit-btn');
-                        if (submitBtn) {
-                            submitBtn.textContent = 'TRANSMITTING...';
-                            submitBtn.disabled = true;
-                            setTimeout(() => {
-                                submitBtn.textContent = 'TRANSMITTED SUCCESSFULLY';
-                                submitBtn.style.background = '#00cc66';
-                                submitBtn.style.color = 'white';
-                                submitBtn.style.boxShadow = '0 0 15px rgba(0, 204, 102, 0.4)';
-                            }, 1200);
-                        }
-                    });
-                }
-
+                if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+                if (backdrop) backdrop.addEventListener('click', closeDrawer);
             }
         });
     </script>
-    <script src="page-transition.js"></script>
-    <script src="cursor.js"></script>
+    <script src="../assets/js/page-transition.js"></script>
+
+    <!-- Slide-Up Product Spec Drawer HTML -->
+    <div class="product-drawer" id="productDrawer">
+        <div class="drawer-header">
+            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(255,255,255,0.45); letter-spacing: 2px;">PRODUCT SPECIFICATION</h4>
+            <button class="drawer-close" id="drawerClose">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <div class="drawer-main-info">
+                <h2 class="drawer-title" id="drawerTitle">Vajra Shield</h2>
+                <p class="drawer-desc" id="drawerDesc">Military-grade threat mitigation platform.</p>
+                
+                <div class="drawer-spec-grid">
+                    <div class="spec-card">
+                        <span class="spec-label">DEPLOYMENT TIME</span>
+                        <span class="spec-value" id="specDeploy">Instant (CLI / Docker)</span>
+                    </div>
+                    <div class="spec-card">
+                        <span class="spec-label">SECURITY GRADE</span>
+                        <span class="spec-value" id="specSecurity">AES-256 / SHA-3</span>
+                    </div>
+                    <div class="spec-card">
+                        <span class="spec-label">RESOURCE LOAD</span>
+                        <span class="spec-value" id="specLoad">Ultra-light (&lt; 14 MB RAM)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="drawer-actions">
+                <a href="contact.html" class="drawer-btn primary">Request Deployment Demo</a>
+                <a href="service.html" class="drawer-btn secondary">View Cloud Architectures</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Backdrop to close drawer on click outside -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+    <script src="../assets/js/cursor.js"></script>
 </body>
 
 </html>
