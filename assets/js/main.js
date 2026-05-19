@@ -156,11 +156,35 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let i=0; i<4; i++) res += hexChars[Math.floor(Math.random() * 16)];
             return res;
         };
-        const metrics = ["SYS_LOAD:", "REQ/S:", "CPU:", "MEM:", "NET_IO:", "PING:"];
+        const metrics = ["SYS_LOAD:", "REQ/S:", "CPU:", "MEM:", "NET_IO:", "PING:", "UPTIME:", "PKT/S:"];
 
-        panels.forEach((panel) => {
-            // Only add a stream to ~40% of panels for a sparse, minimal look
-            if (Math.random() > 0.4) return;
+        // Helper: build a sparse text block with n lines
+        const buildContent = (numLines) => {
+            let text = "";
+            for (let j = 0; j < numLines; j++) {
+                const roll = Math.random();
+                if (roll > 0.68) {
+                    const metric = metrics[Math.floor(Math.random() * metrics.length)];
+                    text += `${metric} ${Math.floor(Math.random() * 9999)}\n`;
+                } else if (roll > 0.38) {
+                    text += `${generateHex()}\n`;
+                } else {
+                    text += `\n\n`; // double blank for breathing room
+                }
+            }
+            return text;
+        };
+
+        // Fixed horizontal slot positions — prevents any overlap
+        const slots = [
+            { left: '15%', align: 'left'  },
+            { left: '50%', align: 'center' },
+            { left: '82%', align: 'right'  },
+        ];
+
+        panels.forEach((panel, idx) => {
+            // ~75% of panels get a stream (up from 40%) — still not every panel
+            if (Math.random() > 0.75) return;
 
             if (window.getComputedStyle(panel).position === 'static') {
                 panel.style.position = 'relative';
@@ -169,37 +193,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const streamContainer = document.createElement('div');
             streamContainer.className = 'data-stream';
 
-            const col = document.createElement('div');
-            col.className = 'data-stream-col';
+            // Decide how many columns: mostly 1, sometimes 2 (never 3 to avoid clutter)
+            const numCols = Math.random() > 0.6 ? 2 : 1;
 
-            // Center the column within the panel
-            col.style.left = '50%';
-            col.style.transform = 'translateX(-50%)';
-            col.style.textAlign = 'left';
+            // Pick non-overlapping slots randomly
+            const chosenSlots = [...slots].sort(() => 0.5 - Math.random()).slice(0, numCols);
 
-            // Very slow scroll — 20s to 30s
-            const animDuration = Math.random() * 10 + 20;
-            col.style.animationDuration = `${animDuration}s`;
-            col.style.animationDelay = `-${Math.random() * 30}s`;
+            chosenSlots.forEach((slot, i) => {
+                const col = document.createElement('div');
+                col.className = 'data-stream-col';
 
-            // Only 4–6 lines of content — very sparse
-            const numLines = Math.floor(Math.random() * 3) + 4;
-            let textContent = "";
-            for (let j = 0; j < numLines; j++) {
-                const roll = Math.random();
-                if (roll > 0.7) {
-                    const metric = metrics[Math.floor(Math.random() * metrics.length)];
-                    const val = Math.floor(Math.random() * 9999);
-                    textContent += `${metric} ${val}\n`;
-                } else if (roll > 0.45) {
-                    textContent += `${generateHex()}\n`;
-                } else {
-                    // Double blank lines for heavy breathing room
-                    textContent += `\n\n`;
-                }
-            }
-            col.textContent = textContent;
-            streamContainer.appendChild(col);
+                col.style.left = slot.left;
+                col.style.transform = slot.align === 'center'
+                    ? 'translateX(-50%)'
+                    : slot.align === 'right' ? 'translateX(-100%)' : 'none';
+                col.style.textAlign = 'left';
+
+                // Stagger speeds so multiple columns in the same panel drift at different rates
+                const animDuration = Math.random() * 12 + 18; // 18–30s
+                col.style.animationDuration = `${animDuration}s`;
+                col.style.animationDelay = `-${Math.random() * 30 + i * 5}s`;
+
+                // 5–8 lines per column
+                const numLines = Math.floor(Math.random() * 4) + 5;
+                col.textContent = buildContent(numLines);
+
+                streamContainer.appendChild(col);
+            });
+
             panel.appendChild(streamContainer);
         });
     };
