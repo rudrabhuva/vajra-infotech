@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Setup automatic synchronization of mask phase to eliminate any mismatch across all pages and transition overlays
     const observeAllIndicators = () => {
         const indicators = document.querySelectorAll('.mercury-indicator');
@@ -138,11 +138,68 @@
 
         // Initialize structured cybernetic data streaks canvas background
         initTechCanvas();
+        initDataStreams();
 
         // Background layer is naturally revealed as the video fades
 
         // Initialize mercury indicator on the active link
         setTimeout(initMercury, 2500);
+    };
+
+    const initDataStreams = () => {
+        const panels = document.querySelectorAll('.dark-tech-panel');
+        if (panels.length === 0) return;
+
+        const hexChars = "0123456789ABCDEF";
+        const generateHex = () => {
+            let res = "0x";
+            for(let i=0; i<4; i++) res += hexChars[Math.floor(Math.random() * 16)];
+            return res;
+        };
+        const metrics = ["SYS_LOAD:", "REQ/S:", "CPU_USAGE:", "RAM_ALLOC:", "NET_IO:", "LATENCY:"];
+        
+        panels.forEach((panel) => {
+            // Ensure the panel has position relative or absolute for the absolute children
+            if (window.getComputedStyle(panel).position === 'static') {
+                panel.style.position = 'relative';
+            }
+
+            const streamContainer = document.createElement('div');
+            streamContainer.className = 'data-stream';
+            
+            // Randomly create 1 to 3 columns of data per panel
+            const numCols = Math.floor(Math.random() * 3) + 1;
+            
+            for(let i=0; i<numCols; i++) {
+                const col = document.createElement('div');
+                col.className = 'data-stream-col';
+                // Randomly position the column horizontally
+                col.style.left = `${Math.random() * 70 + 10}%`;
+                // Random animation duration
+                const animDuration = Math.random() * 10 + 10; // 10s to 20s
+                col.style.animationDuration = `${animDuration}s`;
+                col.style.animationDelay = `-${Math.random() * 20}s`; // start at random phase
+
+                // Generate text content (15 to 30 lines)
+                const numLines = Math.floor(Math.random() * 15) + 15;
+                let textContent = "";
+                for(let j=0; j<numLines; j++) {
+                    if (Math.random() > 0.8) {
+                        const metric = metrics[Math.floor(Math.random() * metrics.length)];
+                        const val = Math.floor(Math.random() * 9999);
+                        textContent += `${metric} ${val}\n`;
+                    } else if (Math.random() > 0.5) {
+                        textContent += `${generateHex()}\n`;
+                    } else {
+                        // Empty lines for organic spacing
+                        textContent += `\n`;
+                    }
+                }
+                col.textContent = textContent;
+                streamContainer.appendChild(col);
+            }
+            panel.appendChild(streamContainer);
+        });
     };
 
     const initTechCanvas = () => {
