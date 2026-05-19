@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        (function() {
+            const fromIndex = sessionStorage.getItem('fromPageIndex');
+            const fromTheme = sessionStorage.getItem('fromPageTheme');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentIndex = pages.indexOf(currentPath);
+            
+            // Determine current page theme
+            const isDarkPage = currentPath === 'product.html' || currentPath === 'about.html';
+            let startColor = isDarkPage ? '#161616' : '#d3dbe4';
+            
+            if (fromIndex !== null) {
+                const fromIdx = parseInt(fromIndex, 10);
+                const isFromLeft = fromIdx < currentIndex;
+                document.documentElement.classList.add(isFromLeft ? 'is-sliding-in-right' : 'is-sliding-in-left');
+                // Use outgoing page's theme for seamless start
+                startColor = fromTheme === 'dark' ? '#161616' : '#d3dbe4';
+            }
+            
+            document.documentElement.style.backgroundColor = startColor;
+            document.write('<style>html, body { background-color: ' + startColor + ' !important; }</style>');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra Infotech | Contact</title>
+    <meta name="description" content="Vajra Infotech Contact - Get in touch with us.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="service-page">
+
+    <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
+    <div id="page-reveal-overlay"></div>
+
+    <!-- Neumorphic 3D Background -->
+    <div class="neu-bg-container">
+        <!-- Seamless conveyor wrapper for infinite panning background -->
+        <div class="neu-blocks-conveyor">
+            <!-- First Panorama Set (0 to 100vw) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+            <!-- Second Panorama Set (100vw to 200vw - offset exactly by +100vw for flawless seamless reset) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 110vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 105vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 140vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 135vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 130vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 160vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 175vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 175vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 155vw;"></div>
+            </div>
+        </div>
+        
+        <!-- Ambient Glowing Nebulas -->
+        <div class="ambient-glow-orb glow-blue"></div>
+        <div class="ambient-glow-orb glow-cyan"></div>
+        <div class="ambient-glow-orb glow-violet"></div>
+
+        <!-- Floating Behind Background Shapes -->
+        <div class="floating-shapes-container">
+            <div class="float-shape" style="top: 15%; animation-duration: 22s; animation-delay: -2s;">
+                <div class="shape-inner shape-circle-dashed"></div>
+            </div>
+            <div class="float-shape" style="top: 35%; animation-duration: 18s; animation-delay: -5s;">
+                <div class="shape-inner shape-diamond"></div>
+            </div>
+            <div class="float-shape" style="top: 55%; animation-duration: 25s; animation-delay: -10s;">
+                <div class="shape-inner shape-grid"></div>
+            </div>
+            <div class="float-shape" style="top: 25%; animation-duration: 16s; animation-delay: -8s;">
+                <div class="shape-inner shape-crosshair"></div>
+            </div>
+            <div class="float-shape" style="top: 75%; animation-duration: 20s; animation-delay: -12s;">
+                <div class="shape-inner shape-circle-glowing"></div>
+            </div>
+            <div class="float-shape" style="top: 65%; animation-duration: 15s; animation-delay: -3s;">
+                <div class="shape-inner shape-diamond-small"></div>
+            </div>
+            <div class="float-shape" style="top: 5%; animation-duration: 28s; animation-delay: -15s;">
+                <div class="shape-inner shape-grid-large"></div>
+            </div>
+            <div class="float-shape" style="top: 80%; animation-duration: 24s; animation-delay: -6s;">
+                <div class="shape-inner shape-crosshair-large"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <!-- Small header for contact page -->
+        <header class="service-header"
+            style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html"
+                style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
+                <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
+                    <!-- 3D Shadow side facets (transparent overlay) -->
+                    <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M66 20 L70 20 L61 42 L57 42 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M54 47 L58 47 L54 57 L50 57 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M47 62 L51 62 L47 71 L43 71 Z" fill="currentColor" opacity="0.45"/>
+                    <!-- Front plates -->
+                    <path d="M44 71 L20 20 L29 20 L48 63 Z" fill="currentColor"/>
+                    <path d="M74 20 L66 20 L57 42 L65 42 Z" fill="currentColor"/>
+                    <path d="M62 47 L54 47 L50 57 L58 57 Z" fill="currentColor"/>
+                    <path d="M55 62 L47 62 L43 71 L51 71 Z" fill="currentColor"/>
+                </svg>
+                <div
+                    style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;">
+                    VAJRA<br>INFOTECH</div>
+            </a>
+            <div
+                style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: black; text-transform: uppercase;">
+                CONTACT</div>
+        </header>
+
+        <div class="service-content"
+            style="overflow-y: auto; padding-bottom: 40px; display: flex; flex-direction: column;">
+            <div style="margin: auto 0; width: 100%;">
+                <h1 class="main-title" style="margin-top: 0;">The Gateway</h1>
+                <p
+                    style="margin-bottom: 30px; font-family: var(--font-tech); font-size: 1rem; color: #555; max-width: 700px; line-height: 1.6;">
+                    Let's build something stunning. Initiate your venture below to align your goals directly with our
+                    principal engineering core.</p>
+
+                <div class="contact-split-container">
+                    <!-- Left Side: Form Console -->
+                    <div class="contact-form-side">
+                        <form id="gatewayForm" style="display: flex; flex-direction: column; gap: 22px;">
+
+                            <!-- Field 1: Client Name -->
+                            <div class="gateway-field">
+                                <label class="gateway-label">[01 CLIENT NAME]</label>
+                                <input type="text" class="gateway-input" placeholder="Your name or company" required
+                                    name="name">
+                            </div>
+
+                            <!-- Field 2: The Idea -->
+                            <div class="gateway-field">
+                                <label class="gateway-label">[02 THE VENTURE]</label>
+                                <div class="gateway-pills" id="ideaPills">
+                                    <button type="button" class="gateway-pill active" data-value="SaaS">SaaS
+                                        Platform</button>
+                                    <button type="button" class="gateway-pill" data-value="Web">Web Application</button>
+                                    <button type="button" class="gateway-pill" data-value="App">Mobile App</button>
+                                </div>
+                                <input type="hidden" id="ideaInput" name="idea" value="SaaS">
+                            </div>
+
+                            <!-- Field 3: Budget Range -->
+                            <div class="gateway-field">
+                                <label class="gateway-label">[03 INVESTMENT RANGE]</label>
+                                <div class="gateway-pills" id="budgetPills">
+                                    <button type="button" class="gateway-pill active" data-value="5k-10k">$5k -
+                                        $10k</button>
+                                    <button type="button" class="gateway-pill" data-value="10k-25k">$10k - $25k</button>
+                                    <button type="button" class="gateway-pill" data-value="25k-plus">$25k+</button>
+                                </div>
+                                <input type="hidden" id="budgetInput" name="budget" value="5k-10k">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="gateway-submit-btn">TRANSMIT GATEWAY SEQUENCE</button>
+                        </form>
+                    </div>
+
+                    <!-- Right Side: Info Panel -->
+                    <div class="contact-info-side">
+                        <!-- Location -->
+                        <div class="gateway-info-block">
+                            <span class="gateway-label">[ARCHIVE LOCATION]</span>
+                            <div class="gateway-info-value"
+                                style="font-family: var(--font-brand); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.5px;">
+                                Surat, Gujarat.</div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="gateway-info-block">
+                            <span class="gateway-label">[E-MAIL]</span>
+                            <div class="gateway-info-value" style="font-size: 1.2rem;">
+                                <a href="mailto:hello@vajrainfotech.com"
+                                    style="color: black; text-decoration: none; border-bottom: 2px solid rgba(0,0,0,0.15); transition: all 0.3s;"
+                                    onmouseover="this.style.borderColor='black'"
+                                    onmouseout="this.style.borderColor='rgba(0,0,0,0.15)'">hello@vajrainfotech.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Socials & Links -->
+                        <div class="gateway-info-block" style="border-bottom: none; padding-bottom: 0;">
+                            <span class="gateway-label">[SECURE SOCIALS]</span>
+                            <div class="gateway-social-row">
+                                <a href="https://github.com/rudrabhuva" target="_blank" class="gateway-social-btn"
+                                    title="GitHub">
+                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                                        <path
+                                            d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                                    </svg>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="gateway-social-btn"
+                                    title="LinkedIn">
+                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                                        <path
+                                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                                    </svg>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="gateway-social-btn"
+                                    title="Instagram">
+                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                                        <path
+                                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m11.4 1.65a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+                                    </svg>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="gateway-social-btn"
+                                    title="Twitter / X">
+                                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav visible" id="mainNav">
+            <a href="index.html" data-index="0">Home</a>
+            <a href="service.html" data-index="1">Services</a>
+            <a href="product.html" data-index="2">Products</a>
+            <a href="process.html" data-index="3">Process</a>
+            <a href="about.html" data-index="4">About</a>
+            <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+
+        <!-- Subtle base line for the indicator to travel on -->
+        <div class="indicator-track" style="opacity: 1;"></div>
+    </div>
+
+    <!-- Reverse Page Transition Overlay (Home) -->
+    <div id="page-transition-overlay-reverse">
+        <div class="transition-bg-wrapper">
+            <div id="bg-design-layer">
+                <div id="interactive-backlight"></div>
+                <div class="ambient-glow"></div>
+                <div class="ambient-glow glow-2"></div>
+                <div class="dark-tech-panel panel-1"></div>
+                <div class="dark-tech-panel panel-2"></div>
+                <div class="dark-tech-panel panel-3"></div>
+                <div class="dark-tech-panel panel-4"></div>
+                <div class="dark-tech-panel panel-5"></div>
+                <div class="dark-tech-panel panel-6"></div>
+                <div class="dark-tech-panel panel-7"></div>
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="light-streak streak-1"></div>
+                <div class="light-streak streak-2"></div>
+                <div class="light-streak streak-3"></div>
+                <div class="light-streak streak-4"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavReverse">
+                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Service Page Transition Overlay -->
+    <div id="page-transition-overlay-service">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavService">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" class="nav-active" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorService" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Page Transition Overlay -->
+    <div id="page-transition-overlay-product-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProductReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" class="nav-active" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProductReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Process Page Transition Overlay -->
+    <div id="page-transition-overlay-process-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProcessReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" class="nav-active" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProcessReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- About Page Transition Overlay -->
+    <div id="page-transition-overlay-about-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavAboutReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" class="nav-active" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorAboutReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Set initial indicator position
+        document.addEventListener('DOMContentLoaded', () => {
+            const indicator = document.getElementById('mercuryIndicator');
+            const activeLink = document.querySelector('.nav-active');
+
+            if (activeLink && indicator) {
+                const moveIndicator = (element) => {
+                    const rect = element.getBoundingClientRect();
+                    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+                    indicator.style.width = `${rect.width}px`;
+                    indicator.style.left = `${rect.left - navRect.left}px`;
+                };
+
+                // Position instantly without transition on page load
+                indicator.classList.add('no-transition');
+                moveIndicator(activeLink);
+                // Force a reflow
+                indicator.offsetHeight;
+                indicator.style.opacity = '1';
+
+                // Restore hover transitions
+                setTimeout(() => {
+                    indicator.classList.remove('no-transition');
+                }, 50);
+
+                // Add hover listeners to all links
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', () => moveIndicator(link));
+                    link.addEventListener('mouseleave', () => {
+                        const currentActive = document.querySelector('.nav-active');
+                        if (currentActive) moveIndicator(currentActive);
+                    });
+                });
+
+                // Interactive Pill Toggles for Gateway Form
+                const setupPillGroup = (pillsContainerId, hiddenInputId, onSelectCallback) => {
+                    const container = document.getElementById(pillsContainerId);
+                    const hiddenInput = document.getElementById(hiddenInputId);
+                    if (container && hiddenInput) {
+                        const pills = container.querySelectorAll('.gateway-pill');
+                        pills.forEach(pill => {
+                            pill.addEventListener('click', () => {
+                                pills.forEach(p => p.classList.remove('active'));
+                                pill.classList.add('active');
+                                const val = pill.getAttribute('data-value');
+                                hiddenInput.value = val;
+                                if (onSelectCallback) onSelectCallback(val);
+                            });
+                        });
+                    }
+                };
+
+                const formCard = document.querySelector('.contact-form-side');
+                setupPillGroup('ideaPills', 'ideaInput', (value) => {
+                    if (formCard) {
+                        // Clear active accents
+                        formCard.classList.remove('accent-saas', 'accent-web', 'accent-app');
+                        // Add target accent
+                        if (value === 'SaaS') formCard.classList.add('accent-saas');
+                        else if (value === 'Web') formCard.classList.add('accent-web');
+                        else if (value === 'App') formCard.classList.add('accent-app');
+                    }
+                });
+
+                // Set initial active state for form card
+                if (formCard) formCard.classList.add('accent-saas');
+
+                setupPillGroup('budgetPills', 'budgetInput');
+
+                // Form Submission Console Alert
+                const form = document.getElementById('gatewayForm');
+                if (form) {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const submitBtn = form.querySelector('.gateway-submit-btn');
+                        if (submitBtn) {
+                            submitBtn.textContent = 'TRANSMITTING...';
+                            submitBtn.disabled = true;
+                            setTimeout(() => {
+                                submitBtn.textContent = 'TRANSMITTED SUCCESSFULLY';
+                                submitBtn.style.background = '#00cc66';
+                                submitBtn.style.color = 'white';
+                                submitBtn.style.boxShadow = '0 0 15px rgba(0, 204, 102, 0.4)';
+                            }, 1200);
+                        }
+                    });
+                }
+
+            }
+        });
+    </script>
+    <script src="page-transition.js"></script>
+    <script src="cursor.js"></script>
+</body>
+
+</html>

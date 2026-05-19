@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        (function() {
+            const fromIndex = sessionStorage.getItem('fromPageIndex');
+            const fromTheme = sessionStorage.getItem('fromPageTheme');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentIndex = pages.indexOf(currentPath);
+            
+            // Determine current page theme
+            const isDarkPage = currentPath === 'product.html' || currentPath === 'about.html';
+            let startColor = isDarkPage ? '#161616' : '#d3dbe4';
+            
+            if (fromIndex !== null) {
+                const fromIdx = parseInt(fromIndex, 10);
+                const isFromLeft = fromIdx < currentIndex;
+                document.documentElement.classList.add(isFromLeft ? 'is-sliding-in-right' : 'is-sliding-in-left');
+                // Use outgoing page's theme for seamless start
+                startColor = fromTheme === 'dark' ? '#161616' : '#d3dbe4';
+            }
+            
+            document.documentElement.style.backgroundColor = startColor;
+            document.write('<style>html, body { background-color: ' + startColor + ' !important; }</style>');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra Infotech | Services</title>
+    <meta name="description" content="Vajra Infotech Services - Cutting-edge technology solutions.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="service-page">
+
+    <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
+    <div id="page-reveal-overlay"></div>
+
+    <!-- Neumorphic 3D Background -->
+    <div class="neu-bg-container">
+        <!-- Seamless conveyor wrapper for infinite panning background -->
+        <div class="neu-blocks-conveyor">
+            <!-- First Panorama Set (0 to 100vw) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+            <!-- Second Panorama Set (100vw to 200vw - offset exactly by +100vw for flawless seamless reset) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 110vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 105vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 140vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 135vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 130vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 160vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 175vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 175vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 155vw;"></div>
+            </div>
+        </div>
+        
+        <!-- Ambient Glowing Nebulas (service.html only) -->
+        <div class="ambient-glow-orb glow-blue"></div>
+        <div class="ambient-glow-orb glow-cyan"></div>
+        <div class="ambient-glow-orb glow-violet"></div>
+
+        <!-- Floating Behind Background Shapes (service.html only) -->
+        <div class="floating-shapes-container">
+            <div class="float-shape" style="top: 15%; animation-duration: 22s; animation-delay: -2s;">
+                <div class="shape-inner shape-circle-dashed"></div>
+            </div>
+            <div class="float-shape" style="top: 35%; animation-duration: 18s; animation-delay: -5s;">
+                <div class="shape-inner shape-diamond"></div>
+            </div>
+            <div class="float-shape" style="top: 55%; animation-duration: 25s; animation-delay: -10s;">
+                <div class="shape-inner shape-grid"></div>
+            </div>
+            <div class="float-shape" style="top: 25%; animation-duration: 16s; animation-delay: -8s;">
+                <div class="shape-inner shape-crosshair"></div>
+            </div>
+            <div class="float-shape" style="top: 75%; animation-duration: 20s; animation-delay: -12s;">
+                <div class="shape-inner shape-circle-glowing"></div>
+            </div>
+            <div class="float-shape" style="top: 65%; animation-duration: 15s; animation-delay: -3s;">
+                <div class="shape-inner shape-diamond-small"></div>
+            </div>
+            <div class="float-shape" style="top: 5%; animation-duration: 28s; animation-delay: -15s;">
+                <div class="shape-inner shape-grid-large"></div>
+            </div>
+            <div class="float-shape" style="top: 80%; animation-duration: 24s; animation-delay: -6s;">
+                <div class="shape-inner shape-crosshair-large"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <!-- Small header for service page -->
+        <header class="service-header"
+            style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html"
+                style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
+                <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
+                    <!-- 3D Shadow side facets (transparent overlay) -->
+                    <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M66 20 L70 20 L61 42 L57 42 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M54 47 L58 47 L54 57 L50 57 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M47 62 L51 62 L47 71 L43 71 Z" fill="currentColor" opacity="0.45"/>
+                    <!-- Front plates -->
+                    <path d="M44 71 L20 20 L29 20 L48 63 Z" fill="currentColor"/>
+                    <path d="M74 20 L66 20 L57 42 L65 42 Z" fill="currentColor"/>
+                    <path d="M62 47 L54 47 L50 57 L58 57 Z" fill="currentColor"/>
+                    <path d="M55 62 L47 62 L43 71 L51 71 Z" fill="currentColor"/>
+                </svg>
+                <div
+                    style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;">
+                    VAJRA<br>INFOTECH</div>
+            </a>
+            <div
+                style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: black; text-transform: uppercase;">
+                SERVICE</div>
+        </header>
+
+        <div class="service-content">
+            <h1 class="main-title">Our Service</h1>
+            <p class="service-subtitle">At Vajra Infotech, we specialize in delivering high-performance, resilient
+                software solutions tailored to your unique business needs.</p>
+
+            <div class="console-wrapper">
+                <!-- Left: Selector Panel -->
+                <div class="console-selector-panel">
+                    <button class="console-selector-btn active" data-service="enterprise">
+                        <span class="status-led"></span>
+                        <span class="btn-text">Enterprise Software</span>
+                    </button>
+                    <button class="console-selector-btn" data-service="cloud">
+                        <span class="status-led"></span>
+                        <span class="btn-text">Cloud Architecture</span>
+                    </button>
+                    <button class="console-selector-btn" data-service="ai">
+                        <span class="status-led"></span>
+                        <span class="btn-text">AI Integration</span>
+                    </button>
+                    <button class="console-selector-btn" data-service="cybersecurity">
+                        <span class="status-led"></span>
+                        <span class="btn-text">Cybersecurity</span>
+                    </button>
+                    <button class="console-selector-btn" data-service="analytics">
+                        <span class="status-led"></span>
+                        <span class="btn-text">Data Analytics</span>
+                    </button>
+                    <button class="console-selector-btn" data-service="devops">
+                        <span class="status-led"></span>
+                        <span class="btn-text">DevOps & CI/CD</span>
+                    </button>
+                </div>
+
+
+                <!-- Right: Glassmorphic HUD Panel -->
+                <div class="console-hud-panel">
+
+
+                    <div class="hud-body">
+                        <!-- Left inside HUD: Interactive SVG Blueprint / Diagram -->
+                        <div class="hud-blueprint-area">
+                            <div class="blueprint-canvas-wrapper" id="blueprintWrapper">
+                                <!-- Dynamic SVGs will load here -->
+                            </div>
+                            <div class="tech-grid-overlay"></div>
+                            <!-- Live Interactive CAD Crosshair Tracker -->
+                            <div class="blueprint-crosshair-h"></div>
+                            <div class="blueprint-crosshair-v"></div>
+                            <div class="blueprint-coords"></div>
+                        </div>
+
+                        <!-- Right inside HUD: Descriptive Text & Stats -->
+                        <div class="hud-details-area">
+                            <div class="hud-details-content">
+                                <h2 class="hud-service-title" id="hudServiceTitle">Enterprise Software</h2>
+                                <p class="hud-service-desc" id="hudServiceDesc">Scalable, secure, and robust
+                                    applications designed to streamline complex business operations. Engineered with
+                                    high-performance architectures that ensure 99.8% resilience under peak loads.</p>
+
+                                <div class="hud-stats-container">
+                                    <div class="hud-stat-row">
+                                        <span class="stat-label">RESILIENCE RATE</span>
+                                        <div class="stat-bar-outer">
+                                            <div class="stat-bar-inner" id="statResilience" style="width: 99.8%;"></div>
+                                        </div>
+                                        <span class="stat-value" id="valResilience">99.8%</span>
+                                    </div>
+                                    <div class="hud-stat-row">
+                                        <span class="stat-label">EXECUTION INDEX</span>
+                                        <div class="stat-bar-outer">
+                                            <div class="stat-bar-inner" id="statExecution" style="width: 95%;"></div>
+                                        </div>
+                                        <span class="stat-value" id="valExecution">95%</span>
+                                    </div>
+                                    <div class="hud-stat-row">
+                                        <span class="stat-label">NODE LATENCY</span>
+                                        <div class="stat-bar-outer">
+                                            <div class="stat-bar-inner" id="statLatency" style="width: 12%;"></div>
+                                        </div>
+                                        <span class="stat-value" id="valLatency">12ms</span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav visible" id="mainNav">
+            <a href="index.html" data-index="0">Home</a>
+            <a href="service.html" class="nav-active" data-index="1">Services</a>
+            <a href="product.html" class="product-link" data-index="2">Products</a>
+            <a href="process.html" data-index="3">Process</a>
+            <a href="about.html" data-index="4">About</a>
+            <a href="contact.html" data-index="5">Contact</a>
+
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+
+        <!-- Subtle base line for the indicator to travel on -->
+        <div class="indicator-track" style="opacity: 1;"></div>
+    </div>
+
+    <!-- Reverse Page Transition Overlay (Home) -->
+    <div id="page-transition-overlay-reverse">
+        <div class="transition-bg-wrapper">
+            <div id="bg-design-layer">
+                <div id="interactive-backlight"></div>
+                <div class="ambient-glow"></div>
+                <div class="ambient-glow glow-2"></div>
+                <div class="dark-tech-panel panel-1"></div>
+                <div class="dark-tech-panel panel-2"></div>
+                <div class="dark-tech-panel panel-3"></div>
+                <div class="dark-tech-panel panel-4"></div>
+                <div class="dark-tech-panel panel-5"></div>
+                <div class="dark-tech-panel panel-6"></div>
+                <div class="dark-tech-panel panel-7"></div>
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="light-streak streak-1"></div>
+                <div class="light-streak streak-2"></div>
+                <div class="light-streak streak-3"></div>
+                <div class="light-streak streak-4"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavReverse">
+                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Page Transition Overlay -->
+    <div id="page-transition-overlay-product">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProduct">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" class="nav-active" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProduct" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Process Page Transition Overlay -->
+    <div id="page-transition-overlay-process">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProcess">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" class="nav-active" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProcess" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- About Page Transition Overlay -->
+    <div id="page-transition-overlay-about">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavAbout">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" class="nav-active" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorAbout" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contact Page Transition Overlay -->
+    <div id="page-transition-overlay-contact">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavContact">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorContact" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        // Set initial indicator position
+        document.addEventListener('DOMContentLoaded', () => {
+            const indicator = document.getElementById('mercuryIndicator');
+            const activeLink = document.querySelector('.nav-active');
+
+            if (activeLink && indicator) {
+                const moveIndicator = (element) => {
+                    const rect = element.getBoundingClientRect();
+                    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+                    indicator.style.width = `${rect.width}px`;
+                    indicator.style.left = `${rect.left - navRect.left}px`;
+                };
+
+                // Position instantly without transition on page load
+                indicator.classList.add('no-transition');
+                moveIndicator(activeLink);
+                // Force a reflow
+                indicator.offsetHeight;
+                indicator.style.opacity = '1';
+
+                // Restore hover transitions
+                setTimeout(() => {
+                    indicator.classList.remove('no-transition');
+                }, 50);
+
+                // Add hover listeners to all links
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', () => moveIndicator(link));
+                    link.addEventListener('mouseleave', () => {
+                        const currentActive = document.querySelector('.nav-active');
+                        if (currentActive) moveIndicator(currentActive);
+                    });
+                });
+
+                // Add click listener for Home button slide-out
+                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                homeLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // 1. Synchronize the reverse transition indicator
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="index.html"]');
+                        const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
+                        if (homeTransLink && transitionIndicatorReverse) {
+                            const rect = homeTransLink.getBoundingClientRect();
+                            const navRect = document.getElementById('transitionNavReverse').getBoundingClientRect();
+                            transitionIndicatorReverse.style.width = `${rect.width}px`;
+                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left}px`;
+                        }
+
+                        // 2. Set sessionStorage flag for index.html to slide-in from left
+                        sessionStorage.setItem('fromServices', 'true');
+
+                        // 3. Add smooth background blend override to dark color
+                        document.body.classList.add('bg-transition-blend');
+                        document.documentElement.classList.add('bg-transition-blend');
+                        document.body.style.setProperty('background-color', '#050505', 'important');
+                        document.documentElement.style.setProperty('background-color', '#050505', 'important');
+
+                        // 4. Slide out Services elements to the right
+                        const serviceElements = [
+                            document.querySelector('.neu-bg-container'),
+                            document.getElementById('overlay')
+                        ];
+                        serviceElements.forEach(el => {
+                            if (el) el.classList.add('slide-out-right');
+                        });
+
+                        // 5. Navigate back to index.html after slide completes (600ms)
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 600);
+                    });
+                });
+
+
+            }
+
+            // --- Tactical Services Console Controller ---
+            const servicesData = {
+                enterprise: {
+                    title: "Enterprise Software",
+                    desc: "Scalable, secure, and robust applications designed to streamline complex business operations. Engineered with high-performance architectures that ensure 99.8% resilience under peak loads.",
+                    stats: { resilience: "99.8%", execution: "95%", latency: "12ms", wR: 99.8, wE: 95, wL: 12 }
+                },
+                cloud: {
+                    title: "Cloud Architecture",
+                    desc: "Modern, cloud-native infrastructure guaranteeing high availability, horizontal scaling, and low latency. Utilizing microservices orchestration to deliver bulletproof deployments across major providers.",
+                    stats: { resilience: "99.99%", execution: "92%", latency: "8ms", wR: 99.99, wE: 92, wL: 8 }
+                },
+                ai: {
+                    title: "AI Integration",
+                    desc: "Leveraging cutting-edge artificial intelligence, deep learning models, and cognitive computing pathways to automate workflows, process massive datasets, and enhance business intelligence.",
+                    stats: { resilience: "97.5%", execution: "99%", latency: "45ms", wR: 97.5, wE: 99, wL: 45 }
+                },
+                cybersecurity: {
+                    title: "Cybersecurity",
+                    desc: "Advanced multi-layered threat protection, real-time intrusion detection, and zero-trust security frameworks. Engineered to proactively protect critical data and mitigate technical risk.",
+                    stats: { resilience: "99.999%", execution: "98%", latency: "1.5ms", wR: 99.999, wE: 98, wL: 2 }
+                },
+                analytics: {
+                    title: "Data Analytics",
+                    desc: "Transforming high-throughput data streams into actionable intelligence using custom pipeline models, statistical regressions, and responsive visual analytical representations.",
+                    stats: { resilience: "99.2%", execution: "94%", latency: "18ms", wR: 99.2, wE: 94, wL: 18 }
+                },
+                devops: {
+                    title: "DevOps & CI/CD",
+                    desc: "Automated container pipelines, unified version delivery, infrastructure-as-code deployment, and strict testing gates guaranteeing ultra-rapid software integration cycles.",
+                    stats: { resilience: "99.5%", execution: "97%", latency: "14ms", wR: 99.5, wE: 97, wL: 14 }
+                }
+            };
+
+            const blueprints = {
+                enterprise: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="90" y="50" width="120" height="70" rx="8" stroke="black" stroke-width="1.8" />
+                    <rect x="100" y="60" width="100" height="50" rx="4" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <path d="M 130 120 L 110 160 H 190 L 170 120" stroke="black" stroke-width="1.8" />
+                    <rect x="30" y="150" width="50" height="40" rx="4" stroke="black" stroke-width="1.5" />
+                    <line x1="38" y1="160" x2="48" y2="160" stroke="black" stroke-width="1.5" />
+                    <line x1="38" y1="170" x2="48" y2="170" stroke="black" stroke-width="1.5" />
+                    <circle cx="68" cy="165" r="3" fill="black" />
+                    <path d="M 80 170 C 100 170, 90 90, 100 90" stroke="black" stroke-width="1.2" stroke-dasharray="4 4" />
+                    <rect x="220" y="150" width="50" height="40" rx="4" stroke="black" stroke-width="1.5" />
+                    <line x1="228" y1="160" x2="238" y2="160" stroke="black" stroke-width="1.5" />
+                    <line x1="228" y1="170" x2="238" y2="170" stroke="black" stroke-width="1.5" />
+                    <circle cx="258" cy="165" r="3" fill="black" />
+                    <path d="M 220 170 C 200 170, 210 90, 200 90" stroke="black" stroke-width="1.2" stroke-dasharray="4 4" />
+                    <circle cx="150" cy="85" r="5" fill="black" />
+                    <line x1="150" y1="160" x2="150" y2="190" stroke="black" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <circle cx="150" cy="190" r="4" fill="black" />
+                </svg>`,
+                cloud: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 120 110 A 20 20 0 0 1 150 90 A 25 25 0 0 1 190 100 A 20 20 0 0 1 200 120 A 15 15 0 0 1 195 140 H 105 A 15 15 0 0 1 100 120 A 20 20 0 0 1 120 110 Z" stroke="black" stroke-width="1.8" stroke-linejoin="round" />
+                    <circle cx="150" cy="120" r="10" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <circle cx="150" cy="120" r="65" stroke="black" stroke-width="1" stroke-dasharray="5 5" />
+                    <g transform="translate(85, 120)">
+                        <circle cx="0" cy="0" r="12" fill="white" stroke="black" stroke-width="1.5" />
+                        <circle cx="0" cy="0" r="4" fill="black" />
+                    </g>
+                    <g transform="translate(182.5, 65)">
+                        <circle cx="0" cy="0" r="12" fill="white" stroke="black" stroke-width="1.5" />
+                        <rect x="-5" y="-5" width="10" height="10" stroke="black" stroke-width="1.2" />
+                    </g>
+                    <g transform="translate(200, 160)">
+                        <circle cx="0" cy="0" r="12" fill="white" stroke="black" stroke-width="1.5" />
+                        <line x1="-6" y1="0" x2="6" y2="0" stroke="black" stroke-width="1.5" />
+                        <line x1="0" y1="-6" x2="0" y2="6" stroke="black" stroke-width="1.5" />
+                    </g>
+                    <line x1="150" y1="20" x2="150" y2="55" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <line x1="150" y1="185" x2="150" y2="220" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                </svg>`,
+                ai: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="120" r="22" stroke="black" stroke-width="1.8" stroke-dasharray="2 2" />
+                    <circle cx="150" cy="120" r="14" stroke="black" stroke-width="1.8" />
+                    <circle cx="150" cy="120" r="5" fill="black" />
+                    <circle cx="80" cy="70" r="8" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="220" cy="70" r="8" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="70" cy="160" r="8" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="230" cy="160" r="8" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="150" cy="50" r="6" fill="black" />
+                    <circle cx="150" cy="190" r="6" fill="black" />
+                    <line x1="150" y1="120" x2="80" y2="70" stroke="black" stroke-width="1.5" />
+                    <line x1="150" y1="120" x2="220" y2="70" stroke="black" stroke-width="1.5" />
+                    <line x1="150" y1="120" x2="70" y2="160" stroke="black" stroke-width="1.5" />
+                    <line x1="150" y1="120" x2="230" y2="160" stroke="black" stroke-width="1.5" />
+                    <line x1="150" y1="120" x2="150" y2="50" stroke="black" stroke-width="1.5" />
+                    <line x1="150" y1="120" x2="150" y2="190" stroke="black" stroke-width="1.5" />
+                    <line x1="80" y1="70" x2="150" y2="50" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="220" y1="70" x2="150" y2="50" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="70" y1="160" x2="150" y2="190" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="230" y1="160" x2="150" y2="190" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="80" y1="70" x2="70" y2="160" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="220" y1="70" x2="230" y2="160" stroke="black" stroke-dasharray="3 3" />
+                </svg>`,
+                cybersecurity: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 150 50 L 215 90 V 160 L 150 205 L 85 160 V 90 Z" stroke="black" stroke-width="1.8" />
+                    <circle cx="150" cy="130" r="45" stroke="black" stroke-width="1" stroke-dasharray="4 4" />
+                    <circle cx="150" cy="130" r="30" stroke="black" stroke-width="1.5" />
+                    <circle cx="150" cy="130" r="8" fill="black" />
+                    <line x1="150" y1="60" x2="150" y2="200" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <line x1="90" y1="130" x2="210" y2="130" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <circle cx="215" cy="90" r="3" fill="black" />
+                    <circle cx="85" cy="160" r="3" fill="black" />
+                </svg>`,
+                analytics: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 40 190 Q 110 150, 160 90 T 260 50" stroke="black" stroke-width="2" />
+                    <line x1="40" y1="200" x2="260" y2="200" stroke="black" stroke-width="1.5" />
+                    <line x1="40" y1="40" x2="40" y2="200" stroke="black" stroke-width="1.5" />
+                    <line x1="95" y1="40" x2="95" y2="200" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="150" y1="40" x2="150" y2="200" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <line x1="205" y1="40" x2="205" y2="200" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                    <rect x="65" y="140" width="16" height="60" fill="white" stroke="black" stroke-width="1.5" />
+                    <rect x="120" y="110" width="16" height="90" fill="white" stroke="black" stroke-width="1.5" />
+                    <rect x="175" y="70" width="16" height="130" fill="white" stroke="black" stroke-width="1.5" />
+                    <rect x="230" y="45" width="16" height="155" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="100" cy="148" r="5" fill="black" />
+                    <circle cx="160" cy="90" r="5" fill="black" />
+                    <circle cx="218" cy="62" r="5" fill="black" />
+                </svg>`,
+                devops: `<svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 100 120 C 50 60, 20 120, 100 120 C 180 120, 210 180, 200 120 C 190 60, 250 120, 200 120 C 150 120, 150 180, 100 120 Z" stroke="black" stroke-width="1.8" stroke-dasharray="6 4" />
+                    <circle cx="100" cy="120" r="25" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <circle cx="200" cy="120" r="25" stroke="black" stroke-width="1" stroke-dasharray="2 2" />
+                    <circle cx="55" cy="100" r="6" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="100" cy="120" r="5" fill="black" />
+                    <circle cx="145" cy="138" r="6" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="200" cy="120" r="5" fill="black" />
+                    <circle cx="245" cy="140" r="6" fill="white" stroke="black" stroke-width="1.5" />
+                    <circle cx="150" cy="80" r="6" fill="black" />
+                    <line x1="150" y1="80" x2="150" y2="120" stroke="black" stroke-width="1" stroke-dasharray="3 3" />
+                </svg>`
+            };
+
+
+            // --- High-Fidelity Numeric Count-Up ---
+            const animateValue = (elementId, end, duration, suffix) => {
+                const obj = document.getElementById(elementId);
+                if (!obj) return;
+                
+                const start = parseFloat(obj.textContent) || 0;
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentVal = start + progress * (end - start);
+                    
+                    if (Number.isInteger(end)) {
+                        obj.textContent = Math.floor(currentVal) + suffix;
+                    } else {
+                        obj.textContent = currentVal.toFixed(1) + suffix;
+                    }
+                    
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            let currentActiveService = null;
+
+            // --- Blueprint Transition Manager ---
+            const loadBlueprintWithTransition = (serviceKey) => {
+                const wrapper = document.getElementById('blueprintWrapper');
+                if (!wrapper) return;
+                
+                // Load diagram instantly for snappy click responsiveness
+                wrapper.innerHTML = blueprints[serviceKey];
+            };
+
+            // --- 3D Parallax Tilt Effect ---
+            const apply3DTilt = (element, maxTiltDegrees = 4, hasTranslate = false) => {
+                element.addEventListener('mousemove', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((centerY - y) / centerY) * maxTiltDegrees;
+                    const rotateY = ((x - centerX) / centerX) * maxTiltDegrees;
+                    
+                    const translateStr = hasTranslate ? 'translateY(-2px)' : '';
+                    element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) ${translateStr}`;
+                    element.style.transition = 'transform 0.05s ease-out';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    const translateStr = hasTranslate ? 'translateY(0)' : '';
+                    element.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) ${translateStr}`;
+                    element.style.transition = 'transform 0.5s ease-out';
+                });
+            };
+
+            const selectService = (serviceKey) => {
+                if (currentActiveService === serviceKey) return;
+                currentActiveService = serviceKey;
+
+                const data = servicesData[serviceKey];
+                if (!data) return;
+
+                // Toggle active classes on buttons
+                const buttons = document.querySelectorAll('.console-selector-btn');
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('data-service') === serviceKey) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Update HUD content
+                document.getElementById('hudServiceTitle').textContent = data.title;
+                document.getElementById('hudServiceDesc').textContent = data.desc;
+
+                // Update stat bars and labels
+                document.getElementById('statResilience').style.width = `${data.stats.wR}%`;
+                document.getElementById('statExecution').style.width = `${data.stats.wE}%`;
+                document.getElementById('statLatency').style.width = `${data.stats.wL}%`;
+
+                // Live telemetric roll ups
+                animateValue('valResilience', parseFloat(data.stats.resilience), 500, '%');
+                animateValue('valExecution', parseFloat(data.stats.execution), 500, '%');
+                animateValue('valLatency', parseFloat(data.stats.latency), 500, data.stats.latency.includes('ms') ? 'ms' : '%');
+
+                // Load blueprints SVG with smooth sliding transition
+                loadBlueprintWithTransition(serviceKey);
+            };
+
+            // Add click listener to each selector button
+            const selectorButtons = document.querySelectorAll('.console-selector-btn');
+            selectorButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const serviceKey = btn.getAttribute('data-service');
+                    selectService(serviceKey);
+                });
+            });
+
+            // Apply 3D Tilt interactivity
+            selectorButtons.forEach(btn => apply3DTilt(btn, 6, true));
+            
+            const hudPanel = document.querySelector('.console-hud-panel');
+            if (hudPanel) apply3DTilt(hudPanel, 1.5, false);
+
+            // Live Interactive CAD Crosshair Tracker
+            const blueprintArea = document.querySelector('.hud-blueprint-area');
+            const crosshairH = document.querySelector('.blueprint-crosshair-h');
+            const crosshairV = document.querySelector('.blueprint-crosshair-v');
+            const coords = document.querySelector('.blueprint-coords');
+
+            if (blueprintArea && crosshairH && crosshairV && coords) {
+                blueprintArea.addEventListener('mousemove', (e) => {
+                    const rect = blueprintArea.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    crosshairH.style.top = `${y}px`;
+                    crosshairV.style.left = `${x}px`;
+
+                    coords.style.left = `${x + 15}px`;
+                    coords.style.top = `${y + 15}px`;
+                    coords.textContent = `[X: ${x.toFixed(0)} / Y: ${y.toFixed(0)}]`;
+                });
+            }
+
+
+
+            // Load initial blueprint (Enterprise)
+            selectService('enterprise');
+
+            // Custom smooth slide-in transition check (Home <-> Services)
+            if (sessionStorage.getItem('fromHome') === 'true') {
+                sessionStorage.removeItem('fromHome');
+
+                // Hide standard reveal overlay so it doesn't block the slide animation
+                const revealOverlay = document.getElementById('page-reveal-overlay');
+                if (revealOverlay) {
+                    revealOverlay.style.display = 'none';
+                }
+
+                // Setup smooth background transition starting from dark Home color
+                document.body.style.setProperty('background-color', '#050505', 'important');
+                document.documentElement.style.setProperty('background-color', '#050505', 'important');
+                document.body.classList.add('bg-transition-blend');
+                document.documentElement.classList.add('bg-transition-blend');
+
+                // Target Service page content containers
+                const serviceElements = [
+                    document.querySelector('.neu-bg-container'),
+                    document.getElementById('overlay')
+                ];
+
+                // 1. Instantly position them at translateX(30vw) (from right)
+                serviceElements.forEach(el => {
+                    if (el) el.classList.add('slide-in-right-start');
+                });
+
+                // 2. Trigger the slide-in and background color blend on next frames
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // Smoothly transition background color to Services light gray
+                        document.body.style.setProperty('background-color', '#d3dbe4', 'important');
+                        document.documentElement.style.setProperty('background-color', '#d3dbe4', 'important');
+
+                        // Animate elements from translateX(30vw) to translateX(0)
+                        serviceElements.forEach(el => {
+                            if (el) {
+                                el.classList.remove('slide-in-right-start');
+                                el.classList.add('slide-in-right-active');
+                            }
+                        });
+
+                        // Clean up classes after animation completes (600ms)
+                        setTimeout(() => {
+                            document.body.classList.remove('bg-transition-blend');
+                            document.documentElement.classList.remove('bg-transition-blend');
+                            serviceElements.forEach(el => {
+                                if (el) el.classList.remove('slide-in-right-active');
+                            });
+                        }, 600);
+                    });
+                });
+            }
+        });
+    </script>
+    <script src="page-transition.js"></script>
+    <script src="cursor.js"></script>
+</body>
+
+</html>

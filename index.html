@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.addEventListener('error', function(e) {
+            var errDiv = document.getElementById('debug-err');
+            if (!errDiv) {
+                errDiv = document.createElement('div');
+                errDiv.id = 'debug-err';
+                errDiv.style = 'position:fixed;top:0;left:0;width:100%;background:rgba(255,50,50,0.95);color:white;z-index:999999;padding:12px;font-family:monospace;font-size:12px;text-align:center;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,0.5);line-height:1.5;';
+                document.body.appendChild(errDiv);
+            }
+            errDiv.innerHTML += '<div>[JS ERROR] ' + e.message + ' (' + e.filename.split("/").pop() + ':' + e.lineno + ')</div>';
+        });
+    </script>
+    <style>
+        html, body { background-color: #050505 !important; }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra Infotech | Excellence in Tech</title>
+    <meta name="description" content="Vajra Infotech - Delivering cutting-edge technology solutions.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="bg-design-layer">
+        <!-- Matte Black Glassmorphism Tech Background -->
+        <div id="interactive-backlight"></div>
+        <div class="ambient-glow"></div>
+        <div class="ambient-glow glow-2"></div>
+        
+        <div class="dark-tech-panel panel-1"></div>
+        <div class="dark-tech-panel panel-2"></div>
+        <div class="dark-tech-panel panel-3"></div>
+        <div class="dark-tech-panel panel-4"></div>
+        <div class="dark-tech-panel panel-5"></div>
+        <div class="dark-tech-panel panel-6"></div>
+        <div class="dark-tech-panel panel-7"></div>
+        
+        <div class="data-node node-1"></div>
+        <div class="data-node node-2"></div>
+        <div class="data-node node-3"></div>
+        
+        <div class="light-streak streak-1"></div>
+        <div class="light-streak streak-2"></div>
+        <div class="light-streak streak-3"></div>
+        <div class="light-streak streak-4"></div>
+    </div>
+
+    <div id="hero-video-container">
+        <video id="bg-video" autoplay muted playsinline>
+            <source src="video/Black_smoke_covering_white_screen_202605161922.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="overlay">
+        <div class="content-wrapper">
+            <div class="brand-section">
+                <div class="brand-container" id="brandContainer">
+                    <h1 class="brand-name">VAJRA<br>INFOTECH</h1>
+                    <p class="brand-tagline">Building Software as Resilient as its Name.</p>
+                </div>
+            </div>
+            
+            <div class="logo-section">
+                <!-- Symmetrical Futuristic V & I Combination Monogram Logo -->
+                <div class="vajra-v-logo">
+                    <svg class="v-svg" viewBox="0 0 100 100">
+                        <!-- The letter "I" (Top Cap, Bottom Cap, and Central Pillar) -->
+                        <path class="v-segment i-cap-top" d="M 40,15 L 60,15 L 60,20 L 40,20 Z" fill="#ffffff" />
+                        <path class="v-segment i-cap-bot" d="M 40,75 L 60,75 L 60,80 L 40,80 Z" fill="#ffffff" />
+                        <path class="v-segment i-pillar" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="#ffffff" />
+
+                        <!-- The letter "V" (Left Wing and Right Wing) -->
+                        <path class="v-segment outer-v-left" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="#ffffff" />
+                        <path class="v-segment outer-v-right" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="#ffffff" />
+
+                        <!-- High-Voltage Energy Tracing Paths (Traced precisely over the monogram elements) -->
+                        <path class="v-current cur-left" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="none" />
+                        <path class="v-current cur-right-1" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="none" />
+                        <path class="v-current cur-right-2" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="none" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html" class="nav-active" data-index="0">Home</a>
+            <a href="service.html" id="services-link" data-index="1">Services</a>
+            <a href="product.html" id="products-link" data-index="2">Products</a>
+            <a href="process.html" id="process-link" data-index="3">Process</a>
+            <a href="about.html" id="about-link" data-index="4">About</a>
+            <a href="contact.html" id="contact-link" data-index="5">Contact</a>
+            
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+        
+        <!-- Subtle base line for the indicator to travel on -->
+        <div class="indicator-track"></div>
+    </div>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint">
+        <div class="mouse"></div>
+    </div>
+
+    <!-- Page Transition Overlay -->
+    <div id="page-transition-overlay">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <!-- Cloned Nav for transition -->
+            <nav class="main-nav visible" id="transitionNav">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" class="nav-active" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicator" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Page Transition Overlay - Product -->
+    <div id="page-transition-overlay-product">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProduct">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" class="nav-active" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProduct" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Page Transition Overlay - Process -->
+    <div id="page-transition-overlay-process">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProcess">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" class="nav-active" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProcess" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Page Transition Overlay - About -->
+    <div id="page-transition-overlay-about">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavAbout">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" class="nav-active" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorAbout" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Page Transition Overlay - Contact -->
+    <div id="page-transition-overlay-contact">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavContact">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorContact" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    <script src="script.js?v=1.0.1"></script>
+    <script src="cursor.js"></script>
+</body>
+</html>

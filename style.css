@@ -1,0 +1,3922 @@
+/* 
+    Vajra Infotech - Final Premium Design
+    Includes: Liquid Mercury Nav, Vajra Circuit Logo, and Tech-Mesh Background
+*/
+
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #cccccc;
+    --bg-dark: #050505;
+    --accent-glow: rgba(255, 255, 255, 0.4);
+    --font-main: 'JetBrains Mono', monospace;
+    --font-brand: 'Michroma', sans-serif;
+    --font-tech: 'JetBrains Mono', monospace;
+
+    /* Navigation Line Adaptive Theme Colors */
+    --nav-indicator-color: #ffffff;
+    --nav-indicator-glow: rgba(255, 255, 255, 0.8);
+    --nav-track-color: rgba(255, 255, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+}
+
+/* Background Design Layer */
+#bg-design-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #050505;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(20, 20, 20, 0.8), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(30, 30, 30, 0.6), transparent 50%);
+    overflow: hidden;
+}
+
+/* Dark Glassmorphism Geometric Panels */
+.dark-tech-panel {
+    position: absolute;
+    background: rgba(15, 15, 15, 0.5);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 16px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    animation: ambientFloat var(--float-duration, 20s) infinite ease-in-out;
+}
+
+/* Glowing Neon Edges */
+.dark-tech-panel::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 40%, rgba(255, 255, 255, 0.15));
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: panelEdgeGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes panelEdgeGlow {
+    0% {
+        opacity: 0.4;
+        filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.05));
+    }
+
+    50% {
+        opacity: 0.9;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    }
+
+    100% {
+        opacity: 0.4;
+        filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.05));
+    }
+}
+
+.panel-1 {
+    width: 35vw;
+    height: 40vh;
+    top: 15vh;
+    left: 8vw;
+    --float-x: 18px;
+    --float-y: -25px;
+    --float-r: 1.2deg;
+    --float-duration: 22s;
+}
+
+.panel-2 {
+    width: 25vw;
+    height: 50vh;
+    top: 35vh;
+    right: 10vw;
+    --float-x: -22px;
+    --float-y: 18px;
+    --float-r: -1.5deg;
+    --float-duration: 26s;
+    animation-delay: -3s;
+}
+
+.panel-3 {
+    width: 40vw;
+    height: 25vh;
+    bottom: 10vh;
+    left: 25vw;
+    --float-x: 15px;
+    --float-y: -15px;
+    --float-r: 0.8deg;
+    --float-duration: 20s;
+    animation-delay: -6s;
+}
+
+.panel-4 {
+    width: 15vw;
+    height: 30vh;
+    top: 5vh;
+    right: 40vw;
+    --float-x: -12px;
+    --float-y: 22px;
+    --float-r: -1deg;
+    --float-duration: 24s;
+    animation-delay: -9s;
+}
+
+.panel-5 {
+    width: 10vw;
+    height: 8vh;
+    top: 60vh;
+    left: 12vw;
+    --float-x: 8px;
+    --float-y: -10px;
+    --float-r: 1.5deg;
+    --float-duration: 18s;
+    animation-delay: -12s;
+}
+
+.panel-6 {
+    width: 18vw;
+    height: 4vh;
+    top: 25vh;
+    left: 45vw;
+    --float-x: 20px;
+    --float-y: 8px;
+    --float-r: 0.5deg;
+    --float-duration: 28s;
+    animation-delay: -15s;
+}
+
+.panel-7 {
+    width: 12vw;
+    height: 15vh;
+    bottom: 15vh;
+    right: 28vw;
+    --float-x: -15px;
+    --float-y: 12px;
+    --float-r: -1.2deg;
+    --float-duration: 21s;
+    animation-delay: -18s;
+}
+
+@keyframes ambientFloat {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate3d(calc(var(--float-x) * 0.8), calc(var(--float-y) * 0.8), 0) rotate(calc(var(--float-r) * 0.6));
+    }
+
+    66% {
+        transform: translate3d(calc(var(--float-x) * -0.6), calc(var(--float-y) * -0.6), 0) rotate(calc(var(--float-r) * -0.5));
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+}
+
+/* Soft Ambient Pulse (Disabled by User Request) */
+.ambient-glow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vw;
+    background: radial-gradient(circle, rgba(102, 0, 204, 0.14) 0%, transparent 60%);
+    animation: pulseAmbient 15s infinite alternate ease-in-out;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glow-2 {
+    width: 60vw;
+    height: 60vw;
+    left: 80%;
+    top: 20%;
+    animation-delay: -5s;
+    background: radial-gradient(circle, rgba(0, 184, 148, 0.1) 0%, transparent 60%);
+}
+
+@keyframes pulseAmbient {
+    0% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Refractive Spotlight Atmospheric Backlight */
+#interactive-backlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(80px circle at var(--backlight-x, 50%) var(--backlight-y, 50%),
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+    transition: background 0.1s ease-out;
+    will-change: background;
+}
+
+/* Animated Light Streaks */
+.light-streak {
+    position: absolute;
+    width: 2px;
+    height: 30vh;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    opacity: 0.5;
+}
+
+.streak-1 {
+    left: 20vw;
+    top: -30vh;
+    animation: streakFall 12s infinite linear;
+}
+
+.streak-2 {
+    right: 35vw;
+    top: -30vh;
+    animation: streakFall 16s infinite linear 7s;
+}
+
+.streak-3 {
+    left: 60vw;
+    top: -30vh;
+    animation: streakFall 20s infinite linear 3s;
+}
+
+.streak-4 {
+    right: 15vw;
+    top: -30vh;
+    animation: streakFall 14s infinite linear 10s;
+}
+
+/* Glowing Data Nodes */
+.data-node {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.8);
+    animation: floatNode 25s infinite alternate ease-in-out;
+}
+
+.node-1 {
+    top: 20vh;
+    left: 25vw;
+}
+
+.node-2 {
+    top: 70vh;
+    right: 30vw;
+    animation-delay: -7s;
+}
+
+.node-3 {
+    top: 80vh;
+    left: 55vw;
+    animation-delay: -14s;
+}
+
+@keyframes floatNode {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate3d(25px, -30px, 0) scale(1.3);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes streakFall {
+    0% {
+        transform: translateY(-50vh);
+    }
+
+    100% {
+        transform: translateY(150vh);
+    }
+}
+
+/* Video Container */
+#hero-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: opacity 2s ease;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main Overlay */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    z-index: 10;
+    background: transparent;
+    pointer-events: none;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+/* Branding */
+.brand-container {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-container.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.brand-name {
+    font-family: var(--font-brand);
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    /* Dynamic light sweep text-shadow spotlight */
+    text-shadow:
+        calc(var(--text-shadow-x, 0) * -1px) calc(var(--text-shadow-y, 0) * -1px) 15px rgba(255, 255, 255, 0.45),
+        2px 2px 10px rgba(0, 0, 0, 0.7);
+    transition: text-shadow 0.1s ease-out;
+}
+
+.brand-tagline {
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+    /* Adjusted for monospace clarity */
+    color: var(--primary-color);
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    /* Dynamic light sweep text-shadow spotlight for tagline */
+    text-shadow:
+        calc(var(--text-shadow-x, 0) * -0.5px) calc(var(--text-shadow-y, 0) * -0.5px) 10px rgba(255, 255, 255, 0.3),
+        2px 2px 10px rgba(0, 0, 0, 0.8);
+    opacity: 0.8;
+    transition: text-shadow 0.1s ease-out;
+}
+
+/* Magnetic Tagline Character Fields */
+.mag-char {
+    display: inline-block;
+    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease, text-shadow 0.3s ease;
+    will-change: transform;
+}
+
+/* Logo Section */
+.logo-section {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.logo-section.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.vajra-v-logo {
+    width: clamp(200px, 35vw, 450px);
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: filter 0.5s ease;
+}
+
+.vajra-v-logo:hover {
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.65));
+}
+
+.v-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.v-segment {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1), fill 0.4s ease, stroke 0.4s ease, stroke-width 0.4s ease, filter 0.4s ease;
+    stroke: rgba(255, 255, 255, 0);
+    stroke-width: 0px;
+    fill: #ffffff;
+}
+
+.logo-section.visible .v-segment {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.logo-section.visible .left-solid {
+    transition-delay: 0.1s;
+}
+
+.logo-section.visible .right-bar-1 {
+    transition-delay: 0.3s;
+}
+
+.logo-section.visible .right-bar-2 {
+    transition-delay: 0.5s;
+}
+
+.logo-section.visible .right-bar-3 {
+    transition-delay: 0.7s;
+}
+
+/* Circuit Neon Stroke Animation on Logo Hover */
+.vajra-v-logo:hover .v-segment {
+    fill: rgba(255, 255, 255, 0.08);
+    /* Elegant semi-transparent matte glass fill */
+    stroke: rgba(255, 255, 255, 0.2);
+    /* Soft subtle perimeter guideline */
+    stroke-width: 1px;
+    filter: none;
+}
+
+/* High-Voltage Circuit Current Flow Overlay */
+.v-current {
+    opacity: 0.22;
+    /* Subtle breathing glow on idle */
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 1.8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 45 130;
+    /* Length of electrical pulse, followed by a gap */
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
+    animation: circuitIdleBreathe 4s infinite alternate ease-in-out;
+}
+
+.vajra-v-logo:hover .v-current {
+    opacity: 1;
+    stroke: rgba(255, 255, 255, 0.95);
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    animation: circuitSurge 1.4s linear infinite;
+}
+
+@keyframes circuitIdleBreathe {
+    0% {
+        opacity: 0.15;
+        filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.15));
+    }
+
+    100% {
+        opacity: 0.32;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.45));
+    }
+}
+
+@keyframes circuitSurge {
+    0% {
+        stroke-dashoffset: 175;
+        /* Slides the Dash array smoothly to produce flowing light sweep */
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Navigation */
+.main-nav {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.5s ease 1.5s;
+    pointer-events: auto;
+}
+
+.main-nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-family: var(--font-tech);
+    font-weight: 300;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+    position: relative;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+}
+
+/* Mercury Indicator */
+.mercury-indicator {
+    position: absolute;
+    bottom: -10px; /* Position elegantly right below the text characters */
+    left: 0;
+    height: 20px; /* Accommodate repeating symmetric wave cycles */
+    background: var(--nav-indicator-color);
+    border-radius: 0;
+    filter: drop-shadow(0 0 6px var(--nav-indicator-color));
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    z-index: 2;
+    
+    /* Perfect Symmetric Repeating Sine Waveform Mask - THICK (stroke-width: 3.5) */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    -webkit-mask-size: 40px 20px;
+    mask-size: 40px 20px;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    
+    /* Synchronize wave phase horizontally by shifting the mask by the exact negative offset of the indicator */
+    -webkit-mask-position: calc(-1 * var(--indicator-left, 0px)) center;
+    mask-position: calc(-1 * var(--indicator-left, 0px)) center;
+}
+
+.mercury-indicator.no-transition {
+    transition: none !important;
+}
+
+.main-nav.visible .mercury-indicator {
+    opacity: 1;
+}
+
+/* Repeating Static Symmetric Sine Wave Divider Track - THIN (stroke-width: 1.2) */
+.indicator-track {
+    display: block !important; /* Always display the full continuous wave track */
+    position: absolute;
+    bottom: 50px; /* Aligns mathematically with bottom: -10px of bottom: 60px main-nav */
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    background: var(--nav-track-color); /* Theme-toggled adaptive track color */
+    z-index: 1;
+    transition: opacity 1s ease 2s, background 0.3s ease;
+    
+    /* Perfect Symmetric Repeating Sine Waveform Mask - THIN */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    -webkit-mask-size: 40px 20px;
+    mask-size: 40px 20px;
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    opacity: 0;
+}
+
+.main-nav.visible+.indicator-track {
+    opacity: 1;
+}
+
+.scroll-hint {
+    display: none;
+}
+
+/* Page Transition Overlay - General Light (Service/Process/Contact) (Right to Left) */
+#page-transition-overlay,
+#page-transition-overlay-process,
+#page-transition-overlay-contact,
+#page-transition-overlay-product,
+#page-transition-overlay-about {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100vh;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 9998;
+    transition: width 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow: hidden;
+}
+
+/* Page Transition Overlay - Reverse Left to Right */
+#page-transition-overlay-service,
+#page-transition-overlay-process-reverse,
+#page-transition-overlay-product-reverse,
+#page-transition-overlay-about-reverse,
+#page-transition-overlay-reverse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 9998;
+    transition: width 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow: hidden;
+}
+
+/* Fallback active triggers for class-based activation */
+#page-transition-overlay.active,
+#page-transition-overlay-process.active,
+#page-transition-overlay-contact.active,
+#page-transition-overlay-product.active,
+#page-transition-overlay-about.active,
+#page-transition-overlay-service.active,
+#page-transition-overlay-process-reverse.active,
+#page-transition-overlay-product-reverse.active,
+#page-transition-overlay-about-reverse.active,
+#page-transition-overlay-reverse.active {
+    width: 100vw;
+}
+
+/* Optimize transition overlay backgrounds by disabling heavy filters during horizontal sweeps */
+.transition-bg-wrapper .neu-block,
+.transition-bg-wrapper .neu-block-inset {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.transition-bg-wrapper .ambient-glow-orb {
+    filter: none !important;
+    display: none !important;
+}
+
+/* ==========================================================================
+   Seamless Page Reveal Fade-Out System
+   ========================================================================== */
+#page-reveal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    background-color: #d3dbe4;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+}
+
+
+/* ==========================================================================
+   Parallel Reveal Mask Transition Background System
+   ========================================================================== */
+.transition-bg-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    /* Render behind cloned nav transition-content-fixed which is z-index: 10 */
+    overflow: hidden;
+}
+
+/* Pinned to right for right-to-left sweeps */
+#page-transition-overlay .transition-bg-wrapper,
+#page-transition-overlay-process .transition-bg-wrapper,
+#page-transition-overlay-contact .transition-bg-wrapper,
+#page-transition-overlay-product .transition-bg-wrapper,
+#page-transition-overlay-about .transition-bg-wrapper {
+    right: 0;
+    left: auto;
+}
+
+/* Pinned to left for left-to-right sweeps */
+#page-transition-overlay-reverse .transition-bg-wrapper,
+#page-transition-overlay-service .transition-bg-wrapper,
+#page-transition-overlay-process-reverse .transition-bg-wrapper,
+#page-transition-overlay-product-reverse .transition-bg-wrapper,
+#page-transition-overlay-about-reverse .transition-bg-wrapper {
+    left: 0;
+    right: auto;
+}
+
+/* Ensure absolute elements inside the transition background wrapper map to the wrapper's 100vw viewport bounds */
+.transition-bg-wrapper .neu-bg-container,
+.transition-bg-wrapper #bg-design-layer {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Target background solid tones inside the transition wrapper */
+#page-transition-overlay .transition-bg-wrapper,
+#page-transition-overlay-process .transition-bg-wrapper,
+#page-transition-overlay-contact .transition-bg-wrapper,
+#page-transition-overlay-product .transition-bg-wrapper,
+#page-transition-overlay-about .transition-bg-wrapper,
+#page-transition-overlay-service .transition-bg-wrapper,
+#page-transition-overlay-process-reverse .transition-bg-wrapper,
+#page-transition-overlay-product-reverse .transition-bg-wrapper,
+#page-transition-overlay-about-reverse .transition-bg-wrapper {
+    background-color: #d3dbe4 !important;
+    /* Neumorphic light background */
+}
+
+#page-transition-overlay-reverse .transition-bg-wrapper {
+    background-color: #050505 !important;
+    /* Dark Home background */
+}
+
+.transition-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+    z-index: 2;
+}
+
+#page-transition-overlay-reverse .transition-line,
+#page-transition-overlay-service .transition-line,
+#page-transition-overlay-product-reverse .transition-line,
+#page-transition-overlay-process-reverse .transition-line,
+#page-transition-overlay-about-reverse .transition-line {
+    left: auto;
+    right: 0;
+}
+
+.transition-content-fixed {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+#page-transition-overlay-reverse .transition-content-fixed,
+#page-transition-overlay-service .transition-content-fixed,
+#page-transition-overlay-product-reverse .transition-content-fixed,
+#page-transition-overlay-process-reverse .transition-content-fixed,
+#page-transition-overlay-about-reverse .transition-content-fixed {
+    right: auto;
+    left: 0;
+}
+
+.transition-content-fixed .main-nav {
+    opacity: 1 !important;
+    transform: none !important;
+    bottom: 60px;
+}
+
+
+/* Service Page Specifics */
+body.service-page {
+    background-color: #d3dbe4;
+
+    /* Light Page Navigation Line Custom Variables */
+    --nav-indicator-color: #020202;
+    /* Stunning cyber blue active accent */
+    --nav-indicator-glow: rgba(9, 132, 227, 0.4);
+    --nav-track-color: rgba(9, 132, 227, 0.25);
+    /* Harmonized ambient blue wave */
+}
+
+body.service-page #bg-design-layer,
+body.service-page #hero-video-container {
+    display: none;
+}
+
+body.service-page .brand-name {
+    color: #000000;
+    text-shadow: none;
+}
+
+body.service-page .brand-tagline {
+    color: #333333;
+    text-shadow: none;
+    font-weight: 500;
+}
+
+body.service-page .main-nav a {
+    color: #000000;
+    text-shadow: none;
+    font-weight: 600;
+}
+
+body.service-page .main-nav a.nav-active {
+    font-weight: 800;
+}
+
+body.service-page .v-segment {
+    fill: #000000;
+}
+
+body.service-page .logo-section .vajra-v-logo {
+    filter: none;
+}
+
+body.service-page .brand-container,
+body.service-page .logo-section,
+body.service-page .main-nav {
+    opacity: 1;
+    transform: none;
+}
+
+body.service-page .indicator-track {
+    opacity: 1;
+}
+
+.service-header {
+    opacity: 0;
+    animation: fadeDown 1s ease 0.3s forwards;
+}
+
+.service-content {
+    position: absolute;
+    top: 90px;
+    bottom: 100px;
+    left: 10%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    color: #000000;
+    z-index: 10;
+    pointer-events: auto;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.service-content::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+.service-content .main-title {
+    font-family: var(--font-brand);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+    text-transform: uppercase;
+}
+
+.service-content p {
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.6;
+    color: #333;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.7s forwards;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    transition: transform 0.3s, background 0.3s;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+}
+
+.service-cards .service-card:nth-child(1) {
+    animation-delay: 0.9s;
+}
+
+.service-cards .service-card:nth-child(2) {
+    animation-delay: 1.1s;
+}
+
+.service-cards .service-card:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.service-cards .service-card:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.service-cards .service-card:nth-child(5) {
+    animation-delay: 1.7s;
+}
+
+.service-cards .service-card:nth-child(6) {
+    animation-delay: 1.9s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px) !important;
+    /* Overrides transform from fadeUp */
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.service-card h3 {
+    font-family: var(--font-brand);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Neumorphic 3D Background */
+.neu-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: #d3dbe4;
+    /* Matches the image base (Premium bluish grey) */
+    overflow: hidden;
+    opacity: 1;
+}
+
+@keyframes fadeBgIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Gradient fades at top and bottom for header/footer clarity */
+.neu-bg-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    background: linear-gradient(to bottom,
+            #d3dbe4 0%,
+            #d3dbe4 15%,
+            rgba(211, 219, 228, 0) 35%,
+            rgba(211, 219, 228, 0) 65%,
+            #d3dbe4 85%,
+            #d3dbe4 100%);
+}
+
+.neu-block {
+    position: absolute;
+    background: rgba(211, 219, 228, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+        12px 12px 24px #b2becd,
+        -12px -12px 24px #ffffff;
+    will-change: transform;
+    z-index: 2;
+    /* Layered above atmospheric glows */
+    transition: background 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.neu-block-inset {
+    position: absolute;
+    background: rgba(211, 219, 228, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 8px 8px 16px #b2becd,
+        inset -8px -8px 16px #ffffff;
+    will-change: transform;
+    z-index: 2;
+    /* Layered above atmospheric glows */
+    transition: background 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Ambient Glowing Nebulas for Service Page (Light Mode product.html style) */
+.service-page .ambient-glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 1;
+    /* Layered beneath neumorphic blocks */
+    pointer-events: none;
+    will-change: transform;
+}
+
+.service-page .glow-blue {
+    width: 45vw;
+    height: 45vw;
+    top: 5vh;
+    left: -5vw;
+    background: radial-gradient(circle, rgba(9, 132, 227, 0.32) 0%, rgba(211, 219, 228, 0) 70%);
+    animation: orbitGlow1 28s infinite ease-in-out alternate;
+}
+
+.service-page .glow-cyan {
+    width: 40vw;
+    height: 40vw;
+    bottom: -5vh;
+    right: -5vw;
+    background: radial-gradient(circle, rgba(0, 184, 148, 0.28) 0%, rgba(211, 219, 228, 0) 70%);
+    animation: orbitGlow2 34s infinite ease-in-out alternate;
+    animation-delay: -6s;
+}
+
+.service-page .glow-violet {
+    width: 50vw;
+    height: 50vw;
+    top: 25vh;
+    left: 28vw;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(211, 219, 228, 0) 70%);
+    animation: orbitGlow3 40s infinite ease-in-out alternate;
+    animation-delay: -12s;
+}
+
+/* Asynchronous Floating Assignments for individual background panels */
+.neu-block-group div:nth-child(3n+1) {
+    animation: neuFloatSlow1 24s infinite alternate ease-in-out;
+}
+
+.neu-block-group div:nth-child(3n+2) {
+    animation: neuFloatSlow2 28s infinite alternate ease-in-out;
+    animation-delay: -6s;
+}
+
+.neu-block-group div:nth-child(3n+3) {
+    animation: neuFloatSlow3 32s infinite alternate ease-in-out;
+    animation-delay: -12s;
+}
+
+/* Subtle organic floating animations for high-fidelity 3D depth */
+@keyframes neuFloatSlow1 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate3d(14px, -18px, 0) rotate(0.8deg) scale(1.015);
+    }
+
+    100% {
+        transform: translate3d(-10px, 8px, 0) rotate(-0.5deg) scale(0.985);
+    }
+}
+
+@keyframes neuFloatSlow2 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-16px, 12px, 0) rotate(-1deg) scale(0.985);
+    }
+
+    100% {
+        transform: translate3d(10px, -10px, 0) rotate(0.6deg) scale(1.015);
+    }
+}
+
+@keyframes neuFloatSlow3 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate3d(8px, 16px, 0) rotate(0.5deg) scale(1.01);
+    }
+
+    100% {
+        transform: translate3d(-12px, -14px, 0) rotate(-0.7deg) scale(0.99);
+    }
+}
+
+/* Product Page Dark Mode Overrides (Inherits from service layout) */
+.product-page {
+    background-color: var(--bg-dark);
+}
+
+.product-page .neu-bg-container {
+    background: radial-gradient(circle at 80% 80%, rgba(102, 0, 204, 0.08) 0%, #161616 60%);
+}
+
+/* Ambient Glowing Nebulas for Product Page */
+.product-page .ambient-glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.product-page .glow-blue {
+    width: 45vw;
+    height: 45vw;
+    top: 5vh;
+    left: -5vw;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: orbitGlow1 28s infinite ease-in-out alternate;
+}
+
+.product-page .glow-cyan {
+    width: 40vw;
+    height: 40vw;
+    bottom: -5vh;
+    right: -5vw;
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: orbitGlow2 34s infinite ease-in-out alternate;
+    animation-delay: -6s;
+}
+
+.product-page .glow-violet {
+    width: 50vw;
+    height: 50vw;
+    top: 25vh;
+    left: 28vw;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: orbitGlow3 40s infinite ease-in-out alternate;
+    animation-delay: -12s;
+}
+
+/* Dynamic Orbit translations for realistic drifting background nebulas */
+@keyframes orbitGlow1 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(8vw, 6vh, 0) scale(1.08);
+    }
+
+    100% {
+        transform: translate3d(-5vw, -4vh, 0) scale(0.95);
+    }
+}
+
+@keyframes orbitGlow2 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-10vw, -8vh, 0) scale(1.1);
+    }
+
+    100% {
+        transform: translate3d(6vw, 5vh, 0) scale(0.9);
+    }
+}
+
+@keyframes orbitGlow3 {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(5vw, -6vh, 0) scale(0.95);
+    }
+
+    100% {
+        transform: translate3d(-8vw, 8vh, 0) scale(1.05);
+    }
+}
+
+.product-page .neu-bg-container::after {
+    background: linear-gradient(to bottom,
+            #161616 0%,
+            #161616 15%,
+            rgba(22, 22, 22, 0) 35%,
+            rgba(22, 22, 22, 0) 65%,
+            #161616 85%,
+            #161616 100%);
+}
+
+.product-page .neu-block {
+    background: rgba(22, 22, 22, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+        12px 12px 24px #080808,
+        -12px -12px 24px #242424;
+    animation: productNeuFloat 18s infinite alternate ease-in-out, neuEdgeGlow 8s infinite ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-page .neu-block-inset {
+    background: rgba(22, 22, 22, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        inset 10px 10px 20px #080808,
+        inset -10px -10px 20px #242424;
+    animation: productNeuFloat 22s infinite alternate-reverse ease-in-out, neuEdgeGlowInset 8s infinite ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+@keyframes neuEdgeGlow {
+    0% {
+        border-color: rgba(255, 255, 255, 0.06);
+        box-shadow:
+            12px 12px 24px #080808,
+            -12px -12px 24px #242424;
+    }
+
+    50% {
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow:
+            12px 12px 24px #080808,
+            -12px -12px 24px #242424,
+            0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    100% {
+        border-color: rgba(255, 255, 255, 0.06);
+        box-shadow:
+            12px 12px 24px #080808,
+            -12px -12px 24px #242424;
+    }
+}
+
+@keyframes neuEdgeGlowInset {
+    0% {
+        border-color: rgba(255, 255, 255, 0.03);
+    }
+
+    50% {
+        border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    100% {
+        border-color: rgba(255, 255, 255, 0.03);
+    }
+}
+
+.product-page .service-header svg path {
+    fill: #ffffff;
+}
+
+.product-page .service-header a div,
+.product-page .service-header .page-title {
+    color: #ffffff !important;
+}
+
+.product-page .main-title {
+    color: #ffffff;
+}
+
+.product-page .service-content p {
+    color: #bbbbbb;
+}
+
+.product-page .service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-page .service-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.product-page .service-card h3 {
+    color: #ffffff;
+}
+
+.product-page .service-card p {
+    color: #999999;
+}
+
+/* Flowchart Layout styling */
+.product-page .product-flowchart {
+    display: grid;
+    grid-template-columns: 1fr 8% 1fr 8% 1fr;
+    align-items: flex-start;
+    margin-top: 5vh;
+    position: relative;
+    width: 100%;
+    padding-bottom: 60px;
+    /* Space for the shifted center node */
+}
+
+.product-page .flowchart-node {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* Spans the entire grid column */
+    z-index: 10;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+}
+
+.product-page .node-left {
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+.product-page .node-center {
+    animation: fadeUpCenter 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
+}
+
+.product-page .node-right {
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+.product-page .product-image-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.product-page .product-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Adjust mobile portrait image height to match landscape proportions */
+.product-page .node-right .product-image-wrapper {
+    max-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page .node-right .product-image-wrapper img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+}
+
+.product-page .flowchart-node:hover {
+    transform: translateY(-5px) !important;
+}
+
+.product-page .node-center:hover {
+    transform: translateY(45px) !important;
+}
+
+.product-page .flowchart-node:hover .product-image-wrapper {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 45px rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+/* Flow Arrow containers in Grid */
+.product-page .flowchart-arrow-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.product-page .arrow-1-container {
+    padding-top: 100px;
+    /* Centers with Valorant mockup's middle-right edge */
+    animation: fadeIn 1.2s ease 1.5s forwards;
+}
+
+.product-page .arrow-2-container {
+    padding-top: 120px;
+    /* Centers with Budget mockup's middle-left edge */
+    animation: fadeIn 1.2s ease 1.7s forwards;
+}
+
+.product-page .flow-arrow {
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
+.product-page .flow-arrow path {
+    stroke-dasharray: 6, 4;
+    animation: flowArrow 1.5s linear infinite;
+}
+
+@keyframes flowArrow {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+
+@keyframes fadeUpCenter {
+    from {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes productNeuFloat {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg) scale(1.02);
+    }
+
+    100% {
+        transform: translateY(10px) rotate(-2deg) scale(0.98);
+    }
+}
+
+@keyframes orbitGlow1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(5vw, 5vh) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-3vw, -2vh) scale(0.95);
+    }
+}
+
+/* Liquid Mercury Custom Cursor */
+.mercury-dot {
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 200001;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.mercury-ring {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 200000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        border-radius 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease;
+}
+
+/* Hide default cursor on desktop screens ONLY when custom cursor is actively running */
+@media (min-width: 769px) {
+
+    body.custom-cursor-active,
+    body.custom-cursor-active a,
+    body.custom-cursor-active button,
+    body.custom-cursor-active .flowchart-node,
+    body.custom-cursor-active .product-image-wrapper {
+        cursor: none !important;
+    }
+}
+
+/* 3D Parallax Card Tilting & Glass Reflection Sheen */
+.product-page .product-flowchart {
+    perspective: 1500px;
+}
+
+.product-page .flowchart-node {
+    transform-style: preserve-3d;
+}
+
+.product-page .product-image-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-page .product-image-wrapper img {
+    transform: translateZ(28px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    z-index: 2;
+}
+
+.product-page .flowchart-node:hover .product-image-wrapper img {
+    transform: translateZ(45px) scale(0.98);
+}
+
+/* Reflective light shine layer */
+.product-page .product-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(35deg,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, 0.12) 45%,
+            rgba(255, 255, 255, 0.22) 50%,
+            rgba(255, 255, 255, 0.12) 55%,
+            rgba(255, 255, 255, 0) 70%);
+    z-index: 3;
+    pointer-events: none;
+    transform: translate(var(--shine-x, 0%), var(--shine-y, 0%)) rotate(-45deg);
+    transition: transform 0.1s ease-out;
+}
+
+/* 3D Scene Selector Buttons styling */
+.selector-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    outline: none;
+    border-radius: 4px;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.selector-btn:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.8) !important;
+}
+
+.selector-btn.active {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(0, 255, 204, 1) !important;
+}
+
+/* 3D Model Spinner Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tactical Services Console Premium Design overrides */
+.service-subtitle {
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.6);
+    max-width: 700px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.console-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    margin-top: 25px;
+    width: 100%;
+    height: calc(100% - 150px);
+    min-height: 480px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+}
+
+.console-selector-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    padding-top: 5px;
+}
+
+.console-selector-btn {
+    background: #d3dbe4;
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-family: var(--font-tech);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 6px 6px 12px #b2becd, -6px -6px 12px #ffffff;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.console-selector-btn:hover {
+    transform: translateY(-2px);
+    color: #000000;
+    box-shadow: 8px 8px 16px #b2becd, -8px -8px 16px #ffffff;
+}
+
+.console-selector-btn:active,
+.console-selector-btn.active {
+    box-shadow: inset 4px 4px 8px #b2becd, inset -4px -4px 8px #ffffff;
+    transform: translateY(0);
+    color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.console-selector-btn .status-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.console-selector-btn.active .status-led {
+    background: #00e575;
+    box-shadow: 0 0 8px #00e575, 0 0 3px #00e575;
+}
+
+.console-selector-btn .btn-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.45;
+    letter-spacing: 0.5px;
+}
+
+.console-selector-btn .btn-text {
+    font-family: var(--font-tech);
+    font-weight: 600;
+}
+
+.console-hud-panel {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(25px) saturate(120%);
+    -webkit-backdrop-filter: blur(25px) saturate(120%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.03),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+.hud-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.hud-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hud-status .status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #000000;
+    animation: indicatorBlink 1s infinite alternate;
+}
+
+.hud-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    overflow: hidden;
+}
+
+.hud-blueprint-area {
+    position: relative;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.blueprint-canvas-wrapper {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.blueprint-canvas-wrapper svg {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    overflow: visible;
+    opacity: 0;
+    transform: scale(0.96);
+    animation: blueprintFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blueprintFadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tech-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 15px 15px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hud-details-area {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hud-details-content {
+    width: 100%;
+}
+
+.hud-service-title {
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+}
+
+.hud-service-desc {
+    font-family: var(--font-tech);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 25px;
+}
+
+.hud-stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hud-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.stat-label {
+    width: 110px;
+    color: rgba(0, 0, 0, 0.45);
+    letter-spacing: 0.5px;
+}
+
+.stat-bar-outer {
+    flex: 1;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stat-bar-inner {
+    height: 100%;
+    background: #000000;
+    border-radius: 2px;
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-value {
+    width: 50px;
+    text-align: right;
+    color: #000000;
+}
+
+.hud-footer {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.015);
+}
+
+.hud-terminal {
+    display: flex;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.terminal-prefix {
+    color: #00e575;
+    font-weight: bold;
+    animation: promptPulse 1s infinite;
+}
+
+.terminal-log-window {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+    .console-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+        gap: 20px;
+    }
+
+    .console-selector-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .console-selector-btn {
+        flex: 1 1 calc(50% - 10px);
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hud-body {
+        grid-template-columns: 1fr;
+    }
+
+    .hud-blueprint-area {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        height: 200px;
+    }
+
+    .console-selector-btn {
+        flex: 1 1 100%;
+    }
+}
+
+/* Interactive Blueprint CAD Crosshair Tracking styling */
+.hud-blueprint-area {
+    position: relative;
+    overflow: hidden;
+}
+
+.blueprint-crosshair-h,
+.blueprint-crosshair-v {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 3;
+}
+
+.blueprint-crosshair-h {
+    height: 1px;
+    left: 0;
+    right: 0;
+}
+
+.blueprint-crosshair-v {
+    width: 1px;
+    top: 0;
+    bottom: 0;
+}
+
+.blueprint-coords {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 4;
+}
+
+.hud-blueprint-area:hover .blueprint-crosshair-h,
+.hud-blueprint-area:hover .blueprint-crosshair-v,
+.hud-blueprint-area:hover .blueprint-coords {
+    opacity: 1;
+}
+
+/* Blueprint sliding carousel transitions */
+.blueprint-canvas-wrapper {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.blueprint-canvas-wrapper svg.blueprint-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    overflow: visible;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.blueprint-canvas-wrapper svg.blueprint-svg.slide-enter {
+    opacity: 0;
+    transform: translateX(50px) scale(0.96);
+}
+
+.blueprint-canvas-wrapper svg.blueprint-svg.slide-exit {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.96);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Tactical Products Page Premium Interactive Styling overrides
+   ========================================================================== */
+
+/* 1. Kinetic Circuit Arrow Pulse animations */
+.pulse-path {
+    stroke-dasharray: 12, 48;
+    animation: arrowPulse 1.8s linear infinite;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(0, 243, 255, 0.4));
+}
+
+@keyframes arrowPulse {
+    from {
+        stroke-dashoffset: 60;
+    }
+
+    to {
+        stroke-dashoffset: -60;
+    }
+}
+
+/* 2. Glassmorphic Card Title & Tag Overlays */
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-overlay-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+    color: #ffffff;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.product-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.product-title {
+    font-family: 'Michroma', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.product-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    letter-spacing: 0.5px;
+}
+
+/* Hover mask reveal */
+.flowchart-node:hover .product-overlay-mask {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+}
+
+/* 3. Sliding Spec Drawer */
+.product-drawer {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    background: rgba(18, 18, 18, 0.75);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-radius: 16px 16px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: none;
+    padding: 30px;
+    z-index: 10005;
+    transition: bottom 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #ffffff;
+    box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.product-drawer.active {
+    bottom: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-bottom: 15px;
+}
+
+.drawer-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 2px;
+}
+
+.drawer-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 0 5px;
+}
+
+.drawer-close:hover {
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.drawer-body {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.drawer-title {
+    font-family: 'Michroma', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ffffff 40%, #cccccc 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.drawer-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+.drawer-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.spec-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.spec-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.spec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+.spec-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.drawer-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.drawer-btn {
+    flex: 1;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-btn.primary {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.drawer-btn.primary:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.18);
+}
+
+.drawer-btn.secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.drawer-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ==========================================================================
+   Vajra Build Process Scroll Timeline (Page 4)
+   ========================================================================== */
+
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto 100px auto;
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vertical Progress Line Track */
+.progress-line-bg {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Fills with color as user scrolls */
+.progress-line-fill {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 0%;
+    /* Dynamic fill */
+    width: 4px;
+    background: linear-gradient(to bottom, #4f4f4f, #000000);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    z-index: 2;
+    transition: height 0.1s ease-out;
+}
+
+/* Timeline Steps */
+.timeline-step {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    /* Left-side step by default */
+    width: 50%;
+    margin-bottom: 80px;
+    padding-right: 45px;
+    z-index: 3;
+    opacity: 0.35;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Alternating right-side step */
+.timeline-step:nth-child(even) {
+    align-self: flex-end;
+    justify-content: flex-start;
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 45px;
+}
+
+/* Center circle badges */
+.step-badge {
+    position: absolute;
+    right: -20px;
+    top: 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #d3dbe4;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.4);
+    font-family: var(--font-brand);
+    font-size: 0.95rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 2px 2px 5px #b2becd, inset -2px -2px 5px #ffffff;
+    z-index: 5;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-step:nth-child(even) .step-badge {
+    left: -20px;
+    right: auto;
+}
+
+/* Premium Neumorphic Step Cards */
+.step-card {
+    background: #d3dbe4;
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 8px 8px 16px #b2becd, -8px -8px 16px #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.step-title {
+    font-family: var(--font-brand);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.step-desc {
+    font-family: var(--font-tech);
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    color: #444444 !important;
+    opacity: 1 !important;
+    /* overrides fadeUp general style */
+    animation: none !important;
+}
+
+/* Hover and Scroll Active States */
+.timeline-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-step.active .step-badge {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-step.active .step-card {
+    box-shadow: 12px 12px 24px #b2becd, -12px -12px 24px #ffffff;
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsiveness for Mobile Viewports */
+@media (max-width: 768px) {
+    .timeline-container {
+        padding-left: 20px;
+    }
+
+    .progress-line-bg,
+    .progress-line-fill {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline-step {
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: 45px;
+        padding-right: 0;
+        margin-bottom: 60px;
+    }
+
+    .timeline-step:nth-child(even) {
+        align-self: flex-start;
+        margin-left: 0;
+        padding-left: 45px;
+    }
+
+    .step-badge {
+        left: 0px !important;
+        right: auto !important;
+    }
+
+    .step-card {
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Vajra Build Process Premium UI Enhancements (HUD Nav, CAD Grid, Border Currents)
+   ========================================================================== */
+
+/* Floating HUD Step-Navigator */
+.hud-step-navigator {
+    position: fixed;
+    right: 3vw;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 20px 14px;
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.03),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.8);
+    z-index: 10000;
+    pointer-events: auto;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    padding: 4px 0;
+}
+
+.hud-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    width: 0;
+    max-width: 0;
+    transform: translateX(8px);
+    white-space: nowrap;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.hud-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover expansion of entire HUD Navigator panel */
+.hud-step-navigator:hover {
+    padding-left: 24px;
+    box-shadow:
+        15px 15px 35px rgba(0, 0, 0, 0.05),
+        inset 1px 1px 0px rgba(255, 255, 255, 0.9);
+}
+
+.hud-step-navigator:hover .hud-label {
+    opacity: 1;
+    width: auto;
+    max-width: 100px;
+    transform: translateX(0);
+}
+
+/* Active HUD states */
+.hud-nav-item.active .hud-label {
+    color: #000000;
+    opacity: 1;
+    width: auto;
+    max-width: 100px;
+    transform: translateX(0);
+}
+
+.hud-nav-item.active .hud-dot {
+    background: #000000;
+    border-color: #000000;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.hud-nav-item:hover .hud-dot {
+    border-color: #000000;
+    transform: scale(1.15);
+}
+
+/* Technical CAD Drafting Grid Overlay */
+.tech-blueprint-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 35px 35px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hover Circuit Border around Step Cards */
+.step-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-circuit-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: visible;
+}
+
+.circuit-path {
+    stroke: rgba(0, 0, 0, 0.06);
+    stroke-width: 1.5px;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 0.4s ease, stroke-width 0.4s ease;
+}
+
+/* Hover surging currents */
+.step-card:hover .circuit-path {
+    stroke: #000000;
+    stroke-width: 2px;
+    stroke-dasharray: 45 155;
+    animation: cardCircuitFlow 1.8s linear infinite;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.12));
+}
+
+@keyframes cardCircuitFlow {
+    0% {
+        stroke-dashoffset: 200;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Floating HUD responsive query override */
+@media (max-width: 1024px) {
+    .hud-step-navigator {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   Vajra Visionary About Page Layout (Page 5)
+   ========================================================================== */
+
+.visionary-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 5;
+}
+
+.visionary-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.visionary-quote {
+    font-family: var(--font-brand);
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #ffffff;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    letter-spacing: -0.5px;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.visionary-divider {
+    width: 80px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    margin-bottom: 35px;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+.visionary-text {
+    font-family: var(--font-tech);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: #bbbbbb;
+    max-width: 680px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+/* Responsiveness overrides for tablet and mobile viewport heights */
+@media (max-width: 768px) {
+    .visionary-quote {
+        font-size: 1.35rem;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+
+    .visionary-text {
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+
+    .visionary-divider {
+        margin-bottom: 25px;
+    }
+}
+
+.visionary-philosophy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+
+/* Attraction Pillars (The Vajra Advantage) */
+.attraction-pillars {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 45px auto 0 auto;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+}
+
+.attraction-pillar {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 22px 20px;
+    border-radius: 12px;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.attraction-pillar:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.pillar-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 2px;
+}
+
+.attraction-pillar h3 {
+    font-family: var(--font-brand);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 10px 0 8px 0;
+}
+
+.attraction-pillar p {
+    font-family: var(--font-tech);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+}
+
+/* Responsive adjustment for pillar stacking on mobile */
+@media (max-width: 768px) {
+    .attraction-pillars {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .attraction-pillar {
+        padding: 18px;
+    }
+}
+
+/* ==========================================================================
+   Vajra Gateway Contact Page Layout (Page 6 - Split Screen)
+   ========================================================================== */
+
+.contact-split-container {
+    display: flex;
+    gap: 65px;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.contact-form-side {
+    flex: 1.2;
+    background: #d3dbe4;
+    border-radius: 20px;
+    box-shadow: 9px 9px 16px #b2becd, -9px -9px 16px #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-info-side {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.gateway-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.gateway-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.45);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.gateway-input {
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    color: black;
+    background: #d3dbe4;
+    border: none;
+    outline: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: inset 5px 5px 10px #b2becd, inset -5px -5px 10px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.gateway-input:focus {
+    box-shadow: inset 2px 2px 5px #b2becd, inset -2px -2px 5px #ffffff;
+}
+
+/* Custom Selector Pills for Idea and Budget */
+.gateway-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.gateway-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.55);
+    background: #d3dbe4;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px #b2becd, -4px -4px 8px #ffffff;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gateway-pill.active {
+    box-shadow: inset 4px 4px 8px #b2becd, inset -4px -4px 8px #ffffff;
+    color: black;
+    font-weight: 700;
+}
+
+.gateway-pill:hover:not(.active) {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 12px #b2becd, -6px -6px 12px #ffffff;
+}
+
+/* Submit Gateway Button */
+.gateway-submit-btn {
+    font-family: var(--font-brand);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    background: black;
+    border: none;
+    outline: none;
+    padding: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+    margin-top: 15px;
+}
+
+.gateway-submit-btn:hover {
+    background: #111111;
+    transform: translateY(-2px);
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.gateway-submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Info Side Styling */
+.gateway-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 25px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.gateway-info-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.gateway-info-value {
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: black;
+    line-height: 1.3;
+}
+
+.gateway-social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.gateway-social-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.gateway-social-link::after {
+    content: '';
+    width: 0;
+    height: 1.5px;
+    background: black;
+    display: block;
+    margin-top: 4px;
+    transition: width 0.3s ease;
+}
+
+.gateway-social-link:hover::after {
+    width: 100%;
+}
+
+.gateway-social-link:hover {
+    letter-spacing: 1px;
+}
+
+/* Responsiveness overrides for split screen stack */
+@media (max-width: 900px) {
+    .contact-split-container {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 20px;
+    }
+
+    .contact-form-side {
+        padding: 30px;
+    }
+
+    .contact-info-side {
+        gap: 30px;
+    }
+}
+
+/* Circular Neomorphic Social Icon Buttons */
+.gateway-social-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.gateway-social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d3dbe4;
+    box-shadow: 4px 4px 8px #b2becd, -4px -4px 8px #ffffff;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+}
+
+.gateway-social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 12px #b2becd, -6px -6px 12px #ffffff;
+    color: #000000;
+}
+
+.gateway-social-btn:active {
+    box-shadow: inset 3px 3px 6px #b2becd, inset -3px -3px 6px #ffffff;
+    transform: translateY(0);
+}
+
+.gateway-social-btn svg {
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   Color-Shifting Neon Accent System for Gateway Form
+   ========================================================================== */
+
+.contact-form-side {
+    transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease;
+    border: 1px solid transparent;
+}
+
+/* SaaS - Emerald Green Aura */
+.contact-form-side.accent-saas {
+    box-shadow: 0 10px 40px rgba(0, 184, 148, 0.08), 9px 9px 16px #b2becd, -9px -9px 16px #ffffff;
+    border-color: rgba(0, 184, 148, 0.2);
+}
+
+.contact-form-side.accent-saas .gateway-pill.active {
+    color: #00b894;
+}
+
+.contact-form-side.accent-saas .gateway-submit-btn {
+    background: #00b894;
+    box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+}
+
+.contact-form-side.accent-saas .gateway-submit-btn:hover {
+    background: #009e7e;
+    box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+}
+
+/* Web App - Premium Pink Aura */
+.contact-form-side.accent-web {
+    box-shadow: 0 10px 40px rgba(232, 67, 147, 0.08), 9px 9px 16px #b2becd, -9px -9px 16px #ffffff;
+    border-color: rgba(232, 67, 147, 0.25);
+}
+
+.contact-form-side.accent-web .gateway-pill.active {
+    color: #e84393;
+}
+
+.contact-form-side.accent-web .gateway-submit-btn {
+    background: #e84393;
+    box-shadow: 0 4px 15px rgba(232, 67, 147, 0.3);
+}
+
+.contact-form-side.accent-web .gateway-submit-btn:hover {
+    background: #d6337f;
+    box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
+}
+
+/* Mobile App - Purple Aura */
+.contact-form-side.accent-app {
+    box-shadow: 0 10px 40px rgba(155, 89, 182, 0.08), 9px 9px 16px #b2becd, -9px -9px 16px #ffffff;
+    border-color: rgba(155, 89, 182, 0.25);
+}
+
+.contact-form-side.accent-app .gateway-pill.active {
+    color: #9b59b6;
+}
+
+.contact-form-side.accent-app .gateway-submit-btn {
+    background: #9b59b6;
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+}
+
+.contact-form-side.accent-app .gateway-submit-btn:hover {
+    background: #8e44ad;
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+}
+
+/* ==========================================================================
+   Cyber Laser HUD Scanner Background Overlay
+   ========================================================================== */
+
+.hud-laser-scanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, rgba(0, 184, 148, 0.25), rgba(0, 184, 148, 0.8), rgba(0, 184, 148, 0.25), transparent);
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.4), 0 0 22px rgba(0, 184, 148, 0.2);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    animation: laserScannerScan 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes laserScannerScan {
+    0% {
+        top: -2%;
+        opacity: 0;
+    }
+
+    3% {
+        opacity: 1;
+    }
+
+    97% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 102%;
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   Breathing Ambient Mesh Orbs Background System
+   ========================================================================== */
+
+.ambient-mesh-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+    animation: ambientOrbBreathing 25s ease-in-out infinite alternate;
+}
+
+.ambient-mesh-orb.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 184, 148, 0.35) 0%, transparent 70%);
+    top: 5%;
+    left: -12%;
+    animation-delay: 0s;
+}
+
+.ambient-mesh-orb.orb-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(108, 117, 125, 0.3) 0%, transparent 70%);
+    bottom: -8%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+.ambient-mesh-orb.orb-3 {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(155, 89, 182, 0.22) 0%, transparent 70%);
+    top: 35%;
+    left: 45%;
+    animation-delay: -10s;
+}
+
+@keyframes ambientOrbBreathing {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.12;
+    }
+
+    50% {
+        transform: translate(45px, -55px) scale(1.15) rotate(120deg);
+        opacity: 0.20;
+    }
+
+    100% {
+        transform: translate(-30px, 35px) scale(0.9) rotate(240deg);
+        opacity: 0.10;
+    }
+}
+
+/* ==========================================================================
+   Cybernetic "Principal Core" Signature Block Styles
+   ========================================================================== */
+
+.signature-block {
+    margin: 35px auto 45px auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 35px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+}
+
+.signature-block:hover {
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.sig-meta {
+    font-family: var(--font-tech);
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.sig-title {
+    font-family: var(--font-brand);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.sig-subtitle {
+    font-family: var(--font-tech);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.sig-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 184, 148, 0.08);
+    border: 1px solid rgba(0, 184, 148, 0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.signature-block:hover .sig-status {
+    background: rgba(0, 184, 148, 0.12);
+    border-color: rgba(0, 184, 148, 0.25);
+}
+
+.sig-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00b894;
+    box-shadow: 0 0 8px #00b894;
+    animation: sigPulse 2s infinite alternate;
+}
+
+.sig-status-text {
+    font-family: var(--font-tech);
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #00b894;
+    letter-spacing: 1.5px;
+}
+
+@keyframes sigPulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 4px #00b894;
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.15);
+        box-shadow: 0 0 12px #00b894, 0 0 20px rgba(0, 184, 148, 0.5);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   Animated Connection Vector Lines for Pillars
+   ========================================================================== */
+
+#connection-svg path {
+    stroke: rgba(255, 255, 255, 0.04);
+    stroke-width: 1.5px;
+    fill: none;
+    transition: stroke 0.4s ease, stroke-width 0.4s ease, filter 0.4s ease;
+}
+
+#connection-svg circle {
+    fill: rgba(255, 255, 255, 0.12);
+    transition: fill 0.4s ease, r 0.4s ease, filter 0.4s ease;
+}
+
+/* Active surging states when corresponding card is hovered */
+#connection-svg path.active {
+    stroke: #00b894;
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 4px rgba(0, 184, 148, 0.6));
+    stroke-dasharray: 8 8;
+    animation: connectionFlow 1.2s linear infinite;
+}
+
+#connection-svg circle.active {
+    fill: #00b894;
+    r: 5px;
+    filter: drop-shadow(0 0 6px #00b894);
+}
+
+@keyframes connectionFlow {
+    to {
+        stroke-dashoffset: -16;
+    }
+}
+
+/* ==========================================================================
+   Cybernetic Floating Holographic Matrix Data
+   ========================================================================== */
+
+.matrix-hologram {
+    position: absolute;
+    font-family: var(--font-tech);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(0, 184, 148, 0.16);
+    letter-spacing: 2px;
+    pointer-events: none;
+    z-index: 1;
+    text-shadow: 0 0 5px rgba(0, 184, 148, 0.25);
+    animation: matrixFloat 20s infinite ease-in-out alternate;
+}
+
+.matrix-hologram.h-1 {
+    top: 15%;
+    left: 8%;
+    animation-duration: 18s;
+}
+
+.matrix-hologram.h-2 {
+    bottom: 22%;
+    right: 8%;
+    animation-duration: 24s;
+    animation-delay: -5s;
+}
+
+.matrix-hologram.h-3 {
+    top: 45%;
+    right: 12%;
+    animation-duration: 22s;
+    animation-delay: -10s;
+}
+
+@keyframes matrixFloat {
+    0% {
+        transform: translateY(0) rotate(0.5deg);
+        opacity: 0.12;
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(-0.5deg);
+        opacity: 0.22;
+    }
+
+    100% {
+        transform: translateY(15px) rotate(0.5deg);
+        opacity: 0.10;
+    }
+}
+
+/* ==========================================================================
+   Homepage Exclusive 3D Holographic Logo Drift & Magnetic Unify
+   ========================================================================== */
+
+.vajra-v-logo .i-pillar {
+    animation: pulseIPillar 4s infinite alternate ease-in-out;
+    transform-origin: center;
+}
+
+.vajra-v-logo .outer-v-left {
+    animation: driftVLeft 7s infinite alternate ease-in-out;
+    transform-origin: center;
+}
+
+.vajra-v-logo .outer-v-right {
+    animation: driftVRight 7s infinite alternate ease-in-out;
+    transform-origin: center;
+}
+
+.vajra-v-logo:hover .v-segment {
+    animation: none !important;
+    transform: translate(0, 0) rotate(0deg) scale(1) !important;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.95)) !important;
+}
+
+@keyframes pulseIPillar {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.35));
+    }
+
+    100% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    }
+}
+
+@keyframes driftVLeft {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-3.5px, -1px) rotate(0.4deg);
+    }
+}
+
+@keyframes driftVRight {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(3.5px, -1px) rotate(-0.4deg);
+    }
+}
+
+/* ==========================================================================
+   Custom Smooth Slide Transitions (Home <-> Services)
+   ========================================================================== */
+
+/* Smooth Background Blend transition */
+.bg-transition-blend,
+.bg-transition-blend.neu-bg-container,
+.bg-transition-blend .neu-bg-container {
+    transition: background-color 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Disable native entry animations during and after custom SPA horizontal slide transitions to prevent double animation */
+body.bg-transition-blend .service-header,
+body.bg-transition-blend .service-content,
+body.bg-transition-blend .main-title,
+body.bg-transition-blend p,
+body.bg-transition-blend .service-card,
+body.bg-transition-blend .product-flowchart,
+body.bg-transition-blend .flow-node,
+body.bg-transition-blend .step-card,
+body.bg-transition-blend .about-card,
+body.bg-transition-blend .contact-card,
+body.bg-transition-blend .contact-form,
+body.bg-transition-blend .contact-info-container,
+body.transition-loaded .service-header,
+body.transition-loaded .service-content,
+body.transition-loaded .main-title,
+body.transition-loaded p,
+body.transition-loaded .service-card,
+body.transition-loaded .product-flowchart,
+body.transition-loaded .flow-node,
+body.transition-loaded .step-card,
+body.transition-loaded .about-card,
+body.transition-loaded .contact-card,
+body.transition-loaded .contact-form,
+body.transition-loaded .contact-info-container {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+/* Slide out Left (outgoing to left) */
+.slide-out-left {
+    transform: translate3d(-80px, 0, 0) scale(0.97) !important;
+    opacity: 0 !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Zero-Flash SPA Start Positions applied instantly via inline script on HTML root */
+html.is-sliding-in-right .service-content,
+html.is-sliding-in-right .service-header {
+    transform: translate3d(80px, 0, 0) scale(1.03) !important;
+    opacity: 0 !important;
+}
+
+html.is-sliding-in-left .service-content,
+html.is-sliding-in-left .service-header {
+    transform: translate3d(-80px, 0, 0) scale(1.03) !important;
+    opacity: 0 !important;
+}
+
+/* Slide in Right Start (Service incoming from right) */
+.slide-in-right-start {
+    transform: translate3d(80px, 0, 0) scale(1.03) !important;
+    opacity: 0 !important;
+    transition: none !important;
+}
+
+/* Slide in Right Active */
+.slide-in-right-active {
+    transform: translate3d(0, 0, 0) scale(1) !important;
+    opacity: 1 !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Slide out Right (outgoing to right) */
+.slide-out-right {
+    transform: translate3d(80px, 0, 0) scale(0.97) !important;
+    opacity: 0 !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Slide in Left Start (incoming from left) */
+.slide-in-left-start {
+    transform: translate3d(-80px, 0, 0) scale(1.03) !important;
+    opacity: 0 !important;
+    transition: none !important;
+}
+
+/* Slide in Left Active */
+.slide-in-left-active {
+    transform: translate3d(0, 0, 0) scale(1) !important;
+    opacity: 1 !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Fast and smooth opacity fade-out helper */
+.fade-out-transition {
+    opacity: 0 !important;
+    transition: opacity 0.2s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* ==========================================================================
+   Floating Background Cyber-Shapes (service.html only)
+   ========================================================================== */
+.floating-shapes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1; /* Layered correctly with ambient glows behind blocks */
+}
+
+.float-shape {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform;
+    transform: translate3d(105vw, 0, 0);
+    
+    /* Avoid shorthand animation property to preserve inline animation-duration and delay */
+    animation-name: floatRightToLeft;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.shape-inner {
+    opacity: 0.12; /* Delicate behind-background opacity */
+    will-change: transform;
+    animation: bobAndSpin 14s ease-in-out infinite;
+}
+
+/* Base shape vector styles */
+.shape-circle-dashed {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed rgba(9, 132, 227, 0.35);
+    border-radius: 50%;
+}
+
+.shape-diamond {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(9, 132, 227, 0.15), rgba(0, 184, 148, 0.08));
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border: 1px solid rgba(9, 132, 227, 0.25);
+}
+
+.shape-diamond-small {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(9, 132, 227, 0.1));
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.shape-grid {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed rgba(9, 132, 227, 0.25);
+    background-image: 
+        linear-gradient(rgba(9, 132, 227, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(9, 132, 227, 0.12) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.shape-grid-large {
+    width: 180px;
+    height: 180px;
+    border: 1.5px dashed rgba(9, 132, 227, 0.18);
+    background-image: 
+        linear-gradient(rgba(9, 132, 227, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(9, 132, 227, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.shape-circle-glowing {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(9, 132, 227, 0.1) 0%, rgba(9, 132, 227, 0) 70%);
+    border: 1.2px solid rgba(9, 132, 227, 0.22);
+    filter: drop-shadow(0 0 6px rgba(9, 132, 227, 0.15));
+}
+
+.shape-crosshair {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+.shape-crosshair::before, .shape-crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(9, 132, 227, 0.4);
+}
+.shape-crosshair::before {
+    top: 50%; left: 0; width: 100%; height: 1.5px;
+}
+.shape-crosshair::after {
+    left: 50%; top: 0; width: 1.5px; height: 100%;
+}
+
+.shape-crosshair-large {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border: 1px solid rgba(9, 132, 227, 0.15);
+    border-radius: 50%;
+}
+.shape-crosshair-large::before, .shape-crosshair-large::after {
+    content: '';
+    position: absolute;
+    background: rgba(9, 132, 227, 0.25);
+}
+.shape-crosshair-large::before {
+    top: 50%; left: -10px; width: calc(100% + 20px); height: 1px;
+}
+.shape-crosshair-large::after {
+    left: 50%; top: -10px; width: 1px; height: calc(100% + 20px);
+}
+
+/* GPU-Accelerated Parallax and Bob/Spin Keyframes */
+@keyframes floatRightToLeft {
+    0% {
+        transform: translate3d(105vw, 0, 0);
+    }
+    100% {
+        transform: translate3d(-30vw, 0, 0);
+    }
+}
+
+@keyframes bobAndSpin {
+    0% {
+        transform: translateY(-25px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(25px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(-25px) rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   Seamless Neumorphic Blocks Conveyor Animation (service.html only)
+   ========================================================================== */
+.neu-blocks-conveyor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200vw; /* Accommodates two duplicated full-screen block layouts side-by-side */
+    height: 100%;
+    will-change: transform;
+    animation: scrollPanorama 40s linear infinite; /* Beautifully slow, majestic unison drift */
+    z-index: 2;
+}
+
+.neu-block-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+}
+
+@keyframes scrollPanorama {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100vw, 0, 0);
+    }
+}
+
+/* ==========================================================================
+   Hyper-Drive Warp Speed Cinematic Background Transitions
+   ========================================================================== */
+.warp-speed-left .neu-blocks-conveyor {
+    animation: scrollPanoramaFastLeft 0.35s cubic-bezier(0.25, 1, 0.3, 1) infinite !important;
+}
+
+.warp-speed-right .neu-blocks-conveyor {
+    animation: scrollPanoramaFastRight 0.35s cubic-bezier(0.25, 1, 0.3, 1) infinite !important;
+}
+
+.warp-speed-left .float-shape {
+    animation-name: floatRightToLeftFast !important;
+    animation-duration: 0.35s !important;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.3, 1) !important;
+}
+
+.warp-speed-right .float-shape {
+    animation-name: floatLeftToRightFast !important;
+    animation-duration: 0.35s !important;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.3, 1) !important;
+}
+
+/* Cinematic horizontal stretching & motion blur to simulate intense speed */
+.warp-speed-left .neu-block, 
+.warp-speed-left .neu-block-inset,
+.warp-speed-right .neu-block, 
+.warp-speed-right .neu-block-inset {
+    filter: blur(4px) !important;
+    transform: scaleX(1.35) !important;
+    opacity: 0.65 !important;
+    transition: filter 0.1s ease, transform 0.1s ease, opacity 0.1s ease !important;
+}
+
+.warp-speed-left .shape-inner,
+.warp-speed-right .shape-inner {
+    filter: blur(2px) !important;
+    transform: scaleX(1.4) !important;
+    opacity: 0.45 !important;
+    transition: filter 0.1s ease, transform 0.1s ease, opacity 0.1s ease !important;
+}
+
+@keyframes scrollPanoramaFastLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100vw, 0, 0);
+    }
+}
+
+@keyframes scrollPanoramaFastRight {
+    0% {
+        transform: translate3d(-100vw, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes floatRightToLeftFast {
+    0% {
+        transform: translate3d(105vw, 0, 0);
+    }
+    100% {
+        transform: translate3d(-105vw, 0, 0);
+    }
+}
+
+@keyframes floatLeftToRightFast {
+    0% {
+        transform: translate3d(-105vw, 0, 0);
+    }
+    100% {
+        transform: translate3d(105vw, 0, 0);
+    }
+}
+
+/* ==========================================================================
+   Dynamic Scroll-Velocity Blur & Smooth Page Scrolling
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+.is-scrolling .neu-block,
+.is-scrolling .neu-block-inset {
+    filter: blur(var(--scroll-blur, 0px)) !important;
+    transition: filter 0.1s ease-out !important;
+}
+
+.is-scrolling .float-shape .shape-inner {
+    filter: blur(var(--scroll-blur, 0px)) !important;
+    transition: filter 0.1s ease-out !important;
+}

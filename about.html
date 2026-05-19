@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        (function() {
+            const fromIndex = sessionStorage.getItem('fromPageIndex');
+            const fromTheme = sessionStorage.getItem('fromPageTheme');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentIndex = pages.indexOf(currentPath);
+            
+            // Determine current page theme
+            const isDarkPage = currentPath === 'product.html' || currentPath === 'about.html';
+            let startColor = isDarkPage ? '#161616' : '#d3dbe4';
+            
+            if (fromIndex !== null) {
+                const fromIdx = parseInt(fromIndex, 10);
+                const isFromLeft = fromIdx < currentIndex;
+                document.documentElement.classList.add(isFromLeft ? 'is-sliding-in-right' : 'is-sliding-in-left');
+                // Use outgoing page's theme for seamless start
+                startColor = fromTheme === 'dark' ? '#161616' : '#d3dbe4';
+            }
+            
+            document.documentElement.style.backgroundColor = startColor;
+            document.write('<style>html, body { background-color: ' + startColor + ' !important; }</style>');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra Infotech | About</title>
+    <meta name="description" content="Vajra Infotech About - Learn about our mission and vision.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js for WebGL 3D Particles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="product-page">
+
+    <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
+    <div id="page-reveal-overlay"></div>
+
+    <!-- Neumorphic 3D Background -->
+    <div class="neu-bg-container">
+        <!-- Seamless conveyor wrapper for infinite panning background -->
+        <div class="neu-blocks-conveyor">
+            <!-- First Panorama Set (0 to 100vw) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+            <!-- Second Panorama Set (100vw to 200vw - offset exactly by +100vw for flawless seamless reset) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 110vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 105vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 140vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 135vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 130vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 160vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 175vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 175vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 155vw;"></div>
+            </div>
+        </div>
+        
+        <!-- Ambient Glowing Nebulas -->
+        <div class="ambient-glow-orb glow-blue"></div>
+        <div class="ambient-glow-orb glow-cyan"></div>
+        <div class="ambient-glow-orb glow-violet"></div>
+
+        <!-- Floating Behind Background Shapes -->
+        <div class="floating-shapes-container">
+            <div class="float-shape" style="top: 15%; animation-duration: 22s; animation-delay: -2s;">
+                <div class="shape-inner shape-circle-dashed"></div>
+            </div>
+            <div class="float-shape" style="top: 35%; animation-duration: 18s; animation-delay: -5s;">
+                <div class="shape-inner shape-diamond"></div>
+            </div>
+            <div class="float-shape" style="top: 55%; animation-duration: 25s; animation-delay: -10s;">
+                <div class="shape-inner shape-grid"></div>
+            </div>
+            <div class="float-shape" style="top: 25%; animation-duration: 16s; animation-delay: -8s;">
+                <div class="shape-inner shape-crosshair"></div>
+            </div>
+            <div class="float-shape" style="top: 75%; animation-duration: 20s; animation-delay: -12s;">
+                <div class="shape-inner shape-circle-glowing"></div>
+            </div>
+            <div class="float-shape" style="top: 65%; animation-duration: 15s; animation-delay: -3s;">
+                <div class="shape-inner shape-diamond-small"></div>
+            </div>
+            <div class="float-shape" style="top: 5%; animation-duration: 28s; animation-delay: -15s;">
+                <div class="shape-inner shape-grid-large"></div>
+            </div>
+            <div class="float-shape" style="top: 80%; animation-duration: 24s; animation-delay: -6s;">
+                <div class="shape-inner shape-crosshair-large"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WebGL interactive 3D Particle Canvas -->
+    <canvas id="webgl-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.65;"></canvas>
+
+    <div id="overlay">
+        <!-- Small header for about page -->
+        <header class="service-header" style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: white; display: flex; align-items: center; gap: 15px;">
+                <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
+                    <!-- 3D Shadow side facets (transparent overlay) -->
+                    <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M66 20 L70 20 L61 42 L57 42 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M54 47 L58 47 L54 57 L50 57 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M47 62 L51 62 L47 71 L43 71 Z" fill="currentColor" opacity="0.45"/>
+                    <!-- Front plates -->
+                    <path d="M44 71 L20 20 L29 20 L48 63 Z" fill="currentColor"/>
+                    <path d="M74 20 L66 20 L57 42 L65 42 Z" fill="currentColor"/>
+                    <path d="M62 47 L54 47 L50 57 L58 57 Z" fill="currentColor"/>
+                    <path d="M55 62 L47 62 L43 71 L51 71 Z" fill="currentColor"/>
+                </svg>
+                <div style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px; color: white;">VAJRA<br>INFOTECH</div>
+            </a>
+            <div class="page-title" style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: white; text-transform: uppercase;">ABOUT</div>
+        </header>
+
+        <div class="service-content" style="display: flex; flex-direction: column; overflow-y: auto; padding: 50px 0;">
+            <div class="visionary-container" style="margin: auto auto;">
+                <!-- High-Tech Animated Vector Connection Layer -->
+                <svg id="connection-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible;"></svg>
+
+                <p class="visionary-tagline">THE VISIONARY</p>
+                <h1 class="visionary-quote">Crafted by Screeny.<br>Engineered by Vajra.</h1>
+                <div class="visionary-divider"></div>
+                <p class="visionary-text">Vajra InfoTech was born at the intersection of cinematic creativity and technical engineering. We are a solo-led powerhouse specializing in products that aren't just functional—they are stunning.</p>
+                <div class="visionary-divider" style="width: 40px; height: 1px; background: rgba(255,255,255,0.15); margin: 25px auto; opacity: 0; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;"></div>
+                <p class="visionary-philosophy">"Code is art. Logic is law."</p>
+
+                <!-- Cybernetic Principal Core Signature Block -->
+                <div class="signature-block">
+                    <span class="sig-meta">[DESIGN & RECON]</span>
+                    <h2 class="sig-title">Vajra InfoTech</h2>
+                    <span class="sig-subtitle">Principal Architect & Engineer</span>
+                    <span class="sig-status-dot" style="margin-top: 5px;"></span>
+                </div>
+
+                <!-- 3 Core Pillars of Attraction (The "Vajra Advantage") -->
+                <div class="attraction-pillars">
+                    <div class="attraction-pillar">
+                        <span class="pillar-num">[01 DIRECT LINE]</span>
+                        <h3>Principal Dev Core</h3>
+                        <p>Work directly with the architect. No middle layers, no corporate delays, just elite engineering velocity.</p>
+                    </div>
+                    <div class="attraction-pillar">
+                        <span class="pillar-num">[02 FLUIDITY]</span>
+                        <h3>Cinematic Physics</h3>
+                        <p>Applications that feel alive, featuring dynamic vector animations, custom spring cursors, and responsive controls.</p>
+                    </div>
+                    <div class="attraction-pillar">
+                        <span class="pillar-num">[03 EFFICIENCY]</span>
+                        <h3>Maximized ROI</h3>
+                        <p>Eliminate agency overhead. 100% of your capital is funneled directly into high-fidelity, production-ready code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav visible" id="mainNav">
+            <a href="index.html" data-index="0">Home</a>
+            <a href="service.html" data-index="1">Services</a>
+            <a href="product.html" data-index="2">Products</a>
+            <a href="process.html" data-index="3">Process</a>
+            <a href="about.html" class="nav-active" data-index="4">About</a>
+            <a href="contact.html" data-index="5">Contact</a>
+            
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+        
+        <!-- Subtle base line for the indicator to travel on -->
+        <div class="indicator-track" style="opacity: 1;"></div>
+    </div>
+
+    <!-- Reverse Page Transition Overlay (Home) -->
+    <div id="page-transition-overlay-reverse">
+        <div class="transition-bg-wrapper">
+            <div id="bg-design-layer">
+                <div id="interactive-backlight"></div>
+                <div class="ambient-glow"></div>
+                <div class="ambient-glow glow-2"></div>
+                <div class="dark-tech-panel panel-1"></div>
+                <div class="dark-tech-panel panel-2"></div>
+                <div class="dark-tech-panel panel-3"></div>
+                <div class="dark-tech-panel panel-4"></div>
+                <div class="dark-tech-panel panel-5"></div>
+                <div class="dark-tech-panel panel-6"></div>
+                <div class="dark-tech-panel panel-7"></div>
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="light-streak streak-1"></div>
+                <div class="light-streak streak-2"></div>
+                <div class="light-streak streak-3"></div>
+                <div class="light-streak streak-4"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavReverse">
+                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Service Page Transition Overlay -->
+    <div id="page-transition-overlay-service">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavService">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" class="nav-active" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorService" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Product Page Transition Overlay -->
+    <div id="page-transition-overlay-product-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProductReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" class="nav-active" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProductReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Process Page Transition Overlay -->
+    <div id="page-transition-overlay-process-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProcessReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" class="nav-active" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProcessReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Contact Page Transition Overlay (Right to Left) -->
+    <div id="page-transition-overlay-contact">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavContact">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorContact" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const indicator = document.getElementById('mercuryIndicator');
+            const activeLink = document.querySelector('.nav-active');
+            
+            if (activeLink && indicator) {
+                const moveIndicator = (element) => {
+                    const rect = element.getBoundingClientRect();
+                    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+                    indicator.style.width = `${rect.width}px`;
+                    indicator.style.left = `${rect.left - navRect.left}px`;
+                };
+                
+                // Position instantly without transition on page load
+                indicator.classList.add('no-transition');
+                moveIndicator(activeLink);
+                // Force a reflow
+                indicator.offsetHeight;
+                indicator.style.opacity = '1';
+
+                // Restore hover transitions
+                setTimeout(() => {
+                    indicator.classList.remove('no-transition');
+                }, 50);
+
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', () => moveIndicator(link));
+                    link.addEventListener('mouseleave', () => {
+                        const currentActive = document.querySelector('.nav-active');
+                        if (currentActive) moveIndicator(currentActive);
+                    });
+                });
+
+                // Transition to Home (Black sweep left-to-right)
+                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                homeLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Override root canvas background color to match Home dark background
+                        document.body.style.setProperty('background-color', '#050505', 'important');
+                        document.documentElement.style.setProperty('background-color', '#050505', 'important');
+
+                        const overlay = document.getElementById('page-transition-overlay-reverse');
+                        
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="index.html"]');
+                        const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
+                        if (homeTransLink && transitionIndicatorReverse) {
+                            const rect = homeTransLink.getBoundingClientRect();
+                            const navRect = document.getElementById('transitionNavReverse').getBoundingClientRect();
+                            transitionIndicatorReverse.style.width = `${rect.width}px`;
+                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left}px`;
+                        }
+
+                        if (overlay) {
+                            overlay.style.width = '100vw';
+                            setTimeout(() => { window.location.href = 'index.html'; }, 1100);
+                        } else {
+                            window.location.href = 'index.html';
+                        }
+                    });
+                });
+
+
+
+                // Dynamic Connection Vectors for Vajra pillars to Harsh Desai Principal Core
+                const updateConnections = () => {
+                    const svg = document.getElementById('connection-svg');
+                    const sig = document.querySelector('.signature-block');
+                    const pillars = document.querySelectorAll('.attraction-pillar');
+                    const container = document.querySelector('.visionary-container');
+                    
+                    if (svg && sig && pillars.length === 3 && container) {
+                        // Clear existing contents
+                        svg.innerHTML = '';
+                        
+                        const containerRect = container.getBoundingClientRect();
+                        const sigRect = sig.getBoundingClientRect();
+                        
+                        // Calculate target point (bottom center of signature block)
+                        const targetX = (sigRect.left + sigRect.right) / 2 - containerRect.left;
+                        const targetY = sigRect.bottom - containerRect.top;
+                        
+                        pillars.forEach((pillar, index) => {
+                            const pillarRect = pillar.getBoundingClientRect();
+                            // Source point (top center of pillar card)
+                            const sourceX = (pillarRect.left + pillarRect.right) / 2 - containerRect.left;
+                            const sourceY = pillarRect.top - containerRect.top;
+                            
+                            // Create SVG path
+                            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                            
+                            // Draw curved connection line
+                            const midY = (targetY + sourceY) / 2;
+                            const d = `M ${targetX} ${targetY} C ${targetX} ${midY}, ${sourceX} ${midY}, ${sourceX} ${sourceY}`;
+                            path.setAttribute('d', d);
+                            path.setAttribute('id', `path-pillar-${index}`);
+                            
+                            // Create tiny circle node on the pillar top
+                            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                            circle.setAttribute('cx', sourceX);
+                            circle.setAttribute('cy', sourceY);
+                            circle.setAttribute('r', 3);
+                            circle.setAttribute('id', `circle-pillar-${index}`);
+                            
+                            svg.appendChild(path);
+                            svg.appendChild(circle);
+                            
+                            // Bind hover classes dynamically
+                            pillar.addEventListener('mouseenter', () => {
+                                path.classList.add('active');
+                                circle.classList.add('active');
+                            });
+                            pillar.addEventListener('mouseleave', () => {
+                                path.classList.remove('active');
+                                circle.classList.remove('active');
+                            });
+                        });
+                    }
+                };
+                
+                // Initialize on load and bind to events
+                window.addEventListener('resize', updateConnections);
+                // Also trigger slightly later to ensure absolute rendering coordinates are fully finalized
+                setTimeout(updateConnections, 400);
+
+                // --- Three.js WebGL Particle Core setup ---
+                const canvas = document.getElementById('webgl-canvas');
+                if (canvas && typeof THREE !== 'undefined') {
+                    const scene = new THREE.Scene();
+                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                    // Create 3D particles in a sphere form
+                    const particleCount = 1200;
+                    const geometry = new THREE.BufferGeometry();
+                    const positions = new Float32Array(particleCount * 3);
+                    const originalPositions = new Float32Array(particleCount * 3);
+
+                    for (let i = 0; i < particleCount * 3; i += 3) {
+                        const u = Math.random();
+                        const v = Math.random();
+                        const theta = u * 2.0 * Math.PI;
+                        const phi = Math.acos(2.0 * v - 1.0);
+                        const r = 2.4 + Math.random() * 0.8;
+
+                        positions[i] = r * Math.sin(phi) * Math.cos(theta);
+                        positions[i + 1] = r * Math.sin(phi) * Math.sin(theta);
+                        positions[i + 2] = r * Math.cos(phi);
+
+                        originalPositions[i] = positions[i];
+                        originalPositions[i + 1] = positions[i + 1];
+                        originalPositions[i + 2] = positions[i + 2];
+                    }
+
+                    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+                    const material = new THREE.PointsMaterial({
+                        color: 0x888888, // Sleek, minimalist metallic grey
+                        size: 0.038,
+                        transparent: true,
+                        opacity: 0.55,
+                        blending: THREE.AdditiveBlending
+                    });
+
+                    const particleSystem = new THREE.Points(geometry, material);
+                    scene.add(particleSystem);
+                    camera.position.z = 5.8;
+
+                    let targetMouseX = 0;
+                    let targetMouseY = 0;
+                    let mouseX = 0;
+                    let mouseY = 0;
+
+                    window.addEventListener('mousemove', (e) => {
+                        targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                        targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                    });
+
+                    window.addEventListener('resize', () => {
+                        camera.aspect = window.innerWidth / window.innerHeight;
+                        camera.updateProjectionMatrix();
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                    });
+
+                    const clock = new THREE.Clock();
+                    function animateWebGL() {
+                        requestAnimationFrame(animateWebGL);
+
+                        const elapsedTime = clock.getElapsedTime();
+
+                        mouseX += (targetMouseX - mouseX) * 0.06;
+                        mouseY += (targetMouseY - mouseY) * 0.06;
+
+                        particleSystem.rotation.y = elapsedTime * 0.06;
+                        particleSystem.rotation.x = elapsedTime * 0.03;
+
+                        const posAttr = geometry.attributes.position;
+                        for (let i = 0; i < particleCount; i++) {
+                            const ix = i * 3;
+                            const iy = i * 3 + 1;
+                            const iz = i * 3 + 2;
+
+                            const x = originalPositions[ix];
+                            const y = originalPositions[iy];
+                            const z = originalPositions[iz];
+
+                            const cosY = Math.cos(particleSystem.rotation.y);
+                            const sinY = Math.sin(particleSystem.rotation.y);
+                            const rotX = x * cosY - z * sinY;
+
+                            // Premium Magnetic Swirl Vortex physics
+                            const dx = rotX - mouseX * 3.5;
+                            const dy = y - mouseY * 3.5;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+
+                            if (dist < 2.0) {
+                                const force = (2.0 - dist) * 0.18;
+                                const angle = Math.atan2(dy, dx) + 0.15;
+                                const targetX = mouseX * 3.5 + Math.cos(angle) * dist;
+                                const targetY = mouseY * 3.5 + Math.sin(angle) * dist;
+                                posAttr.array[ix] += (targetX - posAttr.array[ix]) * 0.08;
+                                posAttr.array[iy] += (targetY - posAttr.array[iy]) * 0.08;
+                            } else {
+                                posAttr.array[ix] += (originalPositions[ix] - posAttr.array[ix]) * 0.05;
+                                posAttr.array[iy] += (originalPositions[iy] - posAttr.array[iy]) * 0.05;
+                            }
+                        }
+                        posAttr.needsUpdate = true;
+
+                        renderer.render(scene, camera);
+                    }
+                    animateWebGL();
+                }
+            }
+
+        });
+    </script>
+    <script src="page-transition.js"></script>
+    <script src="cursor.js"></script>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        (function() {
+            const fromIndex = sessionStorage.getItem('fromPageIndex');
+            const fromTheme = sessionStorage.getItem('fromPageTheme');
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const pages = ['index.html', 'service.html', 'product.html', 'process.html', 'about.html', 'contact.html'];
+            const currentIndex = pages.indexOf(currentPath);
+            
+            // Determine current page theme
+            const isDarkPage = currentPath === 'product.html' || currentPath === 'about.html';
+            let startColor = isDarkPage ? '#161616' : '#d3dbe4';
+            
+            if (fromIndex !== null) {
+                const fromIdx = parseInt(fromIndex, 10);
+                const isFromLeft = fromIdx < currentIndex;
+                document.documentElement.classList.add(isFromLeft ? 'is-sliding-in-right' : 'is-sliding-in-left');
+                // Use outgoing page's theme for seamless start
+                startColor = fromTheme === 'dark' ? '#161616' : '#d3dbe4';
+            }
+            
+            document.documentElement.style.backgroundColor = startColor;
+            document.write('<style>html, body { background-color: ' + startColor + ' !important; }</style>');
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra Infotech | Process</title>
+    <meta name="description" content="Vajra Infotech Process - How we build resilient software.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="service-page">
+
+    <!-- Page Reveal Overlay (Cinematic Seamless Transition) -->
+    <div id="page-reveal-overlay"></div>
+
+    <!-- Neumorphic 3D Background -->
+    <div class="neu-bg-container">
+        <!-- Seamless conveyor wrapper for infinite panning background -->
+        <div class="neu-blocks-conveyor">
+            <!-- First Panorama Set (0 to 100vw) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+            <!-- Second Panorama Set (100vw to 200vw - offset exactly by +100vw for flawless seamless reset) -->
+            <div class="neu-block-group">
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 110vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 105vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 140vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 135vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 130vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 160vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 175vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 175vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 155vw;"></div>
+            </div>
+        </div>
+        
+        <!-- Ambient Glowing Nebulas -->
+        <div class="ambient-glow-orb glow-blue"></div>
+        <div class="ambient-glow-orb glow-cyan"></div>
+        <div class="ambient-glow-orb glow-violet"></div>
+
+        <!-- Floating Behind Background Shapes -->
+        <div class="floating-shapes-container">
+            <div class="float-shape" style="top: 15%; animation-duration: 22s; animation-delay: -2s;">
+                <div class="shape-inner shape-circle-dashed"></div>
+            </div>
+            <div class="float-shape" style="top: 35%; animation-duration: 18s; animation-delay: -5s;">
+                <div class="shape-inner shape-diamond"></div>
+            </div>
+            <div class="float-shape" style="top: 55%; animation-duration: 25s; animation-delay: -10s;">
+                <div class="shape-inner shape-grid"></div>
+            </div>
+            <div class="float-shape" style="top: 25%; animation-duration: 16s; animation-delay: -8s;">
+                <div class="shape-inner shape-crosshair"></div>
+            </div>
+            <div class="float-shape" style="top: 75%; animation-duration: 20s; animation-delay: -12s;">
+                <div class="shape-inner shape-circle-glowing"></div>
+            </div>
+            <div class="float-shape" style="top: 65%; animation-duration: 15s; animation-delay: -3s;">
+                <div class="shape-inner shape-diamond-small"></div>
+            </div>
+            <div class="float-shape" style="top: 5%; animation-duration: 28s; animation-delay: -15s;">
+                <div class="shape-inner shape-grid-large"></div>
+            </div>
+            <div class="float-shape" style="top: 80%; animation-duration: 24s; animation-delay: -6s;">
+                <div class="shape-inner shape-crosshair-large"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <!-- Small header for process page -->
+        <header class="service-header" style="position: absolute; top: 40px; left: 5%; right: 5%; z-index: 20; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: black; display: flex; align-items: center; gap: 15px;">
+                <svg viewBox="0 0 100 100" style="width: 40px; height: 40px;">
+                    <!-- 3D Shadow side facets (transparent overlay) -->
+                    <path d="M29 20 L34 20 L53 63 L48 63 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M66 20 L70 20 L61 42 L57 42 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M54 47 L58 47 L54 57 L50 57 Z" fill="currentColor" opacity="0.45"/>
+                    <path d="M47 62 L51 62 L47 71 L43 71 Z" fill="currentColor" opacity="0.45"/>
+                    <!-- Front plates -->
+                    <path d="M44 71 L20 20 L29 20 L48 63 Z" fill="currentColor"/>
+                    <path d="M74 20 L66 20 L57 42 L65 42 Z" fill="currentColor"/>
+                    <path d="M62 47 L54 47 L50 57 L58 57 Z" fill="currentColor"/>
+                    <path d="M55 62 L47 62 L43 71 L51 71 Z" fill="currentColor"/>
+                </svg>
+                <div style="font-family: var(--font-brand); font-size: 1rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;">VAJRA<br>INFOTECH</div>
+            </a>
+            <div style="font-family: var(--font-brand); font-size: 1.25rem; font-weight: 900; line-height: 1.1; letter-spacing: 1px; color: black; text-transform: uppercase;">PROCESS</div>
+        </header>
+
+        <div class="service-content">
+            <h1 class="main-title">The Build Process</h1>
+            <p style="font-family: var(--font-brand); font-size: 0.95rem; font-weight: 800; color: rgba(0, 0, 0, 0.4); text-transform: uppercase; letter-spacing: 2px; margin-top: -10px; margin-bottom: 25px; animation: fadeUp 1s ease 0.5s forwards; opacity: 0;">The "Vajra" Way</p>
+            <p>We employ a rigorous, agile methodology to ensure seamless delivery and unparalleled technical excellence in every project we undertake.</p>
+            
+            <div class="timeline-container">
+                <!-- Vertical progress lines -->
+                <div class="progress-line-bg"></div>
+                <div class="progress-line-fill" id="progressLineFill"></div>
+
+                <!-- Step 1 -->
+                <div class="timeline-step">
+                    <div class="step-badge">1</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 1</div>
+                        <h3 class="step-title">The Logic</h3>
+                        <p class="step-desc">"We map the architecture before writing a single line of code."</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-step">
+                    <div class="step-badge">2</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 2</div>
+                        <h3 class="step-title">The Alignment</h3>
+                        <p class="step-desc">"Weekly strategy syncs to ensure business goals and product execution stay perfectly aligned."</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-step">
+                    <div class="step-badge">3</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 3</div>
+                        <h3 class="step-title">The Sprint</h3>
+                        <p class="step-desc">"Rapid prototyping with bi-weekly builds you can test."</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-step">
+                    <div class="step-badge">4</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 4</div>
+                        <h3 class="step-title">The Refinement</h3>
+                        <p class="step-desc">"Pixel-perfect UI polishing focused on speed, clarity, and user experience."</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-step">
+                    <div class="step-badge">5</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 5</div>
+                        <h3 class="step-title">The Integration</h3>
+                        <p class="step-desc">"Connecting APIs, databases, and third-party systems into one seamless ecosystem."</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="timeline-step">
+                    <div class="step-badge">6</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 6</div>
+                        <h3 class="step-title">The Hardening</h3>
+                        <p class="step-desc">"Stress-testing your software for security and performance."</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="timeline-step">
+                    <div class="step-badge">7</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 7</div>
+                        <h3 class="step-title">The Optimization</h3>
+                        <p class="step-desc">"Continuous performance tuning for lightning-fast load times and scalability."</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="timeline-step">
+                    <div class="step-badge">8</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 8</div>
+                        <h3 class="step-title">The Launch Control</h3>
+                        <p class="step-desc">"Final deployment checks, monitoring setup, and zero-downtime release execution."</p>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="timeline-step">
+                    <div class="step-badge">9</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 9</div>
+                        <h3 class="step-title">The Handoff</h3>
+                        <p class="step-desc">"Full source code ownership and seamless deployment."</p>
+                    </div>
+                </div>
+
+                <!-- Step 10 -->
+                <div class="timeline-step">
+                    <div class="step-badge">10</div>
+                    <div class="step-card">
+                        <!-- High-Voltage Hover Circuit Border Overlay -->
+                        <svg class="card-circuit-border" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="100" height="100" rx="16" fill="none" class="circuit-path" />
+                        </svg>
+                        <div class="step-number">Step 10</div>
+                        <h3 class="step-title">The Evolution</h3>
+                        <p class="step-desc">"Post-launch support, analytics, and feature expansion as your business grows."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Floating HUD Step-Navigator -->
+        <div class="hud-step-navigator">
+            <div class="hud-nav-item active" data-step="0">
+                <span class="hud-label">01 LOGIC</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="1">
+                <span class="hud-label">02 ALIGN</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="2">
+                <span class="hud-label">03 SPRINT</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="3">
+                <span class="hud-label">04 REFINE</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="4">
+                <span class="hud-label">05 INTEGR</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="5">
+                <span class="hud-label">06 HARDEN</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="6">
+                <span class="hud-label">07 OPTIM</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="7">
+                <span class="hud-label">08 LAUNCH</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="8">
+                <span class="hud-label">09 HANDOFF</span>
+                <span class="hud-dot"></span>
+            </div>
+            <div class="hud-nav-item" data-step="9">
+                <span class="hud-label">10 EVOLVE</span>
+                <span class="hud-dot"></span>
+            </div>
+        </div>
+
+        <nav class="main-nav visible" id="mainNav">
+            <a href="index.html" data-index="0">Home</a>
+            <a href="service.html" data-index="1">Services</a>
+            <a href="product.html" data-index="2">Products</a>
+            <a href="process.html" class="nav-active" data-index="3">Process</a>
+            <a href="about.html" data-index="4">About</a>
+            <a href="contact.html" data-index="5">Contact</a>
+            
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+        
+        <div class="indicator-track" style="opacity: 1;"></div>
+    </div>
+
+    <!-- Page Transition Overlays -->
+    <!-- Reverse Page Transition Overlay (Home) -->
+    <div id="page-transition-overlay-reverse">
+        <div class="transition-bg-wrapper">
+            <div id="bg-design-layer">
+                <div id="interactive-backlight"></div>
+                <div class="ambient-glow"></div>
+                <div class="ambient-glow glow-2"></div>
+                <div class="dark-tech-panel panel-1"></div>
+                <div class="dark-tech-panel panel-2"></div>
+                <div class="dark-tech-panel panel-3"></div>
+                <div class="dark-tech-panel panel-4"></div>
+                <div class="dark-tech-panel panel-5"></div>
+                <div class="dark-tech-panel panel-6"></div>
+                <div class="dark-tech-panel panel-7"></div>
+                <div class="data-node node-1"></div>
+                <div class="data-node node-2"></div>
+                <div class="data-node node-3"></div>
+                <div class="light-streak streak-1"></div>
+                <div class="light-streak streak-2"></div>
+                <div class="light-streak streak-3"></div>
+                <div class="light-streak streak-4"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavReverse">
+                <a href="index.html" class="nav-active" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Service Page Transition Overlay (Left to Right) -->
+    <div id="page-transition-overlay-service">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavService">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" class="nav-active" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorService" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Page Transition Overlay (Left to Right) -->
+    <div id="page-transition-overlay-product-reverse">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavProductReverse">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" class="nav-active" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorProductReverse" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- About Page Transition Overlay (Right to Left) -->
+    <div id="page-transition-overlay-about">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavAbout">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" class="nav-active" data-index="4">About</a>
+                <a href="contact.html" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorAbout" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Contact Page Transition Overlay (Right to Left) -->
+    <div id="page-transition-overlay-contact">
+        <div class="transition-bg-wrapper">
+            <div class="neu-bg-container">
+                <div class="ambient-glow-orb glow-blue"></div>
+                <div class="ambient-glow-orb glow-cyan"></div>
+                <div class="ambient-glow-orb glow-violet"></div>
+                <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
+                <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
+                <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
+                <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
+                <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
+                <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
+                <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
+            </div>
+        </div>
+        <div class="transition-line"></div>
+        <div class="transition-content-fixed">
+            <nav class="main-nav visible" id="transitionNavContact">
+                <a href="index.html" data-index="0">Home</a>
+                <a href="service.html" data-index="1">Services</a>
+                <a href="product.html" data-index="2">Products</a>
+                <a href="process.html" data-index="3">Process</a>
+                <a href="about.html" data-index="4">About</a>
+                <a href="contact.html" class="nav-active" data-index="5">Contact</a>
+                <div class="mercury-indicator" id="transitionIndicatorContact" style="opacity: 1;"></div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const indicator = document.getElementById('mercuryIndicator');
+            const activeLink = document.querySelector('.nav-active');
+            
+            if (activeLink && indicator) {
+                const moveIndicator = (element) => {
+                    const rect = element.getBoundingClientRect();
+                    const navRect = document.getElementById('mainNav').getBoundingClientRect();
+                    indicator.style.width = `${rect.width}px`;
+                    indicator.style.left = `${rect.left - navRect.left}px`;
+                };
+                
+                // Position instantly without transition on page load
+                indicator.classList.add('no-transition');
+                moveIndicator(activeLink);
+                // Force a reflow
+                indicator.offsetHeight;
+                indicator.style.opacity = '1';
+
+                // Restore hover transitions
+                setTimeout(() => {
+                    indicator.classList.remove('no-transition');
+                }, 50);
+
+                const navLinks = document.querySelectorAll('.main-nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', () => moveIndicator(link));
+                    link.addEventListener('mouseleave', () => {
+                        const currentActive = document.querySelector('.nav-active');
+                        if (currentActive) moveIndicator(currentActive);
+                    });
+                });
+
+                // Transition to Home (Black sweep left-to-right)
+                const homeLinks = document.querySelectorAll('a[href="index.html"]');
+                homeLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Override root canvas background color to match Home dark background
+                        document.body.style.setProperty('background-color', '#050505', 'important');
+                        document.documentElement.style.setProperty('background-color', '#050505', 'important');
+
+                        const overlay = document.getElementById('page-transition-overlay-reverse');
+                        
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="index.html"]');
+                        const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
+                        if (homeTransLink && transitionIndicatorReverse) {
+                            const rect = homeTransLink.getBoundingClientRect();
+                            const navRect = document.getElementById('transitionNavReverse').getBoundingClientRect();
+                            transitionIndicatorReverse.style.width = `${rect.width}px`;
+                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left}px`;
+                        }
+
+                        if (overlay) {
+                            overlay.style.width = '100vw';
+                            setTimeout(() => { window.location.href = 'index.html'; }, 1100);
+                        } else {
+                            window.location.href = 'index.html';
+                        }
+                    });
+                });
+
+
+            }
+
+            // Scroll Timeline Interactive Progress Fill & Step Highlight
+            const contentEl = document.querySelector('.service-content');
+            const progressFill = document.getElementById('progressLineFill');
+            const steps = document.querySelectorAll('.timeline-step');
+            const hudItems = document.querySelectorAll('.hud-nav-item');
+
+            if (contentEl && progressFill) {
+                const updateTimeline = () => {
+                    const scrollTop = contentEl.scrollTop;
+                    const scrollHeight = contentEl.scrollHeight - contentEl.clientHeight;
+                    
+                    let pct = 0;
+                    if (scrollHeight > 0) {
+                        pct = (scrollTop / scrollHeight) * 100;
+                    }
+                    
+                    progressFill.style.height = `${pct}%`;
+                    
+                    let currentActiveIndex = 0;
+                    
+                    steps.forEach((step, idx) => {
+                        const stepRect = step.getBoundingClientRect();
+                        const containerRect = contentEl.getBoundingClientRect();
+                        
+                        const relativeTop = stepRect.top - containerRect.top + contentEl.scrollTop;
+                        const triggerPoint = contentEl.scrollTop + (contentEl.clientHeight * 0.7);
+                        
+                        if (triggerPoint >= relativeTop) {
+                            step.classList.add('active');
+                            currentActiveIndex = idx;
+                        } else {
+                            step.classList.remove('active');
+                        }
+                    });
+                    
+                    // Synchronize with Floating HUD Items
+                    hudItems.forEach((item, idx) => {
+                        if (idx === currentActiveIndex) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                };
+
+                contentEl.addEventListener('scroll', updateTimeline);
+                
+                // Add click navigation to floating HUD items
+                hudItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const stepIndex = parseInt(item.getAttribute('data-step'), 10);
+                        const targetStep = steps[stepIndex];
+                        if (targetStep) {
+                            const stepRect = targetStep.getBoundingClientRect();
+                            const containerRect = contentEl.getBoundingClientRect();
+                            const targetScrollTop = stepRect.top - containerRect.top + contentEl.scrollTop - 40;
+                            
+                            contentEl.scrollTo({
+                                top: targetScrollTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Dynamic SVG border scaling for pixel-perfect non-scaling corners
+                const updateCardBorders = () => {
+                    const cards = document.querySelectorAll('.step-card');
+                    cards.forEach(card => {
+                        const borderSvg = card.querySelector('.card-circuit-border');
+                        const rect = borderSvg ? borderSvg.querySelector('rect') : null;
+                        if (borderSvg && rect) {
+                            const w = card.clientWidth;
+                            const h = card.clientHeight;
+                            borderSvg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+                            rect.setAttribute('width', w - 4);
+                            rect.setAttribute('height', h - 4);
+                            rect.setAttribute('x', 2);
+                            rect.setAttribute('y', 2);
+                            rect.setAttribute('rx', 14);
+                            rect.setAttribute('ry', 14);
+                        }
+                    });
+                };
+                
+                window.addEventListener('resize', updateCardBorders);
+                updateCardBorders();
+                setTimeout(updateCardBorders, 300);
+
+                // Trigger initial placement on load
+                setTimeout(updateTimeline, 100);
+            }
+
+        });
+    </script>
+    <script src="page-transition.js"></script>
+    <script src="cursor.js"></script>
+</body>
+</html>
