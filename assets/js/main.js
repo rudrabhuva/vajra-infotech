@@ -156,48 +156,50 @@ document.addEventListener('DOMContentLoaded', () => {
             for(let i=0; i<4; i++) res += hexChars[Math.floor(Math.random() * 16)];
             return res;
         };
-        const metrics = ["SYS_LOAD:", "REQ/S:", "CPU_USAGE:", "RAM_ALLOC:", "NET_IO:", "LATENCY:"];
-        
+        const metrics = ["SYS_LOAD:", "REQ/S:", "CPU:", "MEM:", "NET_IO:", "PING:"];
+
         panels.forEach((panel) => {
-            // Ensure the panel has position relative or absolute for the absolute children
             if (window.getComputedStyle(panel).position === 'static') {
                 panel.style.position = 'relative';
             }
 
             const streamContainer = document.createElement('div');
             streamContainer.className = 'data-stream';
-            
-            // Randomly create 1 to 3 columns of data per panel
-            const numCols = Math.floor(Math.random() * 3) + 1;
-            
-            for(let i=0; i<numCols; i++) {
-                const col = document.createElement('div');
-                col.className = 'data-stream-col';
-                // Randomly position the column horizontally
-                col.style.left = `${Math.random() * 70 + 10}%`;
-                // Random animation duration
-                const animDuration = Math.random() * 10 + 10; // 10s to 20s
-                col.style.animationDuration = `${animDuration}s`;
-                col.style.animationDelay = `-${Math.random() * 20}s`; // start at random phase
 
-                // Generate text content (15 to 30 lines)
-                const numLines = Math.floor(Math.random() * 15) + 15;
-                let textContent = "";
-                for(let j=0; j<numLines; j++) {
-                    if (Math.random() > 0.8) {
-                        const metric = metrics[Math.floor(Math.random() * metrics.length)];
-                        const val = Math.floor(Math.random() * 9999);
-                        textContent += `${metric} ${val}\n`;
-                    } else if (Math.random() > 0.5) {
-                        textContent += `${generateHex()}\n`;
-                    } else {
-                        // Empty lines for organic spacing
-                        textContent += `\n`;
-                    }
+            // Exactly 1 column per panel — centered, no overlap
+            const col = document.createElement('div');
+            col.className = 'data-stream-col';
+
+            // Center the column within the panel
+            col.style.left = '50%';
+            col.style.transform = 'translateX(-50%)';
+            col.style.textAlign = 'left';
+
+            // Each panel gets a unique, slow random speed
+            const animDuration = Math.random() * 8 + 14; // 14s to 22s
+            col.style.animationDuration = `${animDuration}s`;
+            col.style.animationDelay = `-${Math.random() * 22}s`; // Random start phase
+
+            // Small number of lines (8-12) so they don't crowd the panel
+            const numLines = Math.floor(Math.random() * 5) + 8;
+            let textContent = "";
+            for (let j = 0; j < numLines; j++) {
+                const roll = Math.random();
+                if (roll > 0.75) {
+                    // System metric line
+                    const metric = metrics[Math.floor(Math.random() * metrics.length)];
+                    const val = Math.floor(Math.random() * 9999);
+                    textContent += `${metric} ${val}\n`;
+                } else if (roll > 0.4) {
+                    // Hex value line
+                    textContent += `${generateHex()}\n`;
+                } else {
+                    // Blank spacer line for organic breathing room
+                    textContent += `\n`;
                 }
-                col.textContent = textContent;
-                streamContainer.appendChild(col);
             }
+            col.textContent = textContent;
+            streamContainer.appendChild(col);
             panel.appendChild(streamContainer);
         });
     };
