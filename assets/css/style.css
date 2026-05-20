@@ -432,6 +432,84 @@ html {
     transition: text-shadow 0.1s ease-out;
 }
 
+/* CTA Button */
+.cta-container {
+    margin-top: 3.5rem;
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    /* Adding animation delay to sync with brand reveal */
+    animation: fadeInUpCTA 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brand-container.visible .cta-container {
+    animation-delay: 1.2s; /* Trigger after brand tagline */
+}
+
+@keyframes fadeInUpCTA {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.primary-cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.primary-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primary-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.primary-cta-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.cta-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primary-cta-btn:hover .cta-icon {
+    transform: translateX(4px);
+}
+
 /* Magnetic Tagline Character Fields */
 .mag-char {
     display: inline-block;
@@ -444,6 +522,7 @@ html {
     opacity: 0;
     transform: translateX(30px);
     transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+    pointer-events: auto;
 }
 
 .logo-section.visible {
@@ -452,22 +531,51 @@ html {
 }
 
 .vajra-v-logo {
-    width: clamp(200px, 35vw, 450px);
-    height: auto;
+    width: clamp(200px, 35vw, 420px);
+    height: clamp(200px, 35vw, 420px);
+    position: relative;
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    transition: filter 0.5s ease;
+    transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
 }
 
 .vajra-v-logo:hover {
-    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.65));
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.35));
+    transform: scale(1.05);
+}
+
+#three-logo-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    pointer-events: none;
+}
+
+#three-logo-canvas.loaded {
+    opacity: 1;
 }
 
 .v-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: visible;
+    z-index: 1;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.vajra-v-logo.webgl-active .v-svg {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .v-segment {

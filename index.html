@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
-        window.addEventListener('error', function(e) {
+        window.addEventListener('error', function (e) {
             var errDiv = document.getElementById('debug-err');
             if (!errDiv) {
                 errDiv = document.createElement('div');
@@ -14,20 +15,26 @@
         });
     </script>
     <style>
-        html, body { background-color: #050505 !important; }
+        html,
+        body {
+            background-color: #050505 !important;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vajra Infotech | Excellence in Tech</title>
     <meta name="description" content="Vajra Infotech - Delivering cutting-edge technology solutions.">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500&family=Syncopate:wght@700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&family=Michroma&family=JetBrains+Mono:wght@300;500&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
     <div id="bg-design-layer">
@@ -35,7 +42,7 @@
         <div id="interactive-backlight"></div>
         <div class="ambient-glow"></div>
         <div class="ambient-glow glow-2"></div>
-        
+
         <div class="dark-tech-panel panel-1"></div>
         <div class="dark-tech-panel panel-2"></div>
         <div class="dark-tech-panel panel-3"></div>
@@ -43,11 +50,11 @@
         <div class="dark-tech-panel panel-5"></div>
         <div class="dark-tech-panel panel-6"></div>
         <div class="dark-tech-panel panel-7"></div>
-        
+
         <div class="data-node node-1"></div>
         <div class="data-node node-2"></div>
         <div class="data-node node-3"></div>
-        
+
         <div class="light-streak streak-1"></div>
         <div class="light-streak streak-2"></div>
         <div class="light-streak streak-3"></div>
@@ -67,12 +74,23 @@
                 <div class="brand-container" id="brandContainer">
                     <h1 class="brand-name">VAJRA<br>INFOTECH</h1>
                     <p class="brand-tagline">Building Software as Resilient as its Name.</p>
+                    
+                    <div class="cta-container">
+                        <a href="pages/contact.html" class="primary-cta-btn" id="mainCtaBtn">
+                            <span class="cta-text">Start a Project</span>
+                            <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="logo-section">
                 <!-- Symmetrical Futuristic V & I Combination Monogram Logo -->
                 <div class="vajra-v-logo">
+                    <canvas id="three-logo-canvas"></canvas>
                     <svg class="v-svg" viewBox="0 0 100 100">
                         <!-- The letter "I" (Top Cap, Bottom Cap, and Central Pillar) -->
                         <path class="v-segment i-cap-top" d="M 40,15 L 60,15 L 60,20 L 40,20 Z" fill="#ffffff" />
@@ -99,11 +117,11 @@
             <a href="pages/process.html" id="process-link" data-index="3">Process</a>
             <a href="pages/about.html" id="about-link" data-index="4">About</a>
             <a href="pages/contact.html" id="contact-link" data-index="5">Contact</a>
-            
+
             <!-- The Liquid Mercury Indicator -->
             <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
         </nav>
-        
+
         <!-- Subtle base line for the indicator to travel on -->
         <div class="indicator-track"></div>
     </div>
@@ -145,7 +163,7 @@
             </nav>
         </div>
     </div>
-    
+
     <!-- Page Transition Overlay - Product -->
     <div id="page-transition-overlay-product">
         <div class="transition-bg-wrapper">
@@ -177,7 +195,7 @@
             </nav>
         </div>
     </div>
-    
+
     <!-- Page Transition Overlay - Process -->
     <div id="page-transition-overlay-process">
         <div class="transition-bg-wrapper">
@@ -209,7 +227,7 @@
             </nav>
         </div>
     </div>
-    
+
     <!-- Page Transition Overlay - About -->
     <div id="page-transition-overlay-about">
         <div class="transition-bg-wrapper">
@@ -241,7 +259,7 @@
             </nav>
         </div>
     </div>
-    
+
     <!-- Page Transition Overlay - Contact -->
     <div id="page-transition-overlay-contact">
         <div class="transition-bg-wrapper">
@@ -273,8 +291,10 @@
             </nav>
         </div>
     </div>
+    <!-- Three.js Library for WebGL 3D Logo Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/js/main.js?v=1.0.1"></script>
     <script src="assets/js/cursor.js"></script>
 </body>
-</html>
 
+</html>

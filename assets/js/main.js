@@ -820,52 +820,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animateParallax();
     }
 
-    // 3D Card Hover Tilt for Vajra Circuit Logo
-    const logoLogo = document.querySelector('.vajra-v-logo');
-    if (logoLogo) {
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentRotationX = 0;
-        let currentRotationY = 0;
-        let isHovered = false;
-
-        logoLogo.addEventListener('mouseenter', () => {
-            isHovered = true;
-        });
-
-        logoLogo.addEventListener('mousemove', (e) => {
-            const rect = logoLogo.getBoundingClientRect();
-            // Calculate center of the logo
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            // Normalize cursor position within logo bounds to range [-1, 1]
-            mouseX = (e.clientX - centerX) / (rect.width / 2);
-            mouseY = (e.clientY - centerY) / (rect.height / 2);
-        });
-
-        logoLogo.addEventListener('mouseleave', () => {
-            isHovered = false;
-            mouseX = 0;
-            mouseY = 0;
-        });
-
-        const animateTilt = () => {
-            const targetRotX = isHovered ? -mouseY * 20 : 0; // Rotate up to 20 degrees
-            const targetRotY = isHovered ? mouseX * 20 : 0;
-
-            // Elastic lerp interpolation (12% speed)
-            currentRotationX += (targetRotX - currentRotationX) * 0.12;
-            currentRotationY += (targetRotY - currentRotationY) * 0.12;
-
-            // Apply 3D perspective rotation and hover scale
-            logoLogo.style.transform = `perspective(1000px) rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${isHovered ? 1.06 : 1})`;
-
-            requestAnimationFrame(animateTilt);
-        };
-        animateTilt();
-    }
-
     // --- Magnetic Letter Fields Tagline Distortion ---
     const initMagneticTagline = () => {
         const tagline = document.querySelector('.brand-tagline');
@@ -913,6 +867,242 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     initMagneticTagline();
+
+    // Initialize Three.js 3D Quantum Compiler Core Logo
+    const initThreeLogo = () => {
+        const canvas = document.getElementById('three-logo-canvas');
+        const logoContainer = document.querySelector('.vajra-v-logo');
+        if (!canvas || !logoContainer || typeof THREE === 'undefined') return;
+
+        const scene = new THREE.Scene();
+        
+        // Use perspective camera
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+        camera.position.z = 10;
+
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: true
+        });
+        
+        const getPixelRatio = () => Math.min(window.devicePixelRatio, 2);
+        renderer.setPixelRatio(getPixelRatio());
+        
+        const resize = () => {
+            const width = logoContainer.clientWidth;
+            const height = logoContainer.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        // 3D Extruded Logo Geometries
+        const geometries = [];
+        const addSegment = (points, depth = 0.5) => {
+            const shape = new THREE.Shape();
+            shape.moveTo(points[0][0], points[0][1]);
+            for (let i = 1; i < points.length; i++) {
+                shape.lineTo(points[i][0], points[i][1]);
+            }
+            shape.closePath();
+
+            const extrudeSettings = {
+                steps: 1,
+                depth: depth,
+                bevelEnabled: true,
+                bevelThickness: 0.08,
+                bevelSize: 0.03,
+                bevelOffset: 0,
+                bevelSegments: 4
+            };
+
+            const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+            // Center along Z axis
+            geom.translate(0, 0, -depth / 2);
+            geometries.push(geom);
+        };
+
+        // Y normalized coordinate translation based on Y_norm = -(Y_svg - 47.5) / 10
+        // I Cap Top
+        addSegment([[-1.0, 3.25], [1.0, 3.25], [1.0, 2.75], [-1.0, 2.75]]);
+        // I Cap Bot
+        addSegment([[-1.0, -2.75], [1.0, -2.75], [1.0, -3.25], [-1.0, -3.25]]);
+        // I Pillar
+        addSegment([[-0.3, 2.75], [0.3, 2.75], [0.3, -2.75], [-0.3, -2.75]]);
+        // V Left Wing
+        addSegment([[-3.2, 2.55], [-2.4, 2.55], [-0.6, -1.75], [-1.4, -1.75]]);
+        // V Right Wing
+        addSegment([[3.2, 2.55], [2.4, 2.55], [0.6, -1.75], [1.4, -1.75]]);
+
+        // Materials setup
+        const coreMaterial = new THREE.MeshStandardMaterial({
+            color: 0xffffff,        // Pure solid white
+            roughness: 0.35,        // Smooth matte ceramic/porcelain finish
+            metalness: 0.05,
+            side: THREE.DoubleSide
+        });
+
+        const glassMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.45,          // Clear white physical glass shell
+            transmission: 0.9,      // High transmission index
+            roughness: 0.05,        // Polished finish
+            metalness: 0.05,
+            ior: 1.55,              // Glass physical refraction index
+            thickness: 0.6,
+            specularIntensity: 1.0,
+            specularColor: 0xffffff,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.05,
+            side: THREE.DoubleSide
+        });
+
+        // Assembly
+        const logoGroup = new THREE.Group();
+        const innerGroup = new THREE.Group();
+        const outerGroup = new THREE.Group();
+
+        geometries.forEach(geom => {
+            const coreMesh = new THREE.Mesh(geom, coreMaterial);
+            coreMesh.scale.set(0.9, 0.9, 0.85);
+            innerGroup.add(coreMesh);
+
+            const glassMesh = new THREE.Mesh(geom, glassMaterial);
+            glassMesh.scale.set(1.03, 1.03, 1.15);
+            outerGroup.add(glassMesh);
+        });
+
+        logoGroup.add(innerGroup);
+        logoGroup.add(outerGroup);
+        scene.add(logoGroup);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Bright white ambient
+        scene.add(ambientLight);
+
+        const pointLight1 = new THREE.PointLight(0xffffff, 3.0, 30); // Pure white key highlight
+        pointLight1.position.set(5, 5, 4);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xf1f5f9, 2.5, 30); // Soft silver secondary fill reflection
+        pointLight2.position.set(-5, -5, 4);
+        scene.add(pointLight2);
+
+        // Interactive compiler particles swirling around logo
+        const particleCount = 75;
+        const particleGeometry = new THREE.BufferGeometry();
+        const particlePositions = new Float32Array(particleCount * 3);
+        const particleAngles = [];
+        const particleRadii = [];
+        const particleSpeeds = [];
+        const particleYOffsets = [];
+
+        for (let i = 0; i < particleCount; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 2.4 + Math.random() * 1.5;
+            const y = (Math.random() - 0.5) * 6.5;
+
+            particlePositions[i * 3] = Math.cos(angle) * radius;
+            particlePositions[i * 3 + 1] = y;
+            particlePositions[i * 3 + 2] = Math.sin(angle) * radius;
+
+            particleAngles.push(angle);
+            particleRadii.push(radius);
+            particleSpeeds.push(0.003 + Math.random() * 0.006);
+            particleYOffsets.push(y);
+        }
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+        const particleMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,        // Glowing white data nodes
+            size: 0.05,             // Microscopic nodes
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.AdditiveBlending
+        });
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        // Interactive parameters
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let isLogoHovered = false;
+
+        logoContainer.addEventListener('mouseenter', () => {
+            isLogoHovered = true;
+        });
+
+        logoContainer.addEventListener('mouseleave', () => {
+            isLogoHovered = false;
+            targetRotationX = 0;
+            targetRotationY = 0;
+        });
+
+        logoContainer.addEventListener('mousemove', (e) => {
+            const rect = logoContainer.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const x = (e.clientX - centerX) / (rect.width / 2);
+            const y = (e.clientY - centerY) / (rect.height / 2);
+            
+            // Map to rotation angles
+            targetRotationX = -y * 0.55;
+            targetRotationY = x * 0.55;
+        });
+
+        // Animation loop
+        const clock = new THREE.Clock();
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // Floating bounce motion
+            logoGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.12;
+
+            // Damped rotation interpolation (inertia)
+            logoGroup.rotation.x += (targetRotationX - logoGroup.rotation.x) * 0.08;
+            logoGroup.rotation.y += (targetRotationY - logoGroup.rotation.y) * 0.08;
+
+            // Ambient spin when idle
+            if (!isLogoHovered) {
+                logoGroup.rotation.y += 0.003;
+            }
+
+            // Animate orbiting particles
+            const positions = particles.geometry.attributes.position.array;
+            const currentSpeedMultiplier = isLogoHovered ? 2.5 : 1;
+            for (let i = 0; i < particleCount; i++) {
+                particleAngles[i] += particleSpeeds[i] * currentSpeedMultiplier;
+                positions[i * 3] = Math.cos(particleAngles[i]) * particleRadii[i];
+                positions[i * 3 + 1] = particleYOffsets[i] + Math.sin(elapsedTime * 2 + particleAngles[i]) * 0.15;
+                positions[i * 3 + 2] = Math.sin(particleAngles[i]) * particleRadii[i];
+            }
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            // Light oscillation
+            pointLight1.position.x = Math.sin(elapsedTime * 0.8) * 5;
+            pointLight1.position.z = Math.cos(elapsedTime * 0.8) * 5;
+            pointLight2.position.x = -Math.sin(elapsedTime * 0.8) * 5;
+            pointLight2.position.z = -Math.cos(elapsedTime * 0.8) * 5;
+
+            renderer.render(scene, camera);
+        };
+        animate();
+
+        // Reveal WebGL Canvas
+        setTimeout(() => {
+            canvas.classList.add('loaded');
+            logoContainer.classList.add('webgl-active');
+        }, 300);
+    };
+
+    // Run logo init
+    initThreeLogo();
 
     console.log("Vajra Infotech Landing Script Initialized");
 });
