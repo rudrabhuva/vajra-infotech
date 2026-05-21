@@ -361,10 +361,15 @@
             
             if (activeLink && indicator) {
                 const moveIndicator = (element) => {
-                    const rect = element.getBoundingClientRect();
+                    const targetRect = element.getBoundingClientRect();
                     const navRect = document.getElementById('mainNav').getBoundingClientRect();
-                    indicator.style.width = `${rect.width}px`;
-                    indicator.style.left = `${rect.left - navRect.left}px`;
+
+                    // Starts at the very left edge of the screen (0 relative to viewport)
+                    const leftOffset = -navRect.left;
+                    const spanWidth = targetRect.right - 20; // Aligns exactly with the text character end
+
+                    indicator.style.width = `${spanWidth}px`;
+                    indicator.style.left = `${leftOffset}px`;
                 };
                 
                 // Position instantly without transition on page load
@@ -404,8 +409,8 @@
                         if (homeTransLink && transitionIndicatorReverse) {
                             const rect = homeTransLink.getBoundingClientRect();
                             const navRect = document.getElementById('transitionNavReverse').getBoundingClientRect();
-                            transitionIndicatorReverse.style.width = `${rect.width}px`;
-                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left}px`;
+                            transitionIndicatorReverse.style.width = `${rect.width + 40}px`;
+                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left - 20}px`;
                         }
 
                         if (overlay) {

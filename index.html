@@ -72,40 +72,53 @@
         <div class="content-wrapper">
             <div class="brand-section">
                 <div class="brand-container" id="brandContainer">
-                    <h1 class="brand-name">VAJRA<br>INFOTECH</h1>
-                    <p class="brand-tagline">Building Software as Resilient as its Name.</p>
-                    
-                    <div class="cta-container">
-                        <a href="pages/contact.html" class="primary-cta-btn" id="mainCtaBtn">
-                            <span class="cta-text">Start a Project</span>
-                            <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
+                    <div class="brand-header-row">
+                        <div class="logo-section">
+                            <!-- Symmetrical Futuristic V & I Combination Monogram Logo -->
+                            <div class="vajra-v-logo">
+                                <canvas id="three-logo-canvas"></canvas>
+                                <svg class="v-svg" viewBox="0 0 100 100">
+                                    <!-- The letter "I" (Top Cap, Bottom Cap, and Central Pillar) -->
+                                    <path class="v-segment i-cap-top" d="M 40,15 L 60,15 L 60,20 L 40,20 Z" fill="#ffffff" />
+                                    <path class="v-segment i-cap-bot" d="M 40,75 L 60,75 L 60,80 L 40,80 Z" fill="#ffffff" />
+                                    <path class="v-segment i-pillar" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="#ffffff" />
+
+                                    <!-- The letter "V" (Left Wing and Right Wing) -->
+                                    <path class="v-segment outer-v-left" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="#ffffff" />
+                                    <path class="v-segment outer-v-right" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="#ffffff" />
+
+                                    <!-- High-Voltage Energy Tracing Paths (Traced precisely over the monogram elements) -->
+                                    <path class="v-current cur-left" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="none" />
+                                    <path class="v-current cur-right-1" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="none" />
+                                    <path class="v-current cur-right-2" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="none" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="brand-text-column">
+                            <h1 class="brand-name">VAJRA<br>INFOTECH</h1>
+                            <p class="brand-tagline">Building Software as Resilient as its Name.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="logo-section">
-                <!-- Symmetrical Futuristic V & I Combination Monogram Logo -->
-                <div class="vajra-v-logo">
-                    <canvas id="three-logo-canvas"></canvas>
-                    <svg class="v-svg" viewBox="0 0 100 100">
-                        <!-- The letter "I" (Top Cap, Bottom Cap, and Central Pillar) -->
-                        <path class="v-segment i-cap-top" d="M 40,15 L 60,15 L 60,20 L 40,20 Z" fill="#ffffff" />
-                        <path class="v-segment i-cap-bot" d="M 40,75 L 60,75 L 60,80 L 40,80 Z" fill="#ffffff" />
-                        <path class="v-segment i-pillar" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="#ffffff" />
+                    <div class="brand-sub-content">
+                        <div class="typing-container">
+                            <span class="status-dot"></span>
+                            <span class="prompt-prefix">sys@vajra:~$</span>
+                            <span class="typing-dynamic"></span><span class="typing-cursor">|</span>
+                        </div>
 
-                        <!-- The letter "V" (Left Wing and Right Wing) -->
-                        <path class="v-segment outer-v-left" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="#ffffff" />
-                        <path class="v-segment outer-v-right" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="#ffffff" />
-
-                        <!-- High-Voltage Energy Tracing Paths (Traced precisely over the monogram elements) -->
-                        <path class="v-current cur-left" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="none" />
-                        <path class="v-current cur-right-1" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="none" />
-                        <path class="v-current cur-right-2" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="none" />
-                    </svg>
+                        <div class="cta-container">
+                            <a href="pages/contact.html" class="primary-cta-btn" id="mainCtaBtn">
+                                <span class="cta-text">Start a Project</span>
+                                <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

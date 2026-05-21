@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const leftVal = indicator.style.left || '0px';
                 indicator.style.setProperty('--indicator-left', leftVal);
             };
-            
+
             syncMask();
             const observer = new MutationObserver(syncMask);
             observer.observe(indicator, { attributes: true, attributeFilter: ['style'] });
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const video = document.getElementById('bg-video');
-    
+
     // Increase video speed slightly (1.3x) for a snappier transition reveal
     if (video) {
         video.playbackRate = 1.3;
@@ -85,15 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptText = (element, targetText, duration = 1600) => {
         const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+=-/\\";
         let start = null;
-        
+
         // Pre-generate organic, scattered reveal thresholds for each character index
         const thresholds = Array.from({ length: targetText.length }, () => Math.random() * 0.85);
-        
+
         const step = (timestamp) => {
             if (!start) start = timestamp;
             const progress = timestamp - start;
             const percent = Math.min(progress / duration, 1);
-            
+
             let output = "";
             for (let i = 0; i < targetText.length; i++) {
                 if (targetText[i] === "\n") {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     output += chars[Math.floor(Math.random() * chars.length)];
                 }
             }
-            
+
             element.innerHTML = output;
             if (progress < duration) {
                 requestAnimationFrame(step);
@@ -144,6 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initialize mercury indicator on the active link
         setTimeout(initMercury, 2500);
+
+        // Start typing animation
+        initTypewriter();
     };
 
     const initDataStreams = () => {
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hexChars = "0123456789ABCDEF";
         const generateHex = () => {
             let res = "0x";
-            for(let i=0; i<4; i++) res += hexChars[Math.floor(Math.random() * 16)];
+            for (let i = 0; i < 4; i++) res += hexChars[Math.floor(Math.random() * 16)];
             return res;
         };
         const metrics = ["SYS_LOAD:", "REQ/S:", "CPU:", "MEM:", "NET_IO:", "PING:", "UPTIME:", "PKT/S:"];
@@ -177,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Fixed horizontal slot positions — prevents any overlap
         const slots = [
-            { left: '15%', align: 'left'  },
+            { left: '15%', align: 'left' },
             { left: '50%', align: 'center' },
-            { left: '82%', align: 'right'  },
+            { left: '82%', align: 'right' },
         ];
 
         panels.forEach((panel, idx) => {
@@ -244,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bgLayer.insertBefore(canvas, bgLayer.firstChild); // Insert as first child behind glass panels
             }
         }
-        
+
         const ctx = canvas.getContext('2d');
         const gridSize = 40; // Reduced size (from 80 to 40) for an intricate, high-density cybernetic grid pattern
         let streaks = [];
@@ -476,11 +479,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.querySelectorAll('.main-nav a');
 
         const moveIndicator = (element) => {
-            const rect = element.getBoundingClientRect();
+            const targetRect = element.getBoundingClientRect();
             const navRect = document.getElementById('mainNav').getBoundingClientRect();
 
-            indicator.style.width = `${rect.width + 40}px`;
-            indicator.style.left = `${rect.left - navRect.left - 20}px`;
+            // Starts at the very left edge of the screen (0 relative to viewport)
+            const leftOffset = -navRect.left;
+            const spanWidth = targetRect.right - 20; // Aligns exactly with the text character end
+
+            indicator.style.width = `${spanWidth}px`;
+            indicator.style.left = `${leftOffset}px`;
         };
 
         // Set initial position instantly without transition
@@ -490,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Force a reflow
             indicator.offsetHeight;
             indicator.style.opacity = '1';
-            
+
             // Restore hover slide transition
             setTimeout(() => {
                 indicator.classList.remove('no-transition');
@@ -652,14 +659,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             if (window.isTransitioning) return;
             window.isTransitioning = true;
-            
-            // 1. Synchronize the mercury indicator
+
+            // 1. Synchronize the mercury indicator (spans from Home to Services text end)
             const serviceTransLink = document.querySelector('#transitionNav a[href="pages/service.html"]');
-            if (serviceTransLink && transitionIndicator) {
+            const homeTransLink = document.querySelector('#transitionNav a[href="index.html"]');
+            if (serviceTransLink && homeTransLink && transitionIndicator) {
                 const rect = serviceTransLink.getBoundingClientRect();
                 const navRect = document.getElementById('transitionNav').getBoundingClientRect();
-                transitionIndicator.style.width = `${rect.width + 40}px`;
-                transitionIndicator.style.left = `${rect.left - navRect.left - 20}px`;
+                transitionIndicator.style.left = `${-navRect.left}px`;
+                transitionIndicator.style.width = `${rect.right - 20}px`;
             }
 
             // 2. Set sessionStorage flag for service.html to slide-in from right
@@ -696,17 +704,18 @@ document.addEventListener('DOMContentLoaded', () => {
         productsLink.addEventListener('click', (e) => {
             e.preventDefault();
             performPageTransition(
-                'product.html',
+                'pages/product.html',
                 transitionOverlayProduct,
                 'style',
                 () => {
                     const productTransLink = document.querySelector('#transitionNavProduct a[href="pages/product.html"]');
+                    const homeTransLink = document.querySelector('#transitionNavProduct a[href="index.html"]');
                     const transitionIndicatorProduct = document.getElementById('transitionIndicatorProduct');
-                    if (productTransLink && transitionIndicatorProduct) {
+                    if (productTransLink && homeTransLink && transitionIndicatorProduct) {
                         const rect = productTransLink.getBoundingClientRect();
                         const navRect = document.getElementById('transitionNavProduct').getBoundingClientRect();
-                        transitionIndicatorProduct.style.width = `${rect.width + 40}px`;
-                        transitionIndicatorProduct.style.left = `${rect.left - navRect.left - 20}px`;
+                        transitionIndicatorProduct.style.left = `${-navRect.left}px`;
+                        transitionIndicatorProduct.style.width = `${rect.right - 20}px`;
                     }
                 }
             );
@@ -720,17 +729,18 @@ document.addEventListener('DOMContentLoaded', () => {
         processLink.addEventListener('click', (e) => {
             e.preventDefault();
             performPageTransition(
-                'process.html',
+                'pages/process.html',
                 transitionOverlayProcess,
                 'style',
                 () => {
                     const processTransLink = document.querySelector('#transitionNavProcess a[href="pages/process.html"]');
+                    const homeTransLink = document.querySelector('#transitionNavProcess a[href="index.html"]');
                     const transitionIndicatorProcess = document.getElementById('transitionIndicatorProcess');
-                    if (processTransLink && transitionIndicatorProcess) {
+                    if (processTransLink && homeTransLink && transitionIndicatorProcess) {
                         const rect = processTransLink.getBoundingClientRect();
                         const navRect = document.getElementById('transitionNavProcess').getBoundingClientRect();
-                        transitionIndicatorProcess.style.width = `${rect.width + 40}px`;
-                        transitionIndicatorProcess.style.left = `${rect.left - navRect.left - 20}px`;
+                        transitionIndicatorProcess.style.left = `${-navRect.left}px`;
+                        transitionIndicatorProcess.style.width = `${rect.right - 20}px`;
                     }
                 }
             );
@@ -744,17 +754,18 @@ document.addEventListener('DOMContentLoaded', () => {
         aboutLink.addEventListener('click', (e) => {
             e.preventDefault();
             performPageTransition(
-                'about.html',
+                'pages/about.html',
                 transitionOverlayAbout,
                 'style',
                 () => {
                     const aboutTransLink = document.querySelector('#transitionNavAbout a[href="pages/about.html"]');
+                    const homeTransLink = document.querySelector('#transitionNavAbout a[href="index.html"]');
                     const transitionIndicatorAbout = document.getElementById('transitionIndicatorAbout');
-                    if (aboutTransLink && transitionIndicatorAbout) {
+                    if (aboutTransLink && homeTransLink && transitionIndicatorAbout) {
                         const rect = aboutTransLink.getBoundingClientRect();
                         const navRect = document.getElementById('transitionNavAbout').getBoundingClientRect();
-                        transitionIndicatorAbout.style.width = `${rect.width + 40}px`;
-                        transitionIndicatorAbout.style.left = `${rect.left - navRect.left - 20}px`;
+                        transitionIndicatorAbout.style.left = `${-navRect.left}px`;
+                        transitionIndicatorAbout.style.width = `${rect.right - 20}px`;
                     }
                 }
             );
@@ -762,27 +773,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const contactLink = document.getElementById('contact-link');
+    const mainCtaBtn = document.getElementById('mainCtaBtn');
     const transitionOverlayContact = document.getElementById('page-transition-overlay-contact');
 
-    if (contactLink && transitionOverlayContact) {
-        contactLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            performPageTransition(
-                'contact.html',
-                transitionOverlayContact,
-                'style',
-                () => {
-                    const contactTransLink = document.querySelector('#transitionNavContact a[href="pages/contact.html"]');
-                    const transitionIndicatorContact = document.getElementById('transitionIndicatorContact');
-                    if (contactTransLink && transitionIndicatorContact) {
-                        const rect = contactTransLink.getBoundingClientRect();
-                        const navRect = document.getElementById('transitionNavContact').getBoundingClientRect();
-                        transitionIndicatorContact.style.width = `${rect.width + 40}px`;
-                        transitionIndicatorContact.style.left = `${rect.left - navRect.left - 20}px`;
-                    }
+    const triggerContactTransition = (e) => {
+        e.preventDefault();
+        performPageTransition(
+            'pages/contact.html',
+            transitionOverlayContact,
+            'style',
+            () => {
+                const contactTransLink = document.querySelector('#transitionNavContact a[href="pages/contact.html"]');
+                const homeTransLink = document.querySelector('#transitionNavContact a[href="index.html"]');
+                const transitionIndicatorContact = document.getElementById('transitionIndicatorContact');
+                if (contactTransLink && homeTransLink && transitionIndicatorContact) {
+                    const rect = contactTransLink.getBoundingClientRect();
+                    const navRect = document.getElementById('transitionNavContact').getBoundingClientRect();
+                    transitionIndicatorContact.style.left = `${-navRect.left}px`;
+                    transitionIndicatorContact.style.width = `${rect.right - 20}px`;
                 }
-            );
-        });
+            }
+        );
+    };
+
+    if (contactLink && transitionOverlayContact) {
+        contactLink.addEventListener('click', triggerContactTransition);
+    }
+    if (mainCtaBtn && transitionOverlayContact) {
+        mainCtaBtn.addEventListener('click', triggerContactTransition);
     }
 
     // 3D Inertia Parallax effect on background design layer
@@ -804,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Smooth inertia: 8% speed lerp
             currentX += (mouseX - currentX) * 0.08;
             currentY += (mouseY - currentY) * 0.08;
-            
+
             // Set typography spotlight shadow offsets (max displacement of 15px)
             document.documentElement.style.setProperty('--text-shadow-x', currentX * 15);
             document.documentElement.style.setProperty('--text-shadow-y', currentY * 15);
@@ -868,6 +886,60 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initMagneticTagline();
 
+    // --- Typing Animation for Sub-Tagline ---
+    const initTypewriter = () => {
+        const dynamicSpan = document.querySelector('.typing-dynamic');
+        if (!dynamicSpan) return;
+
+        // Prevent multiple typewriter loops
+        if (dynamicSpan.dataset.initialized) return;
+        dynamicSpan.dataset.initialized = 'true';
+
+        const words = [
+            "Code Meets Creativity.",
+            "Where Innovation Becomes Reality.",
+            "We Don’t Just Build Apps — We Build Experiences.",
+            "Intelligent Software For Bold Ideas.",
+            "Creating Digital Products That Stand Out.",
+            "Innovation Engineered For Growth.",
+            "Crafted With Code. Driven By Vision.",
+            "Modern Problems Need Powerful Technology.",
+            "Future-Ready Software Starts Here.",
+            "We Transform Concepts Into Digital Reality."
+        ];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 80;
+
+        const type = () => {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                dynamicSpan.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 35; // faster deleting
+            } else {
+                dynamicSpan.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 75; // normal typing
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typingSpeed = 2000; // pause at full word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typingSpeed = 500; // pause before typing next word
+            }
+
+            setTimeout(type, typingSpeed);
+        };
+
+        // Start typing
+        setTimeout(type, 1000);
+    };
+
     // Initialize Three.js 3D Quantum Compiler Core Logo
     const initThreeLogo = () => {
         const canvas = document.getElementById('three-logo-canvas');
@@ -875,7 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!canvas || !logoContainer || typeof THREE === 'undefined') return;
 
         const scene = new THREE.Scene();
-        
+
         // Use perspective camera
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
         camera.position.z = 10;
@@ -885,10 +957,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alpha: true,
             antialias: true
         });
-        
+
         const getPixelRatio = () => Math.min(window.devicePixelRatio, 2);
         renderer.setPixelRatio(getPixelRatio());
-        
+
         const resize = () => {
             const width = logoContainer.clientWidth;
             const height = logoContainer.clientHeight;
@@ -1048,7 +1120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerY = rect.top + rect.height / 2;
             const x = (e.clientX - centerX) / (rect.width / 2);
             const y = (e.clientY - centerY) / (rect.height / 2);
-            
+
             // Map to rotation angles
             targetRotationX = -y * 0.55;
             targetRotationY = x * 0.55;
@@ -1106,4 +1178,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Vajra Infotech Landing Script Initialized");
 });
-

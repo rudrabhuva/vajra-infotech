@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -436,10 +436,15 @@
 
             if (activeLink && indicator) {
                 const moveIndicator = (element) => {
-                    const rect = element.getBoundingClientRect();
+                    const targetRect = element.getBoundingClientRect();
                     const navRect = document.getElementById('mainNav').getBoundingClientRect();
-                    indicator.style.width = `${rect.width}px`;
-                    indicator.style.left = `${rect.left - navRect.left}px`;
+
+                    // Starts at the very left edge of the screen (0 relative to viewport)
+                    const leftOffset = -navRect.left;
+                    const spanWidth = targetRect.right - 20; // Aligns exactly with the text character end
+
+                    indicator.style.width = `${spanWidth}px`;
+                    indicator.style.left = `${leftOffset}px`;
                 };
 
                 // Position instantly without transition on page load
@@ -461,6 +466,35 @@
                     link.addEventListener('mouseleave', () => {
                         const currentActive = document.querySelector('.nav-active');
                         if (currentActive) moveIndicator(currentActive);
+                    });
+                });
+
+                // Transition to Home (Black sweep left-to-right)
+                const homeLinks = document.querySelectorAll('a[href="../index.html"]');
+                homeLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Override root canvas background color to match Home dark background
+                        document.body.style.setProperty('background-color', '#050505', 'important');
+                        document.documentElement.style.setProperty('background-color', '#050505', 'important');
+
+                        const overlay = document.getElementById('page-transition-overlay-reverse');
+                        
+                        const homeTransLink = document.querySelector('#transitionNavReverse a[href="../index.html"]');
+                        const transitionIndicatorReverse = document.getElementById('transitionIndicatorReverse');
+                        if (homeTransLink && transitionIndicatorReverse) {
+                            const rect = homeTransLink.getBoundingClientRect();
+                            const navRect = document.getElementById('transitionNavReverse').getBoundingClientRect();
+                            transitionIndicatorReverse.style.width = `${rect.width + 40}px`;
+                            transitionIndicatorReverse.style.left = `${rect.left - navRect.left - 20}px`;
+                        }
+
+                        if (overlay) {
+                            overlay.style.width = '100vw';
+                            setTimeout(() => { window.location.href = '../index.html'; }, 1100);
+                        } else {
+                            window.location.href = '../index.html';
+                        }
                     });
                 });
 

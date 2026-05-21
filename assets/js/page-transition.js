@@ -347,4 +347,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     };
     initNavWheelScroll();
+
+    // Setup automatic synchronization of mask phase to eliminate any mismatch across all pages and transition overlays
+    const observeAllIndicators = () => {
+        const indicators = document.querySelectorAll('.mercury-indicator');
+        indicators.forEach(indicator => {
+            const syncMask = () => {
+                const leftVal = indicator.style.left || '0px';
+                indicator.style.setProperty('--indicator-left', leftVal);
+            };
+
+            syncMask();
+            const observer = new MutationObserver(syncMask);
+            observer.observe(indicator, { attributes: true, attributeFilter: ['style'] });
+        });
+    };
+    observeAllIndicators();
 });

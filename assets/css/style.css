@@ -384,32 +384,62 @@ html {
 
 .content-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
 
 /* Branding */
 .brand-container {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateY(30px);
     transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .brand-container.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+}
+
+.brand-header-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    margin-bottom: 1.5rem;
+}
+
+.brand-sub-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    width: 100%;
+}
+
+.brand-text-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .brand-name {
     font-family: var(--font-brand);
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5.2vw, 4.2rem);
     font-weight: 700;
     color: var(--primary-color);
     line-height: 1.1;
     letter-spacing: -2px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
+    text-align: left;
     /* Dynamic light sweep text-shadow spotlight */
     text-shadow:
         calc(var(--text-shadow-x, 0) * -1px) calc(var(--text-shadow-y, 0) * -1px) 15px rgba(255, 255, 255, 0.45),
@@ -419,17 +449,101 @@ html {
 
 .brand-tagline {
     font-family: var(--font-tech);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     /* Adjusted for monospace clarity */
     color: var(--primary-color);
     font-weight: 300;
     letter-spacing: 0.2rem;
+    margin-top: 0.8rem;
     /* Dynamic light sweep text-shadow spotlight for tagline */
     text-shadow:
         calc(var(--text-shadow-x, 0) * -0.5px) calc(var(--text-shadow-y, 0) * -0.5px) 10px rgba(255, 255, 255, 0.3),
         2px 2px 10px rgba(0, 0, 0, 0.8);
     opacity: 0.8;
     transition: text-shadow 0.1s ease-out;
+}
+
+.typing-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 1.3rem;
+    padding: 8px 16px;
+    background: rgba(15, 15, 15, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    letter-spacing: 0.15rem;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.6), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 680px;
+    max-width: 90vw;
+    box-sizing: border-box;
+}
+
+.typing-container:hover {
+    background: rgba(20, 20, 20, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.8), 
+        0 0 15px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #00ff88; /* Cyber Green */
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00ff88, 0 0 24px rgba(0, 255, 136, 0.4);
+    animation: pulseStatus 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes pulseStatus {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.prompt-prefix {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+    letter-spacing: 0.08rem;
+    font-size: 1.0rem;
+}
+
+.typing-static {
+    opacity: 0.7;
+}
+
+.typing-dynamic {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.typing-cursor {
+    display: inline-block;
+    color: #ffffff;
+    margin-left: 2px;
+    animation: blinkCursor 0.8s infinite alternate;
+}
+
+@keyframes blinkCursor {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 /* CTA Button */
@@ -459,13 +573,13 @@ html {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 16px 40px;
+    padding: 12px 30px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 100px;
     color: #ffffff;
     font-family: var(--font-tech);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -520,21 +634,24 @@ html {
 /* Logo Section */
 .logo-section {
     opacity: 0;
-    transform: translateX(30px);
-    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+    transform: scale(0.9);
+    transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
     pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
 }
 
 .logo-section.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1);
 }
 
 .vajra-v-logo {
-    width: clamp(200px, 35vw, 420px);
-    height: clamp(200px, 35vw, 420px);
+    width: 200px;
+    height: 200px;
     position: relative;
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -701,9 +818,9 @@ html {
 /* Mercury Indicator */
 .mercury-indicator {
     position: absolute;
-    bottom: -10px; /* Position elegantly right below the text characters */
+    bottom: -20px; /* Position elegantly to center the 40px wave on the 60px midline */
     left: 0;
-    height: 20px; /* Accommodate repeating symmetric wave cycles */
+    height: 40px; /* Accommodate repeating symmetric wave cycles */
     background: var(--nav-indicator-color);
     border-radius: 0;
     filter: drop-shadow(0 0 6px var(--nav-indicator-color));
@@ -711,11 +828,11 @@ html {
     opacity: 0;
     z-index: 2;
     
-    /* Perfect Symmetric Repeating Sine Waveform Mask - THICK (stroke-width: 3.5) */
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    -webkit-mask-size: 40px 20px;
-    mask-size: 40px 20px;
+    /* Premium Big Oscillation Asymmetric Seamless Repeating Waveform Mask - THICK (stroke-width: 3.5) - 240px Wide Period */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath d='M0,20 C48,2 72,38 120,16 C168,2 192,38 240,20' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath d='M0,20 C48,2 72,38 120,16 C168,2 192,38 240,20' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    -webkit-mask-size: 240px 40px;
+    mask-size: 240px 40px;
     -webkit-mask-repeat: repeat-x;
     mask-repeat: repeat-x;
     
@@ -736,20 +853,20 @@ html {
 .indicator-track {
     display: block !important; /* Always display the full continuous wave track */
     position: absolute;
-    bottom: 50px; /* Aligns mathematically with bottom: -10px of bottom: 60px main-nav */
+    bottom: 40px; /* Aligns mathematically with bottom: -20px of bottom: 60px main-nav */
     left: 0;
     right: 0;
     width: 100%;
-    height: 20px;
+    height: 40px;
     background: var(--nav-track-color); /* Theme-toggled adaptive track color */
     z-index: 1;
     transition: opacity 1s ease 2s, background 0.3s ease;
     
-    /* Perfect Symmetric Repeating Sine Waveform Mask - THIN */
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath d='M0,10 Q10,0 20,10 T40,10' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    -webkit-mask-size: 40px 20px;
-    mask-size: 40px 20px;
+    /* Premium Big Oscillation Asymmetric Seamless Repeating Waveform Mask - THIN - 240px Wide Period */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath d='M0,20 C48,2 72,38 120,16 C168,2 192,38 240,20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 40'%3E%3Cpath d='M0,20 C48,2 72,38 120,16 C168,2 192,38 240,20' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    -webkit-mask-size: 240px 40px;
+    mask-size: 240px 40px;
     -webkit-mask-repeat: repeat-x;
     mask-repeat: repeat-x;
     opacity: 0;
@@ -961,11 +1078,11 @@ body.service-page {
     background-color: #d3dbe4;
 
     /* Light Page Navigation Line Custom Variables */
-    --nav-indicator-color: #020202;
-    /* Stunning cyber blue active accent */
-    --nav-indicator-glow: rgba(9, 132, 227, 0.4);
-    --nav-track-color: rgba(9, 132, 227, 0.25);
-    /* Harmonized ambient blue wave */
+    --nav-indicator-color: #000000;
+    /* Stunning cyber black active accent */
+    --nav-indicator-glow: rgba(0, 0, 0, 0.15);
+    --nav-track-color: rgba(0, 0, 0, 0.12);
+    /* Harmonized ambient black wave */
 }
 
 body.service-page #bg-design-layer,
