@@ -4184,3 +4184,87 @@ html {
     85% { opacity: 0.5; }
     100% { transform: translateY(100%); opacity: 0; }
 }
+
+/* ==========================================================================
+   Smooth Page Content Transitions (SPA-like Directional Sliding)
+   ========================================================================== */
+
+/* Background color blending */
+.bg-transition-blend {
+    transition: background-color 0.6s cubic-bezier(0.25, 1, 0.5, 1), background 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* OUTGOING (Leaving Page) */
+/* Sliding out to the left (when going forward to higher index) */
+.slide-out-left {
+    transform: translateX(-15vw) !important;
+    opacity: 0 !important;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out !important;
+    pointer-events: none;
+}
+/* Sliding out to the right (when going backward to lower index) */
+.slide-out-right {
+    transform: translateX(15vw) !important;
+    opacity: 0 !important;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out !important;
+    pointer-events: none;
+}
+
+/* INCOMING (Entering Page) */
+/* Starts off-screen left */
+.slide-in-left-start {
+    transform: translateX(-15vw) !important;
+    opacity: 0 !important;
+}
+/* Starts off-screen right */
+.slide-in-right-start {
+    transform: translateX(15vw) !important;
+    opacity: 0 !important;
+}
+
+/* Active animation state bringing content to center */
+.slide-in-left-active,
+.slide-in-right-active {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease-out !important;
+}
+
+/* Prevent FOUC flash by hiding elements before JS adds start classes */
+html.is-sliding-in-right .service-content,
+html.is-sliding-in-right .service-header,
+html.is-sliding-in-right #bg-design-layer,
+html.is-sliding-in-right #hero-video-container,
+html.is-sliding-in-right #overlay,
+html.is-sliding-in-right #scrollHint {
+    opacity: 0 !important;
+    transform: translateX(15vw) !important;
+}
+
+html.is-sliding-in-left .service-content,
+html.is-sliding-in-left .service-header,
+html.is-sliding-in-left #bg-design-layer,
+html.is-sliding-in-left #hero-video-container,
+html.is-sliding-in-left #overlay,
+html.is-sliding-in-left #scrollHint {
+    opacity: 0 !important;
+    transform: translateX(-15vw) !important;
+}
+
+/* Lag-free Soft Background Transition */
+.warp-speed-left {
+    transform: scale(1.03) translateX(-1vw) !important;
+    opacity: 0.3 !important;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.5s ease-out !important;
+}
+.warp-speed-right {
+    transform: scale(1.03) translateX(1vw) !important;
+    opacity: 0.3 !important;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.5s ease-out !important;
+}
+
+/* Remove legacy transition overlays to prevent side screen artifacts */
+[id^="page-transition-overlay"],
+#page-reveal-overlay {
+    display: none !important;
+}

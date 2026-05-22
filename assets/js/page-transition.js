@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Define the Master Navigation Map
     const pageIndexMap = {
+        'index.html': { index: 0, theme: 'dark' },
         'service.html': { index: 1, theme: 'light' },
         'product.html': { index: 2, theme: 'dark' },
         'process.html': { index: 3, theme: 'light' },
@@ -91,6 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const serviceHeader = document.querySelector('.service-header');
         if (serviceHeader) els.push(serviceHeader);
         
+        // Add index.html specific elements
+        const bgDesignLayer = document.getElementById('bg-design-layer');
+        if (bgDesignLayer) els.push(bgDesignLayer);
+        const heroVideo = document.getElementById('hero-video-container');
+        if (heroVideo) els.push(heroVideo);
+        const overlay = document.getElementById('overlay');
+        if (overlay) els.push(overlay);
+        const scrollHint = document.getElementById('scrollHint');
+        if (scrollHint) els.push(scrollHint);
+        
         return els;
     };
 
@@ -125,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeClass = isFromLeft ? 'slide-in-right-active' : 'slide-in-left-active';
 
         const foregroundElements = getForegroundElements();
-        const bgContainer = document.querySelector('.neu-bg-container');
+        const bgContainer = document.querySelector('.neu-bg-container') || document.getElementById('bg-design-layer');
 
         // Apply instant off-screen start position
         foregroundElements.forEach(el => el.classList.add(startClass));
@@ -199,7 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             const targetHref = this.getAttribute('href');
-            const targetPageData = pageIndexMap[targetHref];
+            const targetPathName = targetHref.split('/').pop() || 'index.html';
+            const targetPageData = pageIndexMap[targetPathName];
 
             // Only intercept if navigating to one of the 5 synchronized pages
             if (targetPageData) {
@@ -214,30 +226,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     'about.html': 'About',
                     'contact.html': 'Contact'
                 };
-                const suffix = navIdMap[targetHref];
-                const transLink = document.querySelector(`#transitionNav${suffix} a[href="${targetHref}"]`);
-                const indicator = document.getElementById(`transitionIndicator${suffix}`);
+                const suffix = navIdMap[targetPathName];
+                const transLink = document.querySelector(`#transitionNav${suffix || ''} a[href="${targetHref}"]`);
+                const indicator = document.getElementById(`transitionIndicator${suffix || ''}`);
                 
                 // Extra check for Reverse variations
-                let activeNav = document.getElementById(`transitionNav${suffix}`);
-                if(!activeNav) {
-                    activeNav = document.getElementById(`transitionNav${suffix}Reverse`);
-                    if(activeNav) {
-                        const reverseIndicator = document.getElementById(`transitionIndicator${suffix}Reverse`);
-                        const reverseTransLink = document.querySelector(`#transitionNav${suffix}Reverse a[href="${targetHref}"]`);
-                        if(reverseTransLink && reverseIndicator) {
-                            const rect = reverseTransLink.getBoundingClientRect();
-                            const navRect = activeNav.getBoundingClientRect();
-                            reverseIndicator.style.width = `${rect.width + 40}px`;
-                            reverseIndicator.style.left = `${rect.left - navRect.left - 20}px`;
-                        }
+                    const activeNav = document.getElementById(`transitionNav${suffix || ''}`) || document.getElementById(`transitionNav${suffix || ''}Reverse`);
+                    if (transLink && indicator && activeNav) {
+                        const rect = transLink.getBoundingClientRect();
+                        const navRect = activeNav.getBoundingClientRect();
+                        indicator.style.width = `${rect.width + 40}px`;
+                        indicator.style.left = `${rect.left - navRect.left - 20}px`;
                     }
-                } else if (transLink && indicator) {
-                    const rect = transLink.getBoundingClientRect();
-                    const navRect = activeNav.getBoundingClientRect();
-                    indicator.style.width = `${rect.width + 40}px`;
-                    indicator.style.left = `${rect.left - navRect.left - 20}px`;
-                }
 
 
                 // 2. Set SessionStorage Flags for the destination page
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.add('bg-transition-blend');
                 document.documentElement.classList.add('bg-transition-blend');
                 
-                const bgContainer = document.querySelector('.neu-bg-container');
+                const bgContainer = document.querySelector('.neu-bg-container') || document.getElementById('bg-design-layer');
                 if (bgContainer) {
                     bgContainer.classList.add('bg-transition-blend');
                 }

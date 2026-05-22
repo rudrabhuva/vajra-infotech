@@ -20,6 +20,20 @@
             background-color: #050505 !important;
         }
     </style>
+    <script>
+        (function() {
+            const fromIndex = sessionStorage.getItem('fromPageIndex');
+            if (fromIndex !== null) {
+                // index.html is always index 0, so any fromIndex > 0 means coming from right
+                const isFromLeft = false; 
+                document.documentElement.classList.add(isFromLeft ? 'is-sliding-in-right' : 'is-sliding-in-left');
+                const fromTheme = sessionStorage.getItem('fromPageTheme');
+                const startColor = fromTheme === 'dark' ? '#161616' : '#d3dbe4';
+                document.documentElement.style.backgroundColor = startColor;
+                document.write('<style>html, body { background-color: ' + startColor + ' !important; }</style>');
+            }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vajra Infotech | Excellence in Tech</title>
@@ -307,6 +321,7 @@
     <!-- Three.js Library for WebGL 3D Logo Core -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/js/main.js?v=1.0.1"></script>
+    <script src="assets/js/page-transition.js"></script>
     <script src="assets/js/cursor.js"></script>
 </body>
 
