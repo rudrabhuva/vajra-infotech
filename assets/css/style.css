@@ -4235,7 +4235,7 @@ html.is-sliding-in-right .service-content,
 html.is-sliding-in-right .service-header,
 html.is-sliding-in-right #bg-design-layer,
 html.is-sliding-in-right #hero-video-container,
-html.is-sliding-in-right #overlay,
+html.is-sliding-in-right .content-wrapper,
 html.is-sliding-in-right #scrollHint {
     opacity: 0 !important;
     transform: translateX(15vw) !important;
@@ -4245,7 +4245,7 @@ html.is-sliding-in-left .service-content,
 html.is-sliding-in-left .service-header,
 html.is-sliding-in-left #bg-design-layer,
 html.is-sliding-in-left #hero-video-container,
-html.is-sliding-in-left #overlay,
+html.is-sliding-in-left .content-wrapper,
 html.is-sliding-in-left #scrollHint {
     opacity: 0 !important;
     transform: translateX(-15vw) !important;

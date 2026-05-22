@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bgDesignLayer) els.push(bgDesignLayer);
         const heroVideo = document.getElementById('hero-video-container');
         if (heroVideo) els.push(heroVideo);
-        const overlay = document.getElementById('overlay');
-        if (overlay) els.push(overlay);
+        const contentWrapper = document.querySelector('.content-wrapper');
+        if (contentWrapper) els.push(contentWrapper);
         const scrollHint = document.getElementById('scrollHint');
         if (scrollHint) els.push(scrollHint);
         
@@ -218,26 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 window.isTransitioning = true;
 
-                // 1. Sync the transition indicator if it exists
-                const navIdMap = {
-                    'service.html': 'Service',
-                    'product.html': 'Product',
-                    'process.html': 'Process',
-                    'about.html': 'About',
-                    'contact.html': 'Contact'
-                };
-                const suffix = navIdMap[targetPathName];
-                const transLink = document.querySelector(`#transitionNav${suffix || ''} a[href="${targetHref}"]`);
-                const indicator = document.getElementById(`transitionIndicator${suffix || ''}`);
+                // 1. Sync the main navigation indicator to the target link
+                const mainNav = document.getElementById('mainNav');
+                const mercuryIndicator = document.getElementById('mercuryIndicator');
+                const targetNavLink = document.querySelector(`#mainNav a[href="${targetHref}"]`);
                 
-                // Extra check for Reverse variations
-                    const activeNav = document.getElementById(`transitionNav${suffix || ''}`) || document.getElementById(`transitionNav${suffix || ''}Reverse`);
-                    if (transLink && indicator && activeNav) {
-                        const rect = transLink.getBoundingClientRect();
-                        const navRect = activeNav.getBoundingClientRect();
-                        indicator.style.width = `${rect.width + 40}px`;
-                        indicator.style.left = `${rect.left - navRect.left - 20}px`;
-                    }
+                if (mainNav && mercuryIndicator && targetNavLink) {
+                    const targetRect = targetNavLink.getBoundingClientRect();
+                    const navRect = mainNav.getBoundingClientRect();
+                    
+                    // Mercury indicator always starts from far left of screen and spans to the end of the text
+                    const leftOffset = -navRect.left;
+                    const spanWidth = targetRect.right - 20;
+                    
+                    mercuryIndicator.style.width = `${spanWidth}px`;
+                    mercuryIndicator.style.left = `${leftOffset}px`;
+                }
 
 
                 // 2. Set SessionStorage Flags for the destination page
