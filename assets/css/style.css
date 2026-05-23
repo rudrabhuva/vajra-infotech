@@ -39,6 +39,7 @@ html {
     overflow: hidden;
     background-color: var(--bg-dark);
     font-family: var(--font-main);
+    transition: background-color 1.5s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
 /* Background Design Layer */
@@ -408,10 +409,10 @@ html {
 
 .brand-header-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 45px;
+    gap: 25px;
     margin-bottom: 1.5rem;
 }
 
@@ -427,8 +428,8 @@ html {
 .brand-text-column {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 }
 
 .brand-name {
@@ -439,7 +440,7 @@ html {
     line-height: 1.1;
     letter-spacing: -2px;
     margin-bottom: 0;
-    text-align: left;
+    text-align: center;
     /* Dynamic light sweep text-shadow spotlight */
     text-shadow:
         calc(var(--text-shadow-x, 0) * -1px) calc(var(--text-shadow-y, 0) * -1px) 15px rgba(255, 255, 255, 0.45),
@@ -784,7 +785,7 @@ html {
 
 /* Navigation */
 .main-nav {
-    position: absolute;
+    position: fixed;
     bottom: 60px;
     left: 0;
     width: 100%;
@@ -795,6 +796,7 @@ html {
     transform: translateY(20px);
     transition: all 1.5s ease 1.5s;
     pointer-events: auto;
+    z-index: 100;
 }
 
 .main-nav.visible {
@@ -852,14 +854,14 @@ html {
 /* Repeating Static Symmetric Sine Wave Divider Track - THIN (stroke-width: 1.2) */
 .indicator-track {
     display: block !important; /* Always display the full continuous wave track */
-    position: absolute;
+    position: fixed;
     bottom: 40px; /* Aligns mathematically with bottom: -20px of bottom: 60px main-nav */
     left: 0;
     right: 0;
     width: 100%;
     height: 40px;
+    z-index: 95;
     background: var(--nav-track-color); /* Theme-toggled adaptive track color */
-    z-index: 1;
     transition: opacity 1s ease 2s, background 0.3s ease;
     
     /* Premium Big Oscillation Asymmetric Seamless Repeating Waveform Mask - THIN - 240px Wide Period */
@@ -1441,12 +1443,14 @@ body.service-page .indicator-track {
     background-color: var(--bg-dark);
 }
 
-.product-page .neu-bg-container {
+.product-page .neu-bg-container,
+#plain-black-section .neu-bg-container {
     background: radial-gradient(circle at 80% 80%, rgba(102, 0, 204, 0.08) 0%, #161616 60%);
 }
 
 /* Ambient Glowing Nebulas for Product Page */
-.product-page .ambient-glow-orb {
+.product-page .ambient-glow-orb,
+#plain-black-section .ambient-glow-orb {
     position: absolute;
     border-radius: 50%;
     filter: blur(100px);
@@ -1455,7 +1459,8 @@ body.service-page .indicator-track {
     will-change: transform;
 }
 
-.product-page .glow-blue {
+.product-page .glow-blue,
+#plain-black-section .glow-blue {
     width: 45vw;
     height: 45vw;
     top: 5vh;
@@ -1464,7 +1469,8 @@ body.service-page .indicator-track {
     animation: orbitGlow1 28s infinite ease-in-out alternate;
 }
 
-.product-page .glow-cyan {
+.product-page .glow-cyan,
+#plain-black-section .glow-cyan {
     width: 40vw;
     height: 40vw;
     bottom: -5vh;
@@ -1474,7 +1480,8 @@ body.service-page .indicator-track {
     animation-delay: -6s;
 }
 
-.product-page .glow-violet {
+.product-page .glow-violet,
+#plain-black-section .glow-violet {
     width: 50vw;
     height: 50vw;
     top: 25vh;
@@ -1527,7 +1534,8 @@ body.service-page .indicator-track {
     }
 }
 
-.product-page .neu-bg-container::after {
+.product-page .neu-bg-container::after,
+#plain-black-section .neu-bg-container::after {
     background: linear-gradient(to bottom,
             #161616 0%,
             #161616 15%,
@@ -1537,7 +1545,8 @@ body.service-page .indicator-track {
             #161616 100%);
 }
 
-.product-page .neu-block {
+.product-page .neu-block,
+#plain-black-section .neu-block {
     background: rgba(22, 22, 22, 0.6);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -1548,7 +1557,8 @@ body.service-page .indicator-track {
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.product-page .neu-block-inset {
+.product-page .neu-block-inset,
+#plain-black-section .neu-block-inset {
     background: rgba(22, 22, 22, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -4009,13 +4019,13 @@ html.is-sliding-in-left .service-header {
 
 @keyframes bobAndSpin {
     0% {
-        transform: translateY(-25px) rotate(0deg);
+        transform: rotate(0deg);
     }
     50% {
-        transform: translateY(25px) rotate(180deg);
+        transform: rotate(180deg);
     }
     100% {
-        transform: translateY(-25px) rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -4267,4 +4277,464 @@ html.is-sliding-in-left #scrollHint {
 [id^="page-transition-overlay"],
 #page-reveal-overlay {
     display: none !important;
+}
+
+/* ==========================================================================
+   Explore Stage Slide-up Layout & Interactions
+   ========================================================================== */
+
+#scrollable-stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: transform 1.8s cubic-bezier(0.2, 1, 0.2, 1);
+    z-index: 5;
+    overflow: visible; /* Allows the second viewport section to slide up from below */
+}
+
+#scrollable-stage.explore-active {
+    transform: translateY(-100vh);
+}
+
+/* Override background layer and video container to relative absolute positioning */
+#scrollable-stage #bg-design-layer {
+    position: absolute !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#scrollable-stage #hero-video-container {
+    position: absolute !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Explore Button & Bouncing Downwards Arrow */
+.explore-btn-container {
+    margin-top: 2.2rem;
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.explore-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: var(--font-tech);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.explore-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.explore-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.explore-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.explore-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: bounceDown 1.8s infinite ease-in-out;
+}
+
+.explore-btn:hover .explore-arrow {
+    animation: none;
+    transform: translateY(4px);
+}
+
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+/* Plain Black Section Layout */
+#plain-black-section {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #161616;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top to naturally sit in the upper half */
+    overflow: hidden;
+}
+
+#plain-black-section .neu-bg-container {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1 !important;
+}
+
+.plain-section-content {
+    position: relative;
+    z-index: 10; /* Pull content layer above background and glow elements */
+    width: 100%;
+    max-width: 820px; /* Reduced width for a more compact and elegant showcase card */
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh; /* Positions the showcase content beautifully in the upper half */
+}
+
+/* Ambient Backlight Glow */
+.accent-glow-top {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.05) 0%, rgba(138, 43, 226, 0.01) 50%, transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Glassmorphic Rectangular Card */
+.glass-showcase-card {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.012);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    z-index: 2;
+    
+    /* Dynamic Entrance States */
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    filter: blur(8px);
+    transition: all 1.8s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.explore-active .glass-showcase-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition-delay: 0.4s;
+}
+
+/* Left Card Block - Tech Image Frame */
+.card-graphic-block {
+    position: relative;
+    height: 100%;
+    min-height: 150px; /* More compact layout for a smaller showcase footprint */
+    overflow: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.glass-showcase-card:hover .card-image {
+    transform: scale(1.04);
+}
+
+.card-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 65%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+}
+
+/* Right Card Block - Copy & Typography details */
+.card-info-block {
+    padding: 10px 24px; /* Reduced padding for a tighter, high-density layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.card-badge {
+    font-family: var(--font-tech);
+    font-size: 0.65rem;
+    color: var(--nav-indicator-color, #00f3ff);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: rgba(0, 243, 255, 0.04);
+    border: 1px solid rgba(0, 243, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+}
+
+.card-title {
+    font-family: var(--font-brand);
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem); /* Reduced title size to fit smaller card */
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.card-desc {
+    font-family: var(--font-main);
+    font-size: clamp(0.78rem, 1.2vw, 0.85rem); /* Reduced description size to fit smaller card */
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.45;
+    margin-bottom: 0.75rem;
+}
+
+.card-meta {
+    display: flex;
+    gap: 24px;
+}
+
+.meta-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-tech);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.dot-blue { background-color: #00f3ff; box-shadow: 0 0 8px rgba(0, 243, 255, 0.8); }
+.dot-cyan { background-color: #8a2be2; box-shadow: 0 0 8px rgba(138, 43, 226, 0.8); }
+
+/* Return action block below card */
+.lower-action-block {
+    position: absolute;
+    bottom: 130px; /* Safely floating exactly above the fixed navbar and wave track */
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    transition: all 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+    z-index: 15; /* Sits above background layers and ambient glows */
+}
+
+.explore-active .lower-action-block {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0.8s;
+}
+
+/* Return Button Specs */
+.back-to-top-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 26px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.up-arrow {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover .up-arrow {
+    transform: translateY(-3px);
+}
+
+/* Homepage Brand Parallax Drift & Fade Out */
+.explore-active .brand-container {
+    opacity: 0 !important;
+    transform: translateY(-50px) !important;
+    pointer-events: none !important;
+    transition: opacity 1.5s cubic-bezier(0.2, 1, 0.2, 1), transform 1.5s cubic-bezier(0.2, 1, 0.2, 1) !important;
+}
+
+/* Glassmorphic Carousel Specifications */
+.glass-showcase-carousel-container {
+    width: 100%;
+    max-width: 820px; /* Matched to compact widescreen layout wrapper */
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    background: rgba(22, 22, 22, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    z-index: 2;
+    
+    /* Dynamic Entrance States */
+    opacity: 0;
+    transform: translateY(60px) scale(0.96);
+    filter: blur(8px);
+    transition: all 1.8s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.explore-active .glass-showcase-carousel-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    transition-delay: 0.4s;
+}
+
+.glass-showcase-carousel-track {
+    display: flex;
+    width: 400%; /* Holds 4 slides side-by-side (real 1, real 2, real 3, clone 1) */
+    transition: transform 0.85s cubic-bezier(0.25, 1, 0.2, 1);
+}
+
+.glass-showcase-carousel-track.no-transition {
+    transition: none !important;
+}
+
+.glass-showcase-carousel-track .glass-showcase-card {
+    flex: 0 0 25%;
+    width: 25%;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
+    /* Force active reveal override since parent handles the transition */
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+}
+
+/* Carousel Indicators / Dots styling */
+.carousel-dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 1.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.explore-active .carousel-dots-container {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+.carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    width: 18px;
+    border-radius: 4px;
+    background: var(--nav-indicator-color, #00f3ff);
+    box-shadow: 0 0 8px var(--nav-indicator-color, #00f3ff);
+}
+
+/* Responsive Configurations */
+@media (max-width: 768px) {
+    .plain-section-content {
+        margin-top: 5vh;
+        padding: 0 20px;
+    }
+    
+    .glass-showcase-carousel-container {
+        border-radius: 16px;
+    }
+    
+    .glass-showcase-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-graphic-block {
+        height: 220px;
+        min-height: 220px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .card-image-overlay {
+        background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.6) 100%);
+    }
+    
+    .card-info-block {
+        padding: 30px 25px;
+    }
 }

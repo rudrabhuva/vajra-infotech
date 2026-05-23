@@ -81,40 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Time in seconds when the smoke 'clears' (3.5s original / 1.3 speed = 2.7s)
     const REVEAL_TIME = 2.7;
 
-    // Decrypt/Scramble HUD Text boot sequence decrypter (Uniform Randomized Parallel Decryption)
-    const decryptText = (element, targetText, duration = 1600) => {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+=-/\\";
-        let start = null;
-
-        // Pre-generate organic, scattered reveal thresholds for each character index
-        const thresholds = Array.from({ length: targetText.length }, () => Math.random() * 0.85);
-
-        const step = (timestamp) => {
-            if (!start) start = timestamp;
-            const progress = timestamp - start;
-            const percent = Math.min(progress / duration, 1);
-
-            let output = "";
-            for (let i = 0; i < targetText.length; i++) {
-                if (targetText[i] === "\n") {
-                    output += "<br>";
-                } else if (targetText[i] === " ") {
-                    output += " ";
-                } else if (percent >= thresholds[i] || percent === 1) {
-                    output += targetText[i];
-                } else {
-                    output += chars[Math.floor(Math.random() * chars.length)];
-                }
-            }
-
-            element.innerHTML = output;
-            if (progress < duration) {
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
-    };
-
     const revealBranding = () => {
         // Mark intro as played in session storage
         sessionStorage.setItem('introPlayed', 'true');
@@ -127,14 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         brandContainer.classList.add('visible');
         mainNav.classList.add('visible');
-        logoSection.classList.add('visible');
+        if (logoSection) logoSection.classList.add('visible');
         if (scrollHint) scrollHint.classList.add('visible');
 
-        // Trigger cinematic Scramble Decryption on the main logo text
-        const brandName = document.querySelector('.brand-name');
-        if (brandName) {
-            decryptText(brandName, "VAJRA\nINFOTECH", 300);
-        }
 
         // Initialize structured cybernetic data streaks canvas background
         initTechCanvas();
@@ -145,8 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize mercury indicator on the active link
         setTimeout(initMercury, 2500);
 
-        // Start typing animation
-        initTypewriter();
     };
 
     const initDataStreams = () => {
@@ -697,60 +656,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     initMagneticTagline();
 
-    // --- Typing Animation for Sub-Tagline ---
-    const initTypewriter = () => {
-        const dynamicSpan = document.querySelector('.typing-dynamic');
-        if (!dynamicSpan) return;
-
-        // Prevent multiple typewriter loops
-        if (dynamicSpan.dataset.initialized) return;
-        dynamicSpan.dataset.initialized = 'true';
-
-        const words = [
-            "Code Meets Creativity.",
-            "Where Innovation Becomes Reality.",
-            "We Don’t Just Build Apps — We Build Experiences.",
-            "Intelligent Software For Bold Ideas.",
-            "Creating Digital Products That Stand Out.",
-            "Innovation Engineered For Growth.",
-            "Crafted With Code. Driven By Vision.",
-            "Modern Problems Need Powerful Technology.",
-            "Future-Ready Software Starts Here.",
-            "We Transform Concepts Into Digital Reality."
-        ];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 80;
-
-        const type = () => {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                dynamicSpan.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 35; // faster deleting
-            } else {
-                dynamicSpan.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 75; // normal typing
-            }
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typingSpeed = 2000; // pause at full word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typingSpeed = 500; // pause before typing next word
-            }
-
-            setTimeout(type, typingSpeed);
-        };
-
-        // Start typing
-        setTimeout(type, 1000);
-    };
-
     // Initialize Three.js 3D Quantum Compiler Core Logo
     const initThreeLogo = () => {
         const canvas = document.getElementById('three-logo-canvas');
@@ -986,6 +891,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run logo init
     initThreeLogo();
+
+    // --- Explore Stage Transition & Glass Carousel ---
+    const initExploreStage = () => {
+        const exploreBtn = document.getElementById('exploreBtn');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        const stage = document.getElementById('scrollable-stage');
+        const track = document.getElementById('carouselTrack');
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        let carouselInterval = null;
+        let resetTimeout = null;
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        const updateCarousel = (index, instantReset = false) => {
+            currentSlide = index;
+            if (track) {
+                if (instantReset) {
+                    track.classList.add('no-transition');
+                    track.style.transform = `translateX(-${index * 25}%)`;
+                    // Force DOM reflow to apply transition:none immediately
+                    track.offsetHeight;
+                    track.classList.remove('no-transition');
+                } else {
+                    track.style.transform = `translateX(-${index * 25}%)`;
+                }
+            }
+            
+            // Map the dot index (Slide 3 clone maps back to Dot 0!)
+            const dotIndex = index % totalSlides;
+            dots.forEach((dot, idx) => {
+                if (idx === dotIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        };
+
+        const startAutoplay = () => {
+            stopAutoplay(); // Safety clear
+            carouselInterval = setInterval(() => {
+                let nextSlide = currentSlide + 1;
+                
+                if (nextSlide === 4) {
+                    // Slide to the cloned first card smoothly in the same direction
+                    updateCarousel(3);
+                    
+                    // After the 850ms transition completes, snap instantly to the real first card (index 0)
+                    resetTimeout = setTimeout(() => {
+                        updateCarousel(0, true);
+                    }, 850);
+                } else {
+                    updateCarousel(nextSlide);
+                }
+            }, 2000); // Ticks exactly every 2 seconds
+        };
+
+        const stopAutoplay = () => {
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+                carouselInterval = null;
+            }
+            if (resetTimeout) {
+                clearTimeout(resetTimeout);
+                resetTimeout = null;
+            }
+        };
+
+        // Wire click events for the dots so users can manually click them too!
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                stopAutoplay(); // Stop auto-play on manual interaction
+                const targetIndex = parseInt(dot.getAttribute('data-slide'));
+                updateCarousel(targetIndex);
+                startAutoplay(); // Resume auto-play
+            });
+        });
+
+        if (exploreBtn && stage) {
+            exploreBtn.addEventListener('click', () => {
+                stage.classList.add('explore-active');
+                document.body.classList.add('explore-active');
+                
+                // Seamlessly morph the browser's document background to match the product page's charcoal gray exactly
+                document.documentElement.style.setProperty('background-color', '#161616', 'important');
+                document.body.style.setProperty('background-color', '#161616', 'important');
+                
+                updateCarousel(0); // Instantly reset to first slide on fresh slide-up
+                setTimeout(startAutoplay, 1500); // Stagger start autoplay until after the slide-up completes (1.5s delay)
+            });
+        }
+
+        if (backToTopBtn && stage) {
+            backToTopBtn.addEventListener('click', () => {
+                stage.classList.remove('explore-active');
+                document.body.classList.remove('explore-active');
+                
+                // Restore browser's background back to pitch black
+                document.documentElement.style.setProperty('background-color', '#050505', 'important');
+                document.body.style.setProperty('background-color', '#050505', 'important');
+                
+                stopAutoplay(); // Stop active intervals when user returns to main landing hub
+            });
+        }
+    };
+    initExploreStage();
 
     console.log("Vajra Infotech Landing Script Initialized");
 });
