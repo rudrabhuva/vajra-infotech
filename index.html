@@ -51,8 +51,7 @@
 
 <body>
 
-    <div id="scrollable-stage">
-        <div id="bg-design-layer">
+    <div id="bg-design-layer">
         <!-- Matte Black Glassmorphism Tech Background -->
         <div id="interactive-backlight"></div>
         <div class="ambient-glow"></div>
@@ -88,255 +87,76 @@
             <div class="brand-section">
                 <div class="brand-container" id="brandContainer">
                     <div class="brand-header-row">
+                        <div class="logo-section">
+                            <!-- Symmetrical Futuristic V & I Combination Monogram Logo -->
+                            <div class="vajra-v-logo">
+                                <canvas id="three-logo-canvas"></canvas>
+                                <svg class="v-svg" viewBox="0 0 100 100">
+                                    <!-- The letter "I" (Top Cap, Bottom Cap, and Central Pillar) -->
+                                    <path class="v-segment i-cap-top" d="M 40,15 L 60,15 L 60,20 L 40,20 Z" fill="#ffffff" />
+                                    <path class="v-segment i-cap-bot" d="M 40,75 L 60,75 L 60,80 L 40,80 Z" fill="#ffffff" />
+                                    <path class="v-segment i-pillar" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="#ffffff" />
+
+                                    <!-- The letter "V" (Left Wing and Right Wing) -->
+                                    <path class="v-segment outer-v-left" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="#ffffff" />
+                                    <path class="v-segment outer-v-right" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="#ffffff" />
+
+                                    <!-- High-Voltage Energy Tracing Paths (Traced precisely over the monogram elements) -->
+                                    <path class="v-current cur-left" d="M 47,20 L 53,20 L 53,75 L 47,75 Z" fill="none" />
+                                    <path class="v-current cur-right-1" d="M 18,22 L 26,22 L 44,65 L 36,65 Z" fill="none" />
+                                    <path class="v-current cur-right-2" d="M 82,22 L 74,22 L 56,65 L 64,65 Z" fill="none" />
+                                </svg>
+                            </div>
+                        </div>
+
                         <div class="brand-text-column">
-                            <h1 class="brand-name">VAJRA INFOTECH</h1>
+                            <h1 class="brand-name">VAJRA<br>INFOTECH</h1>
                             <p class="brand-tagline">Building Software as Resilient as its Name.</p>
                         </div>
                     </div>
 
-                    <div class="explore-btn-container">
-                        <button id="exploreBtn" class="explore-btn">
-                            <span class="explore-btn-text">Explore</span>
-                            <svg class="explore-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <polyline points="19 12 12 19 5 12"></polyline>
-                            </svg>
-                        </button>
+                    <div class="brand-sub-content">
+                        <div class="typing-container">
+                            <span class="status-dot"></span>
+                            <span class="prompt-prefix">sys@vajra:~$</span>
+                            <span class="typing-dynamic"></span><span class="typing-cursor">|</span>
+                        </div>
+
+                        <div class="cta-container">
+                            <a href="pages/contact.html" class="primary-cta-btn" id="mainCtaBtn">
+                                <span class="cta-text">Start a Project</span>
+                                <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav class="main-nav" id="mainNav">
+            <a href="index.html" class="nav-active" data-index="0">Home</a>
+            <a href="pages/service.html" id="services-link" data-index="1">Services</a>
+            <a href="pages/product.html" id="products-link" data-index="2">Products</a>
+            <a href="pages/process.html" id="process-link" data-index="3">Process</a>
+            <a href="pages/about.html" id="about-link" data-index="4">About</a>
+            <a href="pages/contact.html" id="contact-link" data-index="5">Contact</a>
+
+            <!-- The Liquid Mercury Indicator -->
+            <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
+        </nav>
+
+        <!-- Subtle base line for the indicator to travel on -->
+        <div class="indicator-track"></div>
+    </div>
     </div>
 
     <div class="scroll-hint" id="scrollHint">
         <div class="mouse"></div>
     </div>
-
-    <!-- Plain Black Section positioned directly underneath the stage viewport -->
-    <div id="plain-black-section">
-        <!-- Neumorphic 3D Background from Product Page -->
-        <div class="neu-bg-container">
-            <!-- Seamless conveyor wrapper for infinite panning background -->
-            <div class="neu-blocks-conveyor">
-                <!-- First Panorama Set (0 to 100vw) -->
-                <div class="neu-block-group">
-                    <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 10vw;"></div>
-                    <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 5vw;"></div>
-                    <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 40vw;"></div>
-                    <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 35vw;"></div>
-                    <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 30vw;"></div>
-                    <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 60vw;"></div>
-                    <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 75vw;"></div>
-                    <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 75vw;"></div>
-                    <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 55vw;"></div>
-                </div>
-                <!-- Second Panorama Set (100vw to 200vw - offset exactly by +100vw for flawless seamless reset) -->
-                <div class="neu-block-group">
-                    <div class="neu-block" style="width: 25vw; height: 35vh; top: 5vh; left: 110vw;"></div>
-                    <div class="neu-block" style="width: 15vw; height: 40vh; top: 45vh; left: 105vw;"></div>
-                    <div class="neu-block-inset" style="width: 30vw; height: 15vh; top: 10vh; left: 140vw;"></div>
-                    <div class="neu-block" style="width: 20vw; height: 30vh; top: 30vh; left: 135vw;"></div>
-                    <div class="neu-block-inset" style="width: 15vw; height: 25vh; top: 65vh; left: 130vw;"></div>
-                    <div class="neu-block" style="width: 10vw; height: 60vh; top: 15vh; left: 160vw;"></div>
-                    <div class="neu-block" style="width: 20vw; height: 25vh; top: 10vh; left: 175vw;"></div>
-                    <div class="neu-block-inset" style="width: 18vw; height: 45vh; top: 40vh; left: 175vw;"></div>
-                    <div class="neu-block" style="width: 15vw; height: 15vh; top: 80vh; left: 155vw;"></div>
-                </div>
-            </div>
-            
-            <!-- Ambient Glowing Nebulas -->
-            <div class="ambient-glow-orb glow-blue"></div>
-            <div class="ambient-glow-orb glow-cyan"></div>
-            <div class="ambient-glow-orb glow-violet"></div>
-
-            <!-- Floating Behind Background Shapes -->
-            <div class="floating-shapes-container">
-                <div class="float-shape" style="top: 15%; animation-duration: 22s; animation-delay: -2s;">
-                    <div class="shape-inner shape-circle-dashed"></div>
-                </div>
-                <div class="float-shape" style="top: 35%; animation-duration: 18s; animation-delay: -5s;">
-                    <div class="shape-inner shape-diamond"></div>
-                </div>
-                <div class="float-shape" style="top: 55%; animation-duration: 25s; animation-delay: -10s;">
-                    <div class="shape-inner shape-grid"></div>
-                </div>
-                <div class="float-shape" style="top: 25%; animation-duration: 16s; animation-delay: -8s;">
-                    <div class="shape-inner shape-crosshair"></div>
-                </div>
-                <div class="float-shape" style="top: 75%; animation-duration: 20s; animation-delay: -12s;">
-                    <div class="shape-inner shape-circle-glowing"></div>
-                </div>
-                <div class="float-shape" style="top: 65%; animation-duration: 15s; animation-delay: -3s;">
-                    <div class="shape-inner shape-diamond-small"></div>
-                </div>
-                <div class="float-shape" style="top: 5%; animation-duration: 28s; animation-delay: -15s;">
-                    <div class="shape-inner shape-grid-large"></div>
-                </div>
-                <div class="float-shape" style="top: 80%; animation-duration: 24s; animation-delay: -6s;">
-                    <div class="shape-inner shape-crosshair-large"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Decorative Subtle Ambient Glow -->
-        <div class="accent-glow-top"></div>
-
-        <div class="plain-section-content">
-            <!-- Glassmorphic Showcase Carousel Container -->
-            <div class="glass-showcase-carousel-container">
-                <div class="glass-showcase-carousel-track" id="carouselTrack">
-                    
-                    <!-- Card 1: Technical Core -->
-                    <div class="glass-showcase-card">
-                        <!-- Left Side: Graphic Visual -->
-                        <div class="card-graphic-block">
-                            <img src="assets/images/cybernetic_resilience_graphic.png" alt="Cybernetic Core System" class="card-image">
-                            <div class="card-image-overlay"></div>
-                        </div>
-
-                        <!-- Right Side: Detailed Copy & Badges -->
-                        <div class="card-info-block">
-                            <span class="card-badge">Cybernetic Integrity</span>
-                            <h2 class="card-title">Vajra Technical Core</h2>
-                            <p class="card-desc">
-                                Engineering resilient digital products. We develop modular cloud infrastructures, custom database kernels, and high-performance user interfaces.
-                            </p>
-                            <div class="card-meta">
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-blue"></span>
-                                    <span>Cloud Native</span>
-                                </div>
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-cyan"></span>
-                                    <span>Absolute Security</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Enterprise Cloud -->
-                    <div class="glass-showcase-card">
-                        <!-- Left Side: Graphic Visual -->
-                        <div class="card-graphic-block">
-                            <img src="assets/images/cloud_systems_graphic.png" alt="Enterprise Cloud Server System" class="card-image">
-                            <div class="card-image-overlay"></div>
-                        </div>
-
-                        <!-- Right Side: Detailed Copy & Badges -->
-                        <div class="card-info-block">
-                            <span class="card-badge">Cloud Architecture</span>
-                            <h2 class="card-title">Enterprise Cloud</h2>
-                            <p class="card-desc">
-                                Designing scalable architectures. We build distributed cloud microservices, high-availability clusters, and automated DevOps pipelines.
-                            </p>
-                            <div class="card-meta">
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-blue"></span>
-                                    <span>High Scale</span>
-                                </div>
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-cyan"></span>
-                                    <span>Microservices</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Modular Kernel -->
-                    <div class="glass-showcase-card">
-                        <!-- Left Side: Graphic Visual -->
-                        <div class="card-graphic-block">
-                            <img src="assets/images/kernel_design_graphic.png" alt="Modular Kernel Database Core" class="card-image">
-                            <div class="card-image-overlay"></div>
-                        </div>
-
-                        <!-- Right Side: Detailed Copy & Badges -->
-                        <div class="card-info-block">
-                            <span class="card-badge">Performance Engines</span>
-                            <h2 class="card-title">Modular Kernels</h2>
-                            <p class="card-desc">
-                                Accelerating database throughput. We construct customized memory storage kernels, real-time IO interfaces, and secure network layers.
-                            </p>
-                            <div class="card-meta">
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-blue"></span>
-                                    <span>Ultra Latency</span>
-                                </div>
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-cyan"></span>
-                                    <span>Engineered Speed</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 1 CLONE: Sits at the end of the track to enable endless single-direction carousel sliding -->
-                    <div class="glass-showcase-card">
-                        <!-- Left Side: Graphic Visual -->
-                        <div class="card-graphic-block">
-                            <img src="assets/images/cybernetic_resilience_graphic.png" alt="Cybernetic Core System" class="card-image">
-                            <div class="card-image-overlay"></div>
-                        </div>
-
-                        <!-- Right Side: Detailed Copy & Badges -->
-                        <div class="card-info-block">
-                            <span class="card-badge">Cybernetic Integrity</span>
-                            <h2 class="card-title">Vajra Technical Core</h2>
-                            <p class="card-desc">
-                                Engineering resilient digital products. We develop modular cloud infrastructures, custom database kernels, and high-performance user interfaces.
-                            </p>
-                            <div class="card-meta">
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-blue"></span>
-                                    <span>Cloud Native</span>
-                                </div>
-                                <div class="meta-tag">
-                                    <span class="meta-dot dot-cyan"></span>
-                                    <span>Absolute Security</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Carousel Indicators / Navigation Dots -->
-            <div class="carousel-dots-container">
-                <span class="carousel-dot active" data-slide="0"></span>
-                <span class="carousel-dot" data-slide="1"></span>
-                <span class="carousel-dot" data-slide="2"></span>
-            </div>
-        </div>
-
-        <!-- Return button placed direct child of plain-black-section for perfect absolute positioning -->
-        <div class="lower-action-block">
-            <button id="backToTopBtn" class="back-to-top-btn">
-                <svg class="up-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="19" x2="12" y2="5"></line>
-                    <polyline points="5 12 12 5 19 12"></polyline>
-                </svg>
-                <span>Return to Hub</span>
-            </button>
-        </div>
-    </div>
-
-    </div> <!-- Close #scrollable-stage -->
-
-    <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="nav-active" data-index="0">Home</a>
-        <a href="pages/service.html" id="services-link" data-index="1">Services</a>
-        <a href="pages/product.html" id="products-link" data-index="2">Products</a>
-        <a href="pages/process.html" id="process-link" data-index="3">Process</a>
-        <a href="pages/about.html" id="about-link" data-index="4">About</a>
-        <a href="pages/contact.html" id="contact-link" data-index="5">Contact</a>
-
-        <!-- The Liquid Mercury Indicator -->
-        <div class="mercury-indicator no-transition" id="mercuryIndicator" style="opacity: 0;"></div>
-    </nav>
-
-    <!-- Subtle base line for the indicator to travel on -->
-    <div class="indicator-track"></div>
 
     <!-- Page Transition Overlay -->
     <div id="page-transition-overlay">
